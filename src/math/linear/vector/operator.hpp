@@ -1,7 +1,7 @@
 #ifndef math_linear_operation_operation_HPP_
  #define math_linear_operation_operation_HPP_
 
-// ::math::linear::vector
+// using namespace ::math::linear::vector
 
 
 

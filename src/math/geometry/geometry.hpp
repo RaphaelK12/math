@@ -6,3 +6,6 @@
 #include "./quadric/quadric.hpp"
 #include "./tetrahedron/tetrahedron.hpp"
 #include "./triangle/triangle.hpp"
+
+#include "./deg2rad.hpp"
+#include "./rad2deg.hpp"

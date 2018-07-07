@@ -11,9 +11,9 @@
   - One file to include to start the fun
   - Primitives: circle, direction, ellipse, interval, plane, quadric, tetrahedron, triangle
   - Function: 
-  - vector, matrix, affine operation
-  - distances , intersections between primitives
-  - - etc. 
+    - vector, matrix, affine operation
+    - distances , intersections between primitives
+  - etc. 
 
 ### Code sample
 ```c++
@@ -28,7 +28,6 @@ using namespace std;
 
 int main( int argc, char *argv[] )
  {
-
   ::math::linear::vector::point<double,2>   point{100,100};
   ::math::geometry::direction::parametric<double,2>   direction({ 5,5}, { 1,2});
 

@@ -1,9 +1,9 @@
-#ifndef math_geometry_geometry_construct
-#define math_geometry_geometry_construct
+#ifndef math_geometry_projective_plane
+#define math_geometry_projective_plane
 
-// ::math::geometry::plane::construct( no3d, left, right, down, up )
-// ::math::geometry::plane::construct( no3d, a0, a1, a2 , a3 )
-// ::math::geometry::plane::construct( parametric, no3d, x, y )
+// ::math::geometry::projective::plane( no3d, left, right, down, up )
+// ::math::geometry::projective::plane( no3d, a0, a1, a2 , a3 )
+// ::math::geometry::projective::plane( parametric, no3d, x, y )
 
 
 #include "../../linear/vector/structure.hpp"
