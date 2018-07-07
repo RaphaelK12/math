@@ -1,0 +1,8 @@
+#include "./circle/circle.hpp"
+#include "./direction/direction.hpp"
+#include "./ellipse/ellipse.hpp"
+#include "./interval/interval.hpp"
+#include "./plane/plane.hpp"
+#include "./quadric/quadric.hpp"
+#include "./tetrahedron/tetrahedron.hpp"
+#include "./triangle/triangle.hpp"

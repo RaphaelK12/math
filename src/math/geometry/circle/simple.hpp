@@ -1,0 +1,71 @@
+#ifndef math_type_circle_simple2d
+ #define math_type_circle_simple2d
+
+// ::math::geometry::circle::simple2d<scalar_name>
+
+#include "../../linear/vector/structure.hpp"
+#include "../../linear/vector/set.hpp"
+
+
+ namespace math
+  {
+   namespace geometry
+    {
+     namespace circle
+      {
+
+       template<typename scalar_name,unsigned dimension_number >
+         class unit;
+
+       template
+        <
+          typename scalar_name
+         ,unsigned dimension_number
+        >
+        class simple
+         {
+          public:
+            typedef scalar_name scalar_type;
+            typedef ::math::linear::vector::point<scalar_name,dimension_number>   point_type;
+
+            typedef ::math::geometry::circle::unit<scalar_name,dimension_number>              unit_type;
+            typedef ::math::geometry::circle::simple<scalar_name,dimension_number>            this_type;
+
+
+            simple(){}
+            simple( point_type const& center, scalar_type const& radius )
+             :m_center(center), m_radius(radius)
+             {
+             }
+
+            explicit simple( unit_type const& unit )
+             {
+              *this = unit;
+             }
+
+            this_type & operator=( unit_type const& parametric )
+             {
+              ::math::linear::vector::set( this->m_center, scalar_type(0) );
+              this->m_radius = scalar_type(1);
+              return *this;
+             }
+
+            point_type const& center()const
+             {
+              return m_center;
+             }
+            scalar_type const& radius()const
+             {
+              return m_radius;
+             }
+
+          public:
+            point_type m_center;
+            scalar_type m_radius;
+         };
+
+      }
+    }
+  }
+
+#endif

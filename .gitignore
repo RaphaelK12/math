@@ -1,0 +1,16 @@
+*.exe
+*.obj
+*.dblite
+*.o
+*.bak
+*.sdf
+*.suo
+*.pdb
+.docstates.suo
+/example/main
+*.opensdf
+*.idb
+*.*~
+*.ilk
+*.opendb
+*.db
