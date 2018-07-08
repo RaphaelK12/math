@@ -71,13 +71,21 @@ namespace math
 
      public:
          affine_type const& to_world()const{ return m_2world; }
-         void               to_world( affine_type const& w ){ m_2world = w; ::math::linear::affine::invert( m_2local, m_2world ); }
+         void               to_world( affine_type const& w )
+          {
+           m_2world = w; 
+           ::math::linear::affine::invert( m_2local, m_2world );
+          }
      private:
        affine_type m_2world;
 
      public:
          affine_type const& to_local()const{ return m_2local; }
-         void               to_local( affine_type const& w ){ m_2local = w; ::math::linear::affine::invert( m_2world, m_2local ); }
+         void               to_local( affine_type const& w )
+          {
+           m_2local = w; 
+           ::math::linear::affine::invert( m_2world, m_2local );
+          }
      private:
        affine_type m_2local;
 

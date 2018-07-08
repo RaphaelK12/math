@@ -11,8 +11,8 @@
 #include "../direction/horizon.hpp"
 #include "../direction/intersect.hpp"
 
-#include "./no3d.hpp"
-#include "./parametric3d.hpp"
+#include "../plane/no3d.hpp"
+#include "../plane/parametric3d.hpp"
 
 
 
@@ -39,9 +39,9 @@ namespace math
 
           ::math::geometry::direction::ABC2D<scalar_name> horizon( vanish.line() );
 
-          no3d.normal()[0] = -horizon.A();
-          no3d.normal()[1] = -horizon.C();
-          no3d.normal()[2] = -horizon.B();
+          no3d.normal()[0] = horizon.A();
+          no3d.normal()[1] = horizon.B();
+          no3d.normal()[2] = horizon.C();
           ::math::linear::vector::length<scalar_name>( no3d.normal(), scalar_name(1) );
          }
 
@@ -66,9 +66,9 @@ namespace math
           vanish.process( a0, a1, a2, a3 );
           ::math::geometry::direction::ABC2D<scalar_name> horizon( vanish.line() );
 
-          no3d.normal()[0] = -horizon.A();
-          no3d.normal()[1] = -horizon.C();
-          no3d.normal()[2] = -horizon.B();
+          no3d.normal()[0] = horizon.A();
+          no3d.normal()[1] = horizon.B();
+          no3d.normal()[2] = horizon.C();
           ::math::linear::vector::length<scalar_name>( no3d.normal(), scalar_name(1) );
          }
          no3d.origin()[0] = a0[0];

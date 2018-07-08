@@ -4,5 +4,3 @@
 
 #include "./distance.hpp"
 #include "./intersect.hpp"
-
-#include "./construct.hpp"
