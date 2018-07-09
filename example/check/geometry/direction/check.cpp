@@ -51,6 +51,10 @@ int main( int argc, char *argv[] )
   ::math::geometry::direction::distance( pp3, pp3 );
   ::math::geometry::direction::distance( pp, point2  );
   ::math::geometry::direction::distance( abc, point2  );
+  
+  ::math::geometry::direction::angle( two, two );
+  ::math::geometry::direction::angle( pp, pp  );
+  ::math::geometry::direction::angle( abc, abc  );
 
   ::math::geometry::direction::horizon<double> h;
   h.process( point2, point2, point2, point2 );

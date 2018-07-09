@@ -49,7 +49,7 @@ namespace math
        void
        redirect( std::vector< ::math::geometry::direction::polar< scalar_name > > & beam )
         {
-         using namespace ::math::linear::operation;
+         using namespace ::math::linear::vector;
          typedef ::math::geometry::direction::polar< scalar_name >    polar_type;
 
          polar_type & orientation =  beam[  beam.size()/2].fix();

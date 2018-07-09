@@ -7,6 +7,7 @@
 #include "./rotate.hpp"
 
 #include "./intersect.hpp"
+#include "./angle.hpp"
 
 #include "./distance/distance.hpp"
 

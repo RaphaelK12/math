@@ -60,7 +60,7 @@ namespace math
              normal[0] = -horizon.A();
              normal[1] = -horizon.C();
              normal[2] = -horizon.B();
-             ::math::linear::operation::length<scalar_name>( normal, 1 );
+             ::math::linear::linear::length<scalar_name>( normal, 1 );
             }
 
             return_type result;
@@ -87,16 +87,16 @@ namespace math
              intersectPL3D_type::process( parametric.x(), no3d,  line3D_type( point3D_type{0,0,0}, point3D_type{ a01[0], distance, a01[1] } ) ) ;
              intersectPL3D_type::process( parametric.y(), no3d,  line3D_type( point3D_type{0,0,0}, point3D_type{ a10[0], distance, a10[1] } ) ) ;
 
-             ::math::linear::operation::subtraction( parametric.x() , parametric.origin() );
-             ::math::linear::operation::subtraction( parametric.y() , parametric.origin() );
+             ::math::linear::linear::subtraction( parametric.x() , parametric.origin() );
+             ::math::linear::linear::subtraction( parametric.y() , parametric.origin() );
             }
 
-            auto meter = ::math::linear::operation::length( parametric.x() );
-            ::math::linear::operation::scale<scalar_type>( parametric.x(),      unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>( parametric.y() ,     unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>( parametric.origin(), unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>(       no3d.origin(), unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>(       no3d.normal(), unit * scalar_type(1) / meter );
+            auto meter = ::math::linear::linear::length( parametric.x() );
+            ::math::linear::linear::scale<scalar_type>( parametric.x(),      unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>( parametric.y() ,     unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>( parametric.origin(), unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>(       no3d.origin(), unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>(       no3d.normal(), unit * scalar_type(1) / meter );
 
             return result;
            }

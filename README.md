@@ -4,7 +4,7 @@
 - In progress
 
 ### Description
- - Yet another c++ library that various mathematical structures and function.
+ - Yet another c++ library with various mathematical structures and function.
 
 ### Key features:
  - Headers only

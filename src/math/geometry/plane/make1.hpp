@@ -75,18 +75,18 @@ namespace math
              intersectPL3D_type::process( parametric.x(), no3d,  line3D_type( point3D_type{0,0,0}, point3D_type{ a1[0], 1, a1[1] } ) ) ;
              intersectPL3D_type::process( parametric.y(), no3d,  line3D_type( point3D_type{0,0,0}, point3D_type{ a3[0], 1, a3[1] } ) ) ;
 
-             ::math::linear::operation::subtraction( parametric.x() , parametric.origin() );
-             ::math::linear::operation::subtraction( parametric.y() , parametric.origin() );
+             ::math::linear::linear::subtraction( parametric.x() , parametric.origin() );
+             ::math::linear::linear::subtraction( parametric.y() , parametric.origin() );
             }
 
-            auto meter = ::math::linear::operation::length( parametric.x() );
-            ::math::linear::operation::scale<scalar_type>( parametric.x(),      unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>( parametric.y() ,     unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>( parametric.origin(), unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>(       no3d.origin(), unit * scalar_type(1) / meter );
-            ::math::linear::operation::scale<scalar_type>(       no3d.normal(), unit * scalar_type(1) / meter );
+            auto meter = ::math::linear::linear::length( parametric.x() );
+            ::math::linear::linear::scale<scalar_type>( parametric.x(),      unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>( parametric.y() ,     unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>( parametric.origin(), unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>(       no3d.origin(), unit * scalar_type(1) / meter );
+            ::math::linear::linear::scale<scalar_type>(       no3d.normal(), unit * scalar_type(1) / meter );
 
-            //auto dot = ::math::linear::operation::dot( parametric.x() , parametric.y() );
+            //auto dot = ::math::linear::linear::dot( parametric.x() , parametric.y() );
 
             return result;
            }

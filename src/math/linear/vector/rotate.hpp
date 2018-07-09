@@ -89,7 +89,7 @@
          )
         {
          ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         math::linear::operation::rotateX( I_tmp, angle_param, result_param );
+         math::linear::vector::rotateX( I_tmp, angle_param, result_param );
          result_param = I_tmp;
         }
 
@@ -118,7 +118,7 @@
          )
         {
          ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         math::linear::operation::rotateY( I_tmp, angle_param, result_param );
+         math::linear::vector::rotateY( I_tmp, angle_param, result_param );
          result_param = I_tmp;
         }
 
@@ -147,7 +147,7 @@
          )
         {
          ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         math::linear::operation::rotateZ( I_tmp, angle_param, result_param );
+         math::linear::vector::rotateZ( I_tmp, angle_param, result_param );
          result_param = I_tmp;
         }
 

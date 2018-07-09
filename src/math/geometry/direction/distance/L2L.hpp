@@ -66,8 +66,8 @@ namespace math
 
          point_type const& median()const
           {
-           ::math::linear::operation::addition( m_median, m_pointF, m_pointS );
-           ::math::linear::operation::scale<scalar_type>( m_median, 0.5 );
+           ::math::linear::linear::addition( m_median, m_pointF, m_pointS );
+           ::math::linear::linear::scale<scalar_type>( m_median, 0.5 );
            return m_median;
           }
 

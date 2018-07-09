@@ -1,8 +1,8 @@
 #ifndef math_geometry_direction_intersect
 #define math_geometry_direction_intersect
 
-// ::math::geometry::direction::intersect( two, two )
-// ::math::geometry::direction::intersect( abc, abc )
+// ::math::geometry::direction::intersect( point, two, two, epsilon )
+// ::math::geometry::direction::intersect( point, abc, abc, epsilon )
 
 #include "../../linear/vector/structure.hpp"
 #include "./two.hpp"

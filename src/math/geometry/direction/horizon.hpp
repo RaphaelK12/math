@@ -72,6 +72,15 @@ namespace math
              ::math::linear::vector::cross( m_line, m_p30_12, m_p01_23 );
             }
 
+           void process
+            (
+              point_type   const & first     //!< Firstc vanish point
+             ,point_type   const & second    //!< Second vanis point
+            )
+            {
+             ::math::linear::vector::cross( m_line, homogeneous_type{ first[0], first[1], 1 }, homogeneous_type{ second[0], second[1], 1 } );
+            }
+
          public:
            homogeneous_type const& line()const  { return m_line; }
            homogeneous_type const& first()const { return m_p30_12; }
