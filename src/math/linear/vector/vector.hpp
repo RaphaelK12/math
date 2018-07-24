@@ -29,5 +29,6 @@
 #include "./symmetric.hpp"
 #include "./make.hpp"
 #include "./set.hpp"
+#include "./unit.hpp"
 
 #endif

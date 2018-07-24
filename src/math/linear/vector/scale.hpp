@@ -2,6 +2,7 @@
  #define math_library_linear_algebra__vector_aritmetic_scale_HPP_
 
 // ::math::linear::vector::scale( result, value, right )
+// ::math::linear::vector::scale( result, value )
 
 
 
@@ -24,7 +25,7 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, dimension_number >      & result_param
-          ,                   value_name                         const& left_param
+          ,                   value_name                                      const& value_param
           ,::math::linear::vector::structure< scalar_name, dimension_number > const& right_param
          )
          {
@@ -34,7 +35,7 @@
           while( I_result != result_param.data() )
            {
             --I_result; --I_right;
-             *I_result = scalar_name( left_param * *I_right );
+             *I_result = scalar_name( value_param * *I_right );
            }
          }
 
@@ -44,12 +45,12 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, 2 >       & result_param
-          ,              value_name                const& left_param
+          ,              value_name                             const& value_param
           ,::math::linear::vector::structure< scalar_name, 2 >  const& right_param
          )
          {
-           result_param[0] = left_param * right_param[0];
-           result_param[1] = left_param * right_param[1];
+           result_param[0] = value_param * right_param[0];
+           result_param[1] = value_param * right_param[1];
          }
 
        template< typename scalar_name, typename value_name >
@@ -58,13 +59,13 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, 3 >       & result_param
-          ,              value_name                const& left_param
+          ,              value_name                             const& value_param
           ,::math::linear::vector::structure< scalar_name, 3 >  const& right_param
          )
          {
-           result_param[0] = left_param * right_param[0];
-           result_param[1] = left_param * right_param[1];
-           result_param[2] = left_param * right_param[2];
+           result_param[0] = value_param * right_param[0];
+           result_param[1] = value_param * right_param[1];
+           result_param[2] = value_param * right_param[2];
          }
 
        template< typename scalar_name, typename value_name >
@@ -73,14 +74,14 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, 4 >       & result_param
-          ,               value_name               const& left_param
+          ,               value_name                            const& value_param
           ,::math::linear::vector::structure< scalar_name, 4 >  const& right_param
          )
          {
-           result_param[0] = left_param * right_param[0];
-           result_param[1] = left_param * right_param[1];
-           result_param[2] = left_param * right_param[2];
-           result_param[3] = left_param * right_param[3];
+           result_param[0] = value_param * right_param[0];
+           result_param[1] = value_param * right_param[1];
+           result_param[2] = value_param * right_param[2];
+           result_param[3] = value_param * right_param[3];
          }
 
        template< typename scalar_name, unsigned dimension_number, typename value_name >
@@ -89,7 +90,7 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, dimension_number >      & result_param
-          ,                  value_name                          const& left_param
+          ,                  value_name                          const& value_param
          )
          {
           scalar_name      * I_result = result_param.data()+ dimension_number;
@@ -97,7 +98,7 @@
           while( I_result != result_param.data() )
            {
             --I_result;
-             *I_result *= scalar_name( left_param );
+             *I_result *= scalar_name( value_param );
            }
          }
 
@@ -107,11 +108,11 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, 2 >        & result_param
-          ,              value_name                 const& right_param
+          ,              value_name                 const& value_param
          )
          {
-          result_param[0] = (scalar_name)( result_param[0] * right_param );
-          result_param[1] = (scalar_name)( result_param[1] * right_param );
+          result_param[0] = (scalar_name)( result_param[0] * value_param );
+          result_param[1] = (scalar_name)( result_param[1] * value_param );
          }
 
        template< typename scalar_name, typename value_name >
@@ -120,12 +121,12 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, 3 >        & result_param
-          ,              value_name                 const& right_param
+          ,              value_name                 const& value_param
          )
          {
-          result_param[0] = (scalar_name)( result_param[0] * right_param );
-          result_param[1] = (scalar_name)( result_param[1] * right_param );
-          result_param[2] = (scalar_name)( result_param[2] * right_param );
+          result_param[0] = (scalar_name)( result_param[0] * value_param );
+          result_param[1] = (scalar_name)( result_param[1] * value_param );
+          result_param[2] = (scalar_name)( result_param[2] * value_param );
          }
 
        template< typename scalar_name, typename value_name >
@@ -134,13 +135,13 @@
         scale
          (
            ::math::linear::vector::structure< scalar_name, 4 >        & result_param
-          ,                value_name               const& right_param
+          ,                value_name                            const& value_param
          )
          {
-          result_param[0] = (scalar_name)( result_param[0] * right_param );
-          result_param[1] = (scalar_name)( result_param[1] * right_param );
-          result_param[2] = (scalar_name)( result_param[2] * right_param );
-          result_param[3] = (scalar_name)( result_param[3] * right_param );
+          result_param[0] = (scalar_name)( result_param[0] * value_param );
+          result_param[1] = (scalar_name)( result_param[1] * value_param );
+          result_param[2] = (scalar_name)( result_param[2] * value_param );
+          result_param[3] = (scalar_name)( result_param[3] * value_param );
          }
 
      }

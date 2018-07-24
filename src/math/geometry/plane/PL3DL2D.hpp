@@ -86,6 +86,21 @@ namespace math
          return ::math::geometry::plane::PL3DL2D<scalar_name>::process( point, lambda, plane, line, epsilon );
         }
 
+       template<  typename scalar_name >
+       bool intersect
+       (
+         ::math::linear::vector::point<scalar_name,3>                      & point
+         ,::math::geometry::plane::no3d <scalar_name>                const & plane
+         ,::math::geometry::direction::two<scalar_name, 3 >          const & two
+         ,scalar_name                                                const & epsilon = 1e-6
+       )
+       {
+         scalar_name  lambda;
+         ::math::geometry::direction::parametric<scalar_name, 3 > line( two );
+         return ::math::geometry::plane::PL3DL2D<scalar_name>::process( point, lambda, plane, line, epsilon );
+       }
+
+
      }
    }
  }

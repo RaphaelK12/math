@@ -3,6 +3,7 @@
 
 // ::math::geometry::projective::plane( no3d, left, right, down, up )
 // ::math::geometry::projective::plane( no3d, a0, a1, a2 , a3 )
+// ::math::geometry::projective::plane( no3d, h1, h2, o )
 // ::math::geometry::projective::plane( parametric, no3d, x, y )
 
 
@@ -35,15 +36,10 @@ namespace math
         )
         {
          {
+          typedef ::math::geometry::direction::ABC2D<scalar_name> abc2d_type;
           ::math::geometry::direction::horizon<scalar_name> vanish;
           vanish.process( left.normalize(), right.normalize(), down.normalize(), up.normalize() );
-
-          ::math::geometry::direction::ABC2D<scalar_name> horizon( vanish.line() );
-
-          no3d.normal()[0] =-horizon.A();
-          no3d.normal()[1] =-horizon.C();
-          no3d.normal()[2] =-horizon.B();
-          ::math::linear::vector::length<scalar_name>( no3d.normal(), scalar_name(1) );
+          ::math::geometry::projective::plane( no3d, abc2d_type( vanish.line() ), no3d.origin() );
          }
 
          ::math::linear::vector::point<scalar_name, 2> origin;
@@ -62,19 +58,10 @@ namespace math
          ,::math::linear::vector::point<scalar_name, 2> const& a3
         )
         {
-         {
-          ::math::geometry::direction::horizon<scalar_name> vanish;
-          vanish.process( a0, a1, a2, a3 );
-          ::math::geometry::direction::ABC2D<scalar_name> horizon( vanish.line() );
-
-          no3d.normal()[0] = -horizon.A();
-          no3d.normal()[1] = -horizon.C();
-          no3d.normal()[2] = -horizon.B();
-          ::math::linear::vector::length<scalar_name>( no3d.normal(), scalar_name(1) );
-         }
-         no3d.origin()[0] = a0[0];
-         no3d.origin()[1] = scalar_name(1);
-         no3d.origin()[2] = a0[1];
+         typedef ::math::geometry::direction::ABC2D<scalar_name> abc2d_type;
+         ::math::geometry::direction::horizon<scalar_name> vanish;
+         vanish.process( a0, a1, a2, a3 );
+         ::math::geometry::projective::plane( no3d, abc2d_type( vanish.line() ), { a0[0], scalar_name(1), a0[1] } );
         }
 
       template<  typename scalar_name >
@@ -98,21 +85,35 @@ namespace math
          ::math::linear::vector::subtraction( parametric.y(), parametric.origin() );
         }
 
+
       template<  typename scalar_name >
+       void plane // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
+        (
+           ::math::geometry::plane::no3d<scalar_name>               & no3d
+          ,::math::linear::vector::point<scalar_name, 3>       const& first    //!< Homogenous coordinate of horizon point
+          ,::math::linear::vector::point<scalar_name, 3>       const& second   //!< Homogenous coordinate of horizon point
+          ,::math::linear::vector::point<scalar_name, 3>       const& origin   //!< Any point of plane
+        )
+       {
+        ::math::geometry::direction::horizon<scalar_name> vanish;
+        vanish.process( first, second );
+        ::math::geometry::projective::plane( no3d, ::math::geometry::direction::ABC2D<scalar_name>( vanish.line() ), origin );
+       }
+
+      template<  typename scalar_name>
        void plane // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
         (
           ::math::geometry::plane::no3d<scalar_name>            & no3d
          ,::math::geometry::direction::ABC2D<scalar_name> const& horizon
+         ,::math::linear::vector::point<scalar_name, 3>   const& origin   //!< Any point of plane
+
         )
         {
          no3d.normal()[0] = -horizon.A();
          no3d.normal()[1] = -horizon.C();
          no3d.normal()[2] = -horizon.B();
          ::math::linear::vector::length<scalar_name>( no3d.normal(), scalar_name(1) );
-
-         no3d.origin()[0] = 0;
-         no3d.origin()[1] = 0;
-         no3d.origin()[2] = 0;
+         no3d.origin() = origin;
         }
 
      }

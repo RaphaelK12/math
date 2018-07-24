@@ -34,6 +34,12 @@ namespace math
           {
           }
 
+         void reset(  )
+          {
+           this->m_summae.reset( );
+           this->m_count.reset( 0 );
+          }
+
          void reset( sample_type const& value, size_name const& count )
           {
            this->m_summae.reset( value );
@@ -50,7 +56,7 @@ namespace math
           {
            sample_type result;
 
-           ::math::linear::vector::scale<scalar_name,scalar_name >( result, scalar_type(1) / m_count.value(), m_summae.value() );
+           ::math::linear::vector::scale( result,  scalar_type(1) / scalar_type(m_count.value() ), m_summae.value() );
 
            return result;
           }

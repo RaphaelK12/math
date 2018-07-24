@@ -3,6 +3,7 @@
 #include "./ellipse/ellipse.hpp"
 #include "./interval/interval.hpp"
 #include "./plane/plane.hpp"
+#include "./projective/projective.hpp"
 #include "./quadric/quadric.hpp"
 #include "./tetrahedron/tetrahedron.hpp"
 #include "./triangle/triangle.hpp"

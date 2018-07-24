@@ -30,7 +30,7 @@
        template< typename scalar_name >
         void init
          (
-           ::math::linear::affine::structure<scalar_name,3>       & affine
+           ::math::linear::affine::structure<scalar_name, 3>                 & affine
           ,::math::linear::vector::structure<scalar_name, 3>            const& vector
           ,::math::linear::vector::structure<scalar_name, 3>            const& x
           ,::math::linear::vector::structure<scalar_name, 3>            const& y

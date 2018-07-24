@@ -31,6 +31,11 @@ namespace math
            ::math::linear::vector::set( m_value, 0 );
           }
 
+         void reset()
+          {
+           ::math::linear::vector::set( this->m_value, 0 );
+          }
+
          void reset( sample_type const& sample )
           {
            this->m_value = sample;

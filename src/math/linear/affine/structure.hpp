@@ -24,8 +24,46 @@
         class structure
          {
           public:
+            typedef std::size_t   size_type;
+            typedef scalar_name scalar_type;
+
             typedef ::math::linear::matrix::structure<scalar_name,dimension_number,dimension_number> matrix_type;
             typedef ::math::linear::vector::structure<scalar_name,dimension_number> vector_type;
+
+            structure( )
+             {
+              //nothing
+             }
+
+            structure( matrix_type const& m, vector_type const& v )
+             : m_matrix( m )
+             , m_vector( v )
+             {
+             }
+
+            vector_type const& operator[]( size_type const& index )const
+             {
+              switch( index )
+               {
+                default:
+                case( 0 ): return this->matrix()[0];
+                case( 1 ): return this->matrix()[1];
+                case( 2 ): return this->matrix()[2];
+                case( 3 ): return this->vector();
+               }
+             }
+
+            vector_type & operator[]( size_type const& index )
+             {
+              switch( index )
+               {
+                default:
+                case( 0 ): return this->matrix()[0];
+                case( 1 ): return this->matrix()[1];
+                case( 2 ): return this->matrix()[2];
+                case( 3 ): return this->vector();
+               }
+             }
 
           public:
             matrix_type const& matrix()const

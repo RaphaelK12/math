@@ -48,7 +48,7 @@ namespace math
 
              optical( size_type const& width, size_type const& height, scalar_type const& DFoV = 2*std::atan( std::sqrt(2) ), scalar_type const& pAR = 1 )
               :m_resolution{ width, height }
-               ,m_pixelAR( pAR )
+              ,m_pixelAR( pAR )
               {
                this->diagonalFV( DFoV );
               }
