@@ -1,5 +1,5 @@
-#ifndef math_type_triangle_area_hpp_
- #define math_type_triangle_area_hpp_
+#ifndef math_geometry_triangle_area_hpp_
+ #define math_geometry_triangle_area_hpp_
 
 // ::math::geometry::triangle::area( a0, a1, a2 )
 // ::math::geometry::triangle::area( t )

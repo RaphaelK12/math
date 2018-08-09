@@ -154,10 +154,10 @@ int main( int argc, char *argv[] )
      ::math::linear::vector::distance( p0_4, p1_4 );
      ::math::linear::vector::distance( p0_5, p1_5 );
 
-   ::math::linear::vector::cross( p0_2, p1_2  ); 
+   ::math::linear::vector::cross( p0_2, p1_2  );
    ::math::linear::vector::cross( p0_3, p1_3, p2_3 );
    ::math::linear::vector::cross( p0_4, p1_4, p2_4, p2_4  );
- 
+
   ::math::linear::vector::convex( p0_1, p0_1, 322.0, p0_1 );
   ::math::linear::vector::convex( p0_2, p0_2, 322.0, p0_2 );
   ::math::linear::vector::convex( p0_3, p0_3, 322.0, p0_3 );
@@ -169,23 +169,16 @@ int main( int argc, char *argv[] )
   ::math::linear::vector::angle( p0_3, p0_3 );
   ::math::linear::vector::angle( p0_4, p0_4 );
   ::math::linear::vector::angle( p0_5, p0_5 );
-  
+
    ::math::linear::vector::addition( p0_1, p1_1, p2_1 );   ::math::linear::vector::addition( p0_1, p0_1 );
    ::math::linear::vector::addition( p0_2, p1_2, p2_2 );   ::math::linear::vector::addition( p0_2, p0_2 );
    ::math::linear::vector::addition( p0_3, p1_3, p2_3 );   ::math::linear::vector::addition( p0_3, p0_3 );
    ::math::linear::vector::addition( p0_4, p1_4, p2_4 );   ::math::linear::vector::addition( p0_4, p0_4 );
    ::math::linear::vector::addition( p0_5, p1_5, p2_5 );   ::math::linear::vector::addition( p0_5, p0_5 );
 
-
-
-
-
-
-
-
-
-
-
+   //::math::linear::vector::make( TODO );
+   //::math::linear::vector::set(  TODO );
+   //::math::linear::vector::init( TODO );
 
   return EXIT_SUCCESS;
  }

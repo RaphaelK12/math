@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_multiply
- #define math_type_matrix_multiply
+#ifndef Dh_math_linear_matrix_multiply
+ #define Dh_math_linear_matrix_multiply
 
  // ::math::linear::matrix::multiply<scalar_name,width_number,height_number>
 

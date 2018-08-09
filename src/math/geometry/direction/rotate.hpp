@@ -1,5 +1,5 @@
-#ifndef math_type_direction_rotate_HPP_
- #define math_type_direction_rotate_HPP_
+#ifndef math_geometry_direction_rotate_HPP_
+ #define math_geometry_direction_rotate_HPP_
 
 // ::math::geometry::direction::rotate( r, alpha, direction )
 // ::math::geometry::direction::rotate( r, center, alpha, direction )

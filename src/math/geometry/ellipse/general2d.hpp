@@ -1,5 +1,5 @@
-#ifndef math_type_ellipse_general2D_HPP_
- #define math_type_ellipse_general2D_HPP_
+#ifndef Dh_math_geometry_ellipse_general2D_HPP_
+ #define Dh_math_geometry_ellipse_general2D_HPP_
 
  // ::math::geometry::ellipse::general2D<scalar_name>
 

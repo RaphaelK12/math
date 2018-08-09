@@ -1,5 +1,5 @@
-#ifndef lib_math_camera_mobile
-#define lib_math_camera_mobile
+#ifndef math_geometry_projective_camera_mobile
+#define math_geometry_projective_camera_mobile
  // ::math::geometry::projective::camera::mobile< scalar_name >
 
 #include "./optical.hpp"
@@ -26,9 +26,9 @@ namespace math
           public:
             typedef scalar_name  scalar_type;
 
-            typedef ::math::linear::vector::structure< scalar_type , 2 >       uv_type, point2d_type;
-            typedef ::math::linear::vector::point< scalar_type , 3 >                    point3d_type;
-            typedef ::math::linear::affine::structure< scalar_name, 3 >                  affine_type;
+            typedef ::math::linear::vector::structure< scalar_type , 2 >                 uv_type, point2d_type;
+            typedef ::math::linear::vector::point< scalar_type , 3 >                              point3d_type;
+            typedef ::math::linear::affine::structure< scalar_name, 3 >                            affine_type;
             typedef ::math::geometry::projective::camera::optical<scalar_name,size_name>          optical_type;
 
             template< typename number_name >

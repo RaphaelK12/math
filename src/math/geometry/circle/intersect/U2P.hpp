@@ -1,5 +1,5 @@
-#ifndef math_type_circle_intersectU2P
- #define math_type_circle_intersectU2P
+#ifndef Dh_math_geometry_circle_intersectU2P
+ #define Dh_math_geometry_circle_intersectU2P
 
 // ::math::geometry::circle::U2P<scalar_name>( unit )
 // ::math::geometry::circle::intersect<scalar_name>( l1, l2, parametric )

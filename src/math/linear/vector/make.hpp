@@ -72,51 +72,6 @@
           return result;
          }
 
-       template< typename scalar_name, typename value_name >
-        inline
-        ::math::linear::vector::structure< scalar_name, 2 >
-        make
-         (
-           ::math::linear::vector::structure< scalar_name, 2 >      & result_param
-          ,              value_name                 const& right_param
-         )
-         {
-          result_param[0] = right_param;
-          result_param[1] = right_param;
-          return result_param;
-         }
-
-       template< typename scalar_name, typename value_name >
-        inline
-        ::math::linear::vector::structure< scalar_name, 3 >
-        make
-         (
-           ::math::linear::vector::structure< scalar_name, 3 >      & result_param
-          ,              value_name                 const& right_param
-         )
-         {
-          result_param[0] = right_param;
-          result_param[1] = right_param;
-          result_param[2] = right_param;
-          return result_param;
-         }
-
-       template< typename scalar_name, typename value_name >
-        inline
-        ::math::linear::vector::structure< scalar_name, 4 >
-        make
-         (
-           ::math::linear::vector::structure< scalar_name, 4 >      & result_param
-          ,                value_name               const& right_param
-         )
-         {
-          result_param[0] = right_param;
-          result_param[1] = right_param;
-          result_param[2] = right_param;
-          result_param[3] = right_param;
-          return result_param;
-         }
-
      }
    }
  }

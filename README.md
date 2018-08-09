@@ -10,10 +10,10 @@
  - Headers only
   - One file to include to start the fun
   - Primitives: circle, direction, ellipse, interval, plane, quadric, tetrahedron, triangle
-  - Function: 
+  - Function:
     - vector, matrix, affine operation
-    - distances , intersections between primitives
-  - etc. 
+    - distances, intersections between primitives
+  - etc.
 
 ### Code sample
 ```c++
@@ -70,6 +70,50 @@ int main( int argc, char *argv[] )
   - GCC 5.4.0 20160609
   - MSVC 2017 (15.3.2)
   - MSVC 2015 Update 3
+
+### Content in details:
+  - complex
+    - quaternion
+      * quaternion arithmetic
+  - function
+      * N dimensional Peano's functions
+  - geometry
+    - circle
+      * Different circle structures, intersections with direction
+    - direction
+      * Direction structures and manipulation
+    - ellipse
+      * Ellipse structures and manipulation
+    - interval
+      * Interval structures and manipulation
+    - plane
+      * Plane structures and manipulation
+    - projective
+      * TODO
+    - quadric
+      * TODO
+    - tetrahedron
+      * TODO
+    - triangle
+      * TODO
+  - grammar
+  - linear
+   - affine
+      * Affine structure and manipulation ( addition, subtraction, compose, etc. )
+   - homography
+      * Make and transform functions
+   - matrix
+      * Matrix manipulation
+   - vector
+      * Vector manipulation
+  - logic
+      * Empty so far
+  - polynomial
+      * Polynomial manipulation
+  - random
+      * Sobol and vdc functions
+  - statistic
+      * Gaussian, average, count.
 
 
 

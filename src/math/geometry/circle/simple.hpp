@@ -1,5 +1,5 @@
-#ifndef math_type_circle_simple2d
- #define math_type_circle_simple2d
+#ifndef Dh_math_geometry_circle_simple2d
+ #define Dh_math_geometry_circle_simple2d
 
 // ::math::geometry::circle::simple2d<scalar_name>
 

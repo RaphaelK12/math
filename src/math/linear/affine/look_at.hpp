@@ -1,5 +1,5 @@
-#ifndef math_type_affine_lookAt
- #define math_type_affine_lookAt
+#ifndef Dh_math_linear_affine_lookAt
+ #define Dh_math_linear_affine_lookAt
 
  // ::math::linear::affine::look_at<scalar_name>( result, eye, view, up )
 

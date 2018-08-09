@@ -1,7 +1,7 @@
 #ifndef math_statistic_gauss_V1
 #define math_statistic_gauss_V1
 
-// ::math::statistic::gauss::V1< double, unsigned, 1 >
+// ::math::statistic::gauss::V1< double, unsigned >
 
 #include "./count.hpp"
 #include "./summae.hpp"
@@ -25,10 +25,11 @@ namespace math
        {
         public:
           typedef scalar_name scalar_type;
+          typedef size_name     size_type;
 
-          typedef math::statistic::summae< scalar_name, 1 > summae_type;
-          typedef math::statistic::count< size_name >     count_type;
-          typedef math::statistic::average< scalar_name, 1, size_name > average_type;
+          typedef math::statistic::summae< scalar_type, 1 >              summae_type;
+          typedef math::statistic::count< size_name >                   count_type;
+          typedef math::statistic::average< scalar_type, 1, size_name > average_type;
 
           typedef typename average_type::sample_type  sample_type;
 

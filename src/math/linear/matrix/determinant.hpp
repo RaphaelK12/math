@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_determinant
- #define math_type_matrix_determinant
+#ifndef Dh_math_linear_matrix_determinant
+ #define Dh_math_linear_matrix_determinant
 
  // ::math::linear::matrix::determinant<scalar_name,width_number,height_number>
 

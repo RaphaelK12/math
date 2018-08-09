@@ -1,5 +1,5 @@
-#ifndef math_type_affine_one
- #define math_type_affine_one
+#ifndef Dh_math_linear_affine_one
+ #define Dh_math_linear_affine_one
 
  // ::math::linear::affine::one<scalar_name,width_number,height_number>
 

@@ -1,5 +1,5 @@
 #ifndef math_function_peano3D
-#define math_geometry_peano3D
+#define math_function_peano3D
 
  // ::math::function::peano3D
 

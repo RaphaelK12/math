@@ -1,5 +1,5 @@
-#ifndef math_type_ellipse_distance
- #define math_type_ellipse_distance
+#ifndef Dh_math_geometry_ellipse_distance
+ #define Dh_math_geometry_ellipse_distance
 
  // ::math::geometry::ellipse::distance<scalar_name>
 

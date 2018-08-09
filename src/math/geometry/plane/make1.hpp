@@ -1,5 +1,5 @@
-#ifndef math_type_plane_make2x2point
-#define math_type_plane_make2x2point
+#ifndef Dh_math_geometry_plane_make2x2point
+#define Dh_math_geometry_plane_make2x2point
 // ::math::type::plane::make2x2point<scalar_name>
 
 #include "../../linear/linear.hpp"

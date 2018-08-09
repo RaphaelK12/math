@@ -1,5 +1,5 @@
-#ifndef math_type_ellipse_intersectS2P
- #define math_type_ellipse_intersectS2P
+#ifndef Dh_math_geometry_ellipse_intersectS2P
+ #define Dh_math_geometry_ellipse_intersectS2P
 
  // ::math::geometry::ellipse::intersectS2P<scalar_name>
 

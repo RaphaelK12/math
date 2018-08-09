@@ -1,5 +1,5 @@
-#ifndef math_type_affine_compose
- #define math_type_affine_compose
+#ifndef Dh_math_linear_affine_compose
+ #define Dh_math_linear_affine_compose
 
  // ::math::linear::affine::compose<scalar_name,dimension_number>
 

@@ -13,3 +13,5 @@
 
 #include "./fit2d.hpp"
 #include "./horizon.hpp"
+
+#include "./affine.hpp"

@@ -1,5 +1,5 @@
-#ifndef math_type_affine_invert
- #define math_type_affine_invert
+#ifndef Dh_math_linear_affine_invert
+ #define Dh_math_linear_affine_invert
 
  // ::math::linear::affine::invert<scalar_name,dimension_number>
 

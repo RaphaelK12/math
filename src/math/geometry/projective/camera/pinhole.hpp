@@ -1,5 +1,5 @@
-#ifndef lib_math_camera_pinhole
-#define lib_math_camera_pinhole
+#ifndef math_geometry_projective_camera_pinhole
+#define math_geometry_projective_camera_pinhole
  // ::math::geometry::projective::camera::pinhole< scalar >
 
 #include "math/linear/vector/structure.hpp"

@@ -1,5 +1,5 @@
-#ifndef math_type_affine_addition
- #define math_type_affine_addition
+#ifndef Dh_math_linear_affine_addition
+ #define Dh_math_linear_affine_addition
 
  // ::math::linear::affine::addition<scalar_name,dimension_number>
 

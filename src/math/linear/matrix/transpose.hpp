@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_transpose
- #define math_type_matrix_transpose
+#ifndef Dh_math_linear_matrix_transpose
+ #define Dh_math_linear_matrix_transpose
 
  // ::math::linear::matrix::transpose<scalar_name,dimension_number>(a,b)
  // ::math::linear::matrix::transpose<scalar_name,dimension_number>(a)

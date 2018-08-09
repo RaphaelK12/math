@@ -1,5 +1,5 @@
-#ifndef math_type_ellipse_intersectB2P
- #define math_type_ellipse_intersectB2P
+#ifndef Dh_math_geometry_ellipse_intersectB2P
+ #define Dh_math_geometry_ellipse_intersectB2P
 
 // ::math::geometry::ellipse::B2P<scalar_name>
 // ::math::geometry::ellipse::intersect<scalar_name>(l1, l2, base2d, parametric )

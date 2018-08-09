@@ -5,7 +5,7 @@
 #include "./compose.hpp"
 #include "./invert.hpp"
 #include "./structure.hpp"
-#include "./transfrom.hpp"
+#include "./transform.hpp"
 #include "./zero.hpp"
 #include "./init.hpp"
 #include "./look_at.hpp"

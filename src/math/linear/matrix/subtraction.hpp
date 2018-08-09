@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_subtraction
- #define math_type_matrix_subtraction
+#ifndef Dh_math_linear_matrix_subtraction
+ #define Dh_math_linear_matrix_subtraction
 
  // ::math::linear::matrix::subtraction<scalar_name,width_number,height_number>
 

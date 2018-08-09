@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_structure
- #define math_type_matrix_structure
+#ifndef Dh_math_linear_matrix_structure
+ #define Dh_math_linear_matrix_structure
 
  // ::math::linear::matrix::structure<scalar_name,height_number,width_number>
 

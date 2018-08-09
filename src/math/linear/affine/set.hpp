@@ -1,5 +1,5 @@
-#ifndef math_type_affine_set
-#define math_type_affine_set
+#ifndef Dh_math_linear_affine_set
+#define Dh_math_linear_affine_set
 
  // ::math::linear::affine::set(a,o,x,y,z)
 

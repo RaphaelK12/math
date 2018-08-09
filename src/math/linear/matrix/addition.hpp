@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_addition
- #define math_type_matrix_addition
+#ifndef Dh_math_linear_matrix_addition
+ #define Dh_math_linear_matrix_addition
 
  // ::math::linear::matrix::addition<scalar_name,width_number,height_number>
 

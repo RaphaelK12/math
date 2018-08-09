@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_negate
- #define math_type_matrix_negate
+#ifndef Dh_math_linear_matrix_negate
+ #define Dh_math_linear_matrix_negate
 
  // ::math::linear::matrix::negate<scalar_name,width_number,height_number>
 

@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_invert
- #define math_type_matrix_invert
+#ifndef Dh_math_linear_matrix_invert
+ #define Dh_math_linear_matrix_invert
 
  // ::math::linear::matrix::invert<scalar_name,dimension_number>
 

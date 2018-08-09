@@ -1,5 +1,5 @@
-#ifndef lib_math_camera_hv2d
-#define lib_math_camera_hv2d
+#ifndef math_geometry_projective_camera_hv2d
+#define math_geometry_projective_camera_hv2d
 
 // ::math::geometry::projective::camera::hv2d( h_alpha, v_alpha )
 

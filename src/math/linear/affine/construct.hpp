@@ -1,9 +1,9 @@
-#ifndef math_type_affine_construct
- #define math_type_affine_construct
+#ifndef Dh_math_linear_affine_construct
+ #define Dh_math_linear_affine_construct
 
  // ::math::linear::affine::construct<scalar_name,dimension_number>
 
-#include "./transfrom.hpp"
+#include "./transform.hpp"
 #include "./set.hpp"
 
 

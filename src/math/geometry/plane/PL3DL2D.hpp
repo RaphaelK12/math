@@ -2,6 +2,7 @@
 #define math_geometry_intersect_PL3DL2D
 
 // ::math::geometry::plane::intersect( point, no3d, parametric, epsilon )
+// ::math::geometry::plane::intersect( point, lambda, no3d, parametric, epsilon )
 
 // ::math::geometry::plane::PL3DL2D<scalar_name>::process
 
@@ -21,7 +22,7 @@ namespace math
      {
 
       template<  typename scalar_name >
-       struct PL3DL2D
+       struct PL3DL2D  // Intersect plane and line in 3D
         {
          public:
            typedef scalar_name scalar_type;

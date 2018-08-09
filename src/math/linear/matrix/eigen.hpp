@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_eigen
- #define math_type_matrix_eigen
+#ifndef Dh_math_linear_matrix_eigen
+ #define Dh_math_linear_matrix_eigen
 
  // ::math::linear::matrix::eigen::data<scalar_name,width_number,height_number>
  // ::math::linear::matrix::eigen::algoritham<scalar_name,width_number,height_number>

@@ -1,5 +1,5 @@
-#ifndef math_type_affine_NaN
- #define math_type_affine_NaN
+#ifndef Dh_math_linear_affine_NaN
+ #define Dh_math_linear_affine_NaN
 
  // ::math::linear::affine::NaN<scalar_name,width_number,height_number>
 

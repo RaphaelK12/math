@@ -49,8 +49,8 @@
           ,::math::linear::vector::structure< scalar_name, 2 >  const& right_param
          )
          {
-           result_param[0] = value_param * right_param[0];
-           result_param[1] = value_param * right_param[1];
+          result_param[0] = value_param * right_param[0];
+          result_param[1] = value_param * right_param[1];
          }
 
        template< typename scalar_name, typename value_name >
@@ -78,10 +78,10 @@
           ,::math::linear::vector::structure< scalar_name, 4 >  const& right_param
          )
          {
-           result_param[0] = value_param * right_param[0];
-           result_param[1] = value_param * right_param[1];
-           result_param[2] = value_param * right_param[2];
-           result_param[3] = value_param * right_param[3];
+          result_param[0] = value_param * right_param[0];
+          result_param[1] = value_param * right_param[1];
+          result_param[2] = value_param * right_param[2];
+          result_param[3] = value_param * right_param[3];
          }
 
        template< typename scalar_name, unsigned dimension_number, typename value_name >

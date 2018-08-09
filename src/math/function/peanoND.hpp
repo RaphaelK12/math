@@ -1,5 +1,5 @@
 #ifndef math_function_peanoND
-#define math_geometry_peanoND
+#define math_function_peanoND
 
  // ::math::function::peanoND
 

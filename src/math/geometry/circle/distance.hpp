@@ -1,5 +1,5 @@
-#ifndef math_type_circle_distance
- #define math_type_circle_distance
+#ifndef Dh_math_geometry_circle_distance
+ #define Dh_math_geometry_circle_distance
 
 // ::math::geometry::circle::distance<scalar_name>( unit, point )
 // ::math::geometry::circle::distance<scalar_name>( simple, point )

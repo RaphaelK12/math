@@ -1,5 +1,5 @@
-#ifndef math_type_affine_structure
- #define math_type_affine_structure
+#ifndef Dh_math_linear_affine_structure
+ #define Dh_math_linear_affine_structure
 
  // ::math::linear::affine::structure<scalar_name,dimension_number>
 

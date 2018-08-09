@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_zero
- #define math_type_matrix_zero
+#ifndef Dh_math_linear_matrix_zero
+ #define Dh_math_linear_matrix_zero
 
  // ::math::linear::matrix::zero<scalar_name,width_number,height_number>
 

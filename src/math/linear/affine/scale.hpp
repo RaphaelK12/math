@@ -1,5 +1,5 @@
-#ifndef math_type_affine_scale
- #define math_type_affine_scale
+#ifndef Dh_math_linear_affine_scale
+ #define Dh_math_linear_affine_scale
 
  // ::math::linear::affine::scale<scalar_name,width_number>
 

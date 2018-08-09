@@ -31,4 +31,7 @@
 #include "./set.hpp"
 #include "./unit.hpp"
 
+#include "./combine.hpp"
+#include "./init.hpp"
+
 #endif

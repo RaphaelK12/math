@@ -38,7 +38,7 @@ namespace math
       template<  typename scalar_name >
         scalar_name distance
          (
-           ::math::linear::vector::point<scalar_name,3>                     & point
+           ::math::linear::vector::point<scalar_name,3>               const & point
           ,::math::geometry::plane::no3d <scalar_name>                const & plane
          )
          {

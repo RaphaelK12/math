@@ -1,5 +1,5 @@
-#ifndef lib_math_camera_ha2d
-#define lib_math_camera_ha2d
+#ifndef math_geometry_projective_camera_ha2d
+#define math_geometry_projective_camera_ha2d
 
 // ::math::geometry::projective::camera::ha2d( h_alpha, aspect )
 

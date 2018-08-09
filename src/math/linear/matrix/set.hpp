@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_set
-#define math_type_matrix_set
+#ifndef Dh_math_linear_matrix_set
+#define Dh_math_linear_matrix_set
 
  // ::math::linear::matrix::set(m,x,y)
  // ::math::linear::matrix::set(m,x,y,z)

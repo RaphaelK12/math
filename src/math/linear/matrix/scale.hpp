@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_scale
- #define math_type_matrix_scale
+#ifndef Dh_math_linear_matrix_scale
+ #define Dh_math_linear_matrix_scale
 
  // ::math::linear::matrix::scale<scalar_name,width_number,height_number>
 

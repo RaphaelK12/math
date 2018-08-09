@@ -1,5 +1,5 @@
-#ifndef math_type_direction_redirect
-#define math_type_direction_redirect
+#ifndef math_geometry_direction_redirect
+#define math_geometry_direction_redirect
 
 // ::math::geometry::object::direction::redirect<scalar_name>( direction )
 

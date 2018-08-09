@@ -1,5 +1,5 @@
-#ifndef math_type_matrix_NaN
- #define math_type_matrix_NaN
+#ifndef Dh_math_linear_matrix_NaN
+ #define Dh_math_linear_matrix_NaN
 
  // ::math::linear::matrix::NaN<scalar_name,width_number,height_number>
 

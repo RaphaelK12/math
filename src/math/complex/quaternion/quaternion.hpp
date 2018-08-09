@@ -1,7 +1,7 @@
-#ifndef Dh_math_complex_quaternion_HPP_
- #define Dh_math_complex_quaternion_HPP_
+#ifndef Dh_math_complex_quaternion_structure_HPP_
+ #define Dh_math_complex_quaternion_structure_HPP_
 
- // ::math::complex::quaternion::structure<scalar_name,dimension_number>
+ // ::math::complex::quaternion::structure<scalar_name>
 
 #include <array>
 
