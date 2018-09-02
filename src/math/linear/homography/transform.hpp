@@ -13,12 +13,12 @@ namespace math
     namespace homography
      {
 
-      template<  typename scalar_name,unsigned dimension_number >
+      template<  typename scalar_name >
        void transform
         (
-          ::math::linear::vector::structure< scalar_name, dimension_number >                                   & result
-         ,::math::linear::matrix::structure<scalar_name,dimension_number+1,dimension_number+1> const& matrix
-         ,::math::linear::vector::structure< scalar_name, dimension_number >                              const& point
+          ::math::linear::vector::structure<      scalar_name, 2 >           & result
+         ,::math::linear::homography::structure<  scalar_name, 3 >      const& matrix
+         ,::math::linear::vector::structure<      scalar_name, 2 >      const& point
          )
         {
          scalar_type divisor  = matrix[2][0] * point[0] +  matrix[2][1] * point[1] + matrix[2][2];

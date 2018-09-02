@@ -93,9 +93,9 @@ int main( int argc, char *argv[] )
     - quadric
       * TODO
     - tetrahedron
-      * TODO
+      * Calculate volume
     - triangle
-      * TODO
+      * Calculate area
   - grammar
   - linear
    - affine
@@ -103,7 +103,7 @@ int main( int argc, char *argv[] )
    - homography
       * Make and transform functions
    - matrix
-      * Matrix manipulation
+       * Matrix structure and manipulation ( addition, subtraction, compose, etc. )
    - vector
       * Vector manipulation
   - logic

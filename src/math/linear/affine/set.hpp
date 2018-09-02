@@ -34,7 +34,7 @@
           ,::math::linear::vector::structure<scalar_name,2>      const & y
          )
          {
-          ::math::linear::matrix::set( result.matrix(), x, y );
+          ::math::linear::matrix::init( result.matrix(), x, y );
           result.vector() = o;
          }
 
@@ -48,7 +48,7 @@
           ,::math::linear::vector::structure<scalar_name,3>      const & z
          )
          {
-          ::math::linear::matrix::set( result.matrix(), x, y, z );
+          ::math::linear::matrix::init( result.matrix(), x, y, z );
           result.vector() = o;
          }
 

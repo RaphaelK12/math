@@ -12,6 +12,9 @@
 #include "./NaN.hpp"
 #include "./set.hpp"
 
+#include "./column.hpp"
+#include "./row.hpp"
+
 
 
 

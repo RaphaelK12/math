@@ -92,6 +92,12 @@ namespace math
           {
           }
 
+         void reset( )
+          {
+           this->m_summae.reset();
+           this->m_count.reset();
+          }
+
          void reset( sample_type const& value, size_name const& count )
           {
            this->m_summae.reset( value );

@@ -23,6 +23,11 @@ namespace math
            this->reset( 0 );
           }
 
+         void reset()
+          {
+           this->reset( 0 );
+          }
+
          void reset( size_type const& count )
           {
            this->m_value = count;

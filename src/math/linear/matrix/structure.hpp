@@ -21,7 +21,7 @@
           typename scalar_name
          ,unsigned width_number
          ,unsigned height_number
-        > // AKA SOLID
+        > // AKA SOLID, Orientation: row by row
         using structure = std::array< std::array< scalar_name, width_number >, height_number >;
 
       }
