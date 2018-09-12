@@ -47,16 +47,16 @@ namespace math
                ::math::linear::vector::cross( m_ePlane.normal(), m_t, m_leftE3D.origin() );
 
                ::math::geometry::plane::intersect( m_leftE3D, m_leftIP, m_ePlane );
-               ::math::linear::vector::init( epiL.origin(),    m_leftE3D.origin()[0],    m_leftE3D.origin()[2] );
-               ::math::linear::vector::init( epiL.direction(), m_leftE3D.direction()[0], m_leftE3D.direction()[2] );
+               ::math::linear::vector::load( epiL.origin(),    m_leftE3D.origin()[0],    m_leftE3D.origin()[2] );
+               ::math::linear::vector::load( epiL.direction(), m_leftE3D.direction()[0], m_leftE3D.direction()[2] );
 
-               ::math::linear::vector::init( m_rightIP.normal(), camera.to_world()[1][0], camera.to_world()[1][1], camera.to_world()[1][2] );
+               ::math::linear::vector::load( m_rightIP.normal(), camera.to_world()[1][0], camera.to_world()[1][1], camera.to_world()[1][2] );
                ::math::linear::vector::addition( m_rightIP.origin(), m_t, m_rightIP.normal() );
 
                ::math::geometry::plane::intersect( m_rightE3D, m_rightIP, m_ePlane );
                ::math::linear::affine::transform( m_rightLocal,  camera.to_local(), m_rightE3D );
-               ::math::linear::vector::init( epiR.origin(),     m_rightLocal.origin()[0],    m_rightLocal.origin()[2] );
-               ::math::linear::vector::init( epiR.direction(),  m_rightLocal.direction()[0], m_rightLocal.direction()[2] );
+               ::math::linear::vector::load( epiR.origin(),     m_rightLocal.origin()[0],    m_rightLocal.origin()[2] );
+               ::math::linear::vector::load( epiR.direction(),  m_rightLocal.direction()[0], m_rightLocal.direction()[2] );
                return true;
               }
 
@@ -68,8 +68,8 @@ namespace math
 
                ::math::linear::vector::cross( m_leftE3D.direction(), m_ePlane.normal(), m_leftIP.normal() );
 
-               ::math::linear::vector::init( epiL.origin(),    m_leftE3D.origin()[0],    m_leftE3D.origin()[2] );
-               ::math::linear::vector::init( epiL.direction(), m_leftE3D.direction()[0], m_leftE3D.direction()[2] );
+               ::math::linear::vector::load( epiL.origin(),    m_leftE3D.origin()[0],    m_leftE3D.origin()[2] );
+               ::math::linear::vector::load( epiL.direction(), m_leftE3D.direction()[0], m_leftE3D.direction()[2] );
 
                return true;
               }
@@ -80,13 +80,13 @@ namespace math
                m_leftE3D.origin() = { uv[0], 1, uv[1] };
                ::math::linear::vector::cross( m_ePlane.normal(), m_t, m_leftE3D.origin() );
 
-               ::math::linear::vector::init( m_rightIP.normal(), camera.to_world()[1][0], camera.to_world()[1][1], camera.to_world()[1][2] );
+               ::math::linear::vector::load( m_rightIP.normal(), camera.to_world()[1][0], camera.to_world()[1][1], camera.to_world()[1][2] );
                ::math::linear::vector::addition( m_rightIP.origin(), m_t, m_rightIP.normal() );
 
                ::math::geometry::plane::intersect( m_rightE3D, m_rightIP, m_ePlane );
                ::math::linear::affine::transform( m_rightLocal,  camera.to_local(), m_rightE3D );
-               ::math::linear::vector::init( epiR.origin(),     m_rightLocal.origin()[0],    m_rightLocal.origin()[2] );
-               ::math::linear::vector::init( epiR.direction(),  m_rightLocal.direction()[0], m_rightLocal.direction()[2] );
+               ::math::linear::vector::load( epiR.origin(),     m_rightLocal.origin()[0],    m_rightLocal.origin()[2] );
+               ::math::linear::vector::load( epiR.direction(),  m_rightLocal.direction()[0], m_rightLocal.direction()[2] );
 
                return true;
               }

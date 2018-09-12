@@ -14,19 +14,19 @@ namespace math
       namespace camera
        {
 
-   template < typename scalar_name >
-    scalar_name
-    ha2v
-     (
-       scalar_name const& h_alpha
-      ,scalar_name const& aspect
-     )
-     {
-      scalar_name h_scale = 2 * tan( h_alpha / 2 );
-      scalar_name v_scale = h_scale / aspect;
+        template < typename scalar_name >
+         scalar_name
+         ha2v
+          (
+            scalar_name const& h_alpha
+           ,scalar_name const& aspect
+          )
+          {
+           scalar_name h_scale = 2 * tan( h_alpha / 2 );
+           scalar_name v_scale = h_scale / aspect;
 
-      return 2 * atan( v_scale / 2 );
-     }
+           return 2 * atan( v_scale / 2 );
+          }
 
        }
      }

@@ -43,7 +43,7 @@ namespace math
              m_count.reset( 0 );
              m_summae.reset( sample_type{ scalar_type() } );
 
-             m_sqSumma.reset( ::math::linear::vector::make<scalar_name, dimension_number >( 0 ) );
+             m_sqSumma.reset( ::math::linear::vector::fill<scalar_name, dimension_number >( 0 ) );
             }
 
            void push( sample_type const& sample )

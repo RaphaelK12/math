@@ -22,10 +22,10 @@
     {
      namespace vector
       {
-          
+
        template< typename scalar_name, unsigned dimension_number >
         inline
-        void
+        bool
         refract
          (
            ::math::linear::vector::structure< scalar_name, dimension_number >      & result_param
@@ -36,6 +36,17 @@
          )
          {
           result_param = ray_param;
+
+          scalar_name r = air_param/watter_param;
+          scalar_name c = -::math::linear::vector::dot( ray_param, normal_param );
+
+          scalar_name d = scalar_name(1)-r*r*(scalar_name(1)-c*c);
+          if( d < 0 )
+           {
+            return false;
+           }
+          result_param = r * ray_param + ( r*c - sqrt( d )  ) * normal_param;
+          return true;
          }
 
       }

@@ -4,7 +4,7 @@
  // ::math::geometry::ellipse::general2D<scalar_name>
 
 #include "../../linear/vector/structure.hpp"
-#include "../../linear/vector/set.hpp"
+#include "../../linear/vector/fill.hpp"
 
 #include "./base2d.hpp"
 #include "./simple2d.hpp"
@@ -67,7 +67,7 @@
 
             this_type & operator=( base2D_type const& base )
              {
-              ::math::linear::vector::set( this->m_center, scalar_type(0) );
+              ::math::linear::vector::fill( this->m_center, scalar_type(0) );
               this->m_size = base.size();
               m_rotation = 0;
               return *this;

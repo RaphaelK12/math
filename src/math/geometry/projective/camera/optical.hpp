@@ -1,5 +1,6 @@
 #ifndef math_geometry_projective_camera_optical
 #define math_geometry_projective_camera_optical
+
 // ::math::geometry::projective::camera::optical<scalar_name, size_name, integer_name>
 
 #include <cmath>

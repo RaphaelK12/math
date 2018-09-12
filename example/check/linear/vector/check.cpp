@@ -38,11 +38,11 @@ int main( int argc, char *argv[] )
   ::math::linear::vector::scale( p1_5, 234234, p2_5 );
 
 
-  ::math::linear::vector::set( p2_1, 123123 );
-  ::math::linear::vector::set( p2_2, 123123 );
-  ::math::linear::vector::set( p2_3, 123123 );
-  ::math::linear::vector::set( p2_4, 123123 );
-  ::math::linear::vector::set( p2_5, 123123 );
+  ::math::linear::vector::fill( p2_1, 123123 );
+  ::math::linear::vector::fill( p2_2, 123123 );
+  ::math::linear::vector::fill( p2_3, 123123 );
+  ::math::linear::vector::fill( p2_4, 123123 );
+  ::math::linear::vector::fill( p2_5, 123123 );
 
 
   math::linear::vector::rotate(  p2_2, 123, p2_2 );
@@ -58,6 +58,7 @@ int main( int argc, char *argv[] )
   ::math::linear::vector::reflect(  p0_4, p1_4, p2_4 );
   ::math::linear::vector::reflect(  p0_5, p1_5, p2_5 );
 
+  ::math::linear::vector::refract<double>(  p0_5, p1_5, p2_5, 1, 2 );
 
 ::math::linear::vector::negate( p0_1, p1_1 );
 ::math::linear::vector::negate( p0_2, p1_2 );
@@ -154,10 +155,10 @@ int main( int argc, char *argv[] )
      ::math::linear::vector::distance( p0_4, p1_4 );
      ::math::linear::vector::distance( p0_5, p1_5 );
 
-   ::math::linear::vector::cross( p0_2, p1_2  ); 
+   ::math::linear::vector::cross( p0_2, p1_2  );
    ::math::linear::vector::cross( p0_3, p1_3, p2_3 );
    ::math::linear::vector::cross( p0_4, p1_4, p2_4, p2_4  );
- 
+
   ::math::linear::vector::convex( p0_1, p0_1, 322.0, p0_1 );
   ::math::linear::vector::convex( p0_2, p0_2, 322.0, p0_2 );
   ::math::linear::vector::convex( p0_3, p0_3, 322.0, p0_3 );
@@ -169,7 +170,7 @@ int main( int argc, char *argv[] )
   ::math::linear::vector::angle( p0_3, p0_3 );
   ::math::linear::vector::angle( p0_4, p0_4 );
   ::math::linear::vector::angle( p0_5, p0_5 );
-  
+
    ::math::linear::vector::addition( p0_1, p1_1, p2_1 );   ::math::linear::vector::addition( p0_1, p0_1 );
    ::math::linear::vector::addition( p0_2, p1_2, p2_2 );   ::math::linear::vector::addition( p0_2, p0_2 );
    ::math::linear::vector::addition( p0_3, p1_3, p2_3 );   ::math::linear::vector::addition( p0_3, p0_3 );

@@ -38,11 +38,11 @@ int main( int argc, char *argv[] )
   ::math::linear::vector::scale( p1_5, 234234, p2_5 );
 
 
-  ::math::linear::vector::set( p2_1, 123123 );
-  ::math::linear::vector::set( p2_2, 123123 );
-  ::math::linear::vector::set( p2_3, 123123 );
-  ::math::linear::vector::set( p2_4, 123123 );
-  ::math::linear::vector::set( p2_5, 123123 );
+  ::math::linear::vector::fill( p2_1, 123123 );
+  ::math::linear::vector::fill( p2_2, 123123 );
+  ::math::linear::vector::fill( p2_3, 123123 );
+  ::math::linear::vector::fill( p2_4, 123123 );
+  ::math::linear::vector::fill( p2_5, 123123 );
 
 
   math::linear::vector::rotate(  p2_2, 123, p2_2 );
@@ -177,7 +177,7 @@ int main( int argc, char *argv[] )
    ::math::linear::vector::addition( p0_5, p1_5, p2_5 );   ::math::linear::vector::addition( p0_5, p0_5 );
 
    //::math::linear::vector::make( TODO );
-   //::math::linear::vector::set(  TODO );
+   //::math::linear::vector::fill(  TODO );
    //::math::linear::vector::init( TODO );
 
   return EXIT_SUCCESS;

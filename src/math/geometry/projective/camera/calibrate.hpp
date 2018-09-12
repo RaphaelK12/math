@@ -19,7 +19,7 @@ namespace math
        {
 
        template < typename scalar_name >
-        class calibrate //!< calculate transform right camera to left
+        class calibrate //!< calculate transform from right camera to left
          {
           public:
             typedef ::math::linear::vector::point<  scalar_name, 3 > point_type;
@@ -35,7 +35,7 @@ namespace math
 
               ::math::linear::vector::cross( normal, p.x(), p.y() );
 
-              ::math::linear::affine::init
+              ::math::linear::affine::system
                 ( a,
                                                 p.origin()
                  ,::math::linear::vector::unit( p.x()      )
@@ -46,7 +46,7 @@ namespace math
 
             static void to_affine( affine_type &a, point_type const& normal, parametric_type const& p )
              {
-              ::math::linear::affine::init
+              ::math::linear::affine::system
                 ( a,
                                                 p.origin()
                  ,::math::linear::vector::unit( p.x()      )

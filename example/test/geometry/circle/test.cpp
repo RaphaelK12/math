@@ -10,8 +10,8 @@ int main( int argc, char *argv[] )
  {
   cout << "Hello World" << endl;
 
-  ::math::geometry::circle::simple2D<float>  a;
-  ::math::geometry::circle::unit2D<float>    b;
+  ::math::geometry::circle::simple<float,2>  a;
+  ::math::geometry::circle::unit<float,2>    b;
 
    a = b;
 

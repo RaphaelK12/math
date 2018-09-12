@@ -10,3 +10,4 @@
 
 #include "./epi.hpp"
 #include "./calibrate.hpp"
+#include "./triangulate.hpp"

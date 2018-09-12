@@ -19,7 +19,7 @@
           typename scalar_name
          ,unsigned dimension_number
         > // Currently limited to square matrix
-        using structure = ::math::linear::matrix::structure< scalar_name, dimension_number, dimension_number >;
+         using structure = ::math::linear::matrix::structure< scalar_name, dimension_number, dimension_number >;
 
       }
     }

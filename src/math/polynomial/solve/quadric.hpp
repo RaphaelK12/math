@@ -129,6 +129,19 @@
           return ::math::polynomial::solve::quadric::full( zero.data(), coefficient.data(), epsilon );
          }
 
+       template
+        <
+          typename scalar_name
+        >
+        inline unsigned full( scalar_name &z0, scalar_name &z1, std::array<scalar_name,3> const & coefficient, scalar_name const& epsilon = 1e-6 )
+         {
+          scalar_name zero[2];
+          auto count = ::math::polynomial::solve::quadric::full( zero, coefficient.data(), epsilon );
+          z0 = zero[0];
+          z1 = zero[1];
+          return count;
+         }
+
         }
       }
     }

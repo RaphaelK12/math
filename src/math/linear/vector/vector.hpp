@@ -24,14 +24,14 @@
 #include "./refract.hpp"
 #include "./rotate.hpp"
 #include "./scale.hpp"
-#include "./set.hpp"
 #include "./subtraction.hpp"
 #include "./symmetric.hpp"
 #include "./make.hpp"
-#include "./set.hpp"
 #include "./unit.hpp"
 
 #include "./combine.hpp"
-#include "./init.hpp"
+#include "./make.hpp"
+#include "./fill.hpp"
+#include "./load.hpp"
 
 #endif

@@ -5,6 +5,9 @@
 
 // Object pose detection from given homography
 
+#include "../vector/cross.hpp"
+#include "../affine/structure.hpp"
+#include "../affine/system.hpp"
 #include "./structure.hpp"
 
 namespace math
@@ -28,7 +31,7 @@ namespace math
          y = { homography[0][1], homography[2][1], -homography[1][1] };
 
          ::math::linear::vector::cross( z, x, y );
-         ::math::linear::affine::init( affine, t, x, y, z );
+         ::math::linear::affine::system( affine, t, x, y, z );
 
          return ;
         }

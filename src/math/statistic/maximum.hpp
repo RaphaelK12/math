@@ -4,7 +4,7 @@
 // ::math::statistic::maximum<scalar_name,dimension_number>
 
 #include "../linear/vector/structure.hpp"
-#include "../linear/vector/set.hpp"
+#include "../linear/vector/fill.hpp"
 #include "../linear/vector/min.hpp"
 
 
@@ -28,7 +28,7 @@ namespace math
 
          maximum()
           {
-           ::math::linear::vector::set( m_value, 0 );
+           ::math::linear::vector::fill( m_value, 0 );
           }
 
          void reset( sample_type const& value )

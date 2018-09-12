@@ -17,8 +17,9 @@
 #include "../../linear/vector/structure.hpp"
 
 #include "../../linear/vector/length.hpp"
-#include "../../linear/vector/set.hpp"
+#include "../../linear/vector/fill.hpp"
 #include "../../linear/vector/scale.hpp"
+#include "../../linear/vector/load.hpp"
 
 
  namespace math
@@ -117,19 +118,19 @@
                  {
                   ::math::linear::matrix::scale( tmp, this->m_value[0], s_I );
                   ::math::linear::matrix::subtraction( tmp, m, tmp );
-                  ::math::linear::vector::set<scalar_type>( this->m_vector[0], tmp[0][0], tmp[1][0] );
+                  ::math::linear::vector::load<scalar_type>( this->m_vector[0], tmp[0][0], tmp[1][0] );
                   ::math::linear::vector::length<scalar_type>( this->m_vector[0], 1 );
                   return this->m_count;
                  }
 
                 ::math::linear::matrix::scale( tmp, this->m_value[1], s_I );
                 ::math::linear::matrix::subtraction( tmp, m, tmp );
-                ::math::linear::vector::set<scalar_type>( this->m_vector[0], tmp[0][0], tmp[1][0] );
+                ::math::linear::vector::load<scalar_type>( this->m_vector[0], tmp[0][0], tmp[1][0] );
                 ::math::linear::vector::length<scalar_type>( this->m_vector[0], 1 );
 
                 ::math::linear::matrix::scale( tmp, this->m_value[0],  s_I );
                 ::math::linear::matrix::subtraction( tmp, m, tmp );
-                ::math::linear::vector::set<scalar_type>( this->m_vector[1], tmp[0][0], tmp[1][0] );
+                ::math::linear::vector::load<scalar_type>( this->m_vector[1], tmp[0][0], tmp[1][0] );
                 ::math::linear::vector::length<scalar_type>( this->m_vector[1], 1 );
 
                 return this->m_count;

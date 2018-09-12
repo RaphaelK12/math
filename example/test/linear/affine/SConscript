@@ -14,7 +14,7 @@ settings.accumulate( 'include', { '0' : '../../../../src' } )
 
 # Accumulate source
 source = []
-source +=   ['check.cpp']
+source +=   ['test.cpp']
 
 # Make native environment
 envProgram = nucleotide.Environment( settings ).native()

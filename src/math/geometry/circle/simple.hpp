@@ -4,7 +4,7 @@
 // ::math::geometry::circle::simple2d<scalar_name>
 
 #include "../../linear/vector/structure.hpp"
-#include "../../linear/vector/set.hpp"
+#include "../../linear/vector/fill.hpp"
 
 
  namespace math
@@ -45,7 +45,7 @@
 
             this_type & operator=( unit_type const& parametric )
              {
-              ::math::linear::vector::set( this->m_center, scalar_type(0) );
+              ::math::linear::vector::fill( this->m_center, scalar_type(0) );
               this->m_radius = scalar_type(1);
               return *this;
              }

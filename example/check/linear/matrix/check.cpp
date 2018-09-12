@@ -93,9 +93,9 @@ int main( int argc, char*argv[] )
    ::math::linear::matrix::transpose(m33);
    ::math::linear::matrix::transpose(m44);
 
-    ::math::linear::matrix::set( m22,v2,v2);
-    ::math::linear::matrix::set( m33,v3,v3,v3);
-    ::math::linear::matrix::set( m44,v4,v4,v4,v4);
+    ::math::linear::matrix::system( m22,v2,v2);
+    ::math::linear::matrix::system( m33,v3,v3,v3);
+    ::math::linear::matrix::system( m44,v4,v4,v4,v4);
 
     ::math::linear::matrix::scale( m22, 123.0 );
     ::math::linear::matrix::scale( m33, 123.0 );

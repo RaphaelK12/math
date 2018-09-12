@@ -17,7 +17,8 @@
       {
 
        template< typename scalar_name, unsigned width_number, unsigned height_number >
-        void one( ::math::linear::matrix::structure<scalar_name,width_number,height_number> & m )
+        ::math::linear::matrix::structure<scalar_name,width_number,height_number> &
+        one( ::math::linear::matrix::structure<scalar_name,width_number,height_number> & m )
          {
 
           for( unsigned i=0; i< height_number; i++ )
@@ -26,13 +27,15 @@
              m[i][j] = scalar_name( 0 );
              if( i == j ) m[i][j] = scalar_name( 1 );
             }
-
+          return m;
          }
-         
+
        template< typename scalar_name, unsigned width_number, unsigned height_number >
-        void id( ::math::linear::matrix::structure<scalar_name,width_number,height_number> & m )
+        ::math::linear::matrix::structure<scalar_name,width_number,height_number> &
+        id( ::math::linear::matrix::structure<scalar_name,width_number,height_number> & m )
          {
           ::math::linear::matrix::one( m );
+          return m;
          }
 
       }

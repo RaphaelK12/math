@@ -13,21 +13,21 @@ namespace math
       namespace camera
        {
 
-   template < typename scalar_name >
-    scalar_name
-    hv2d
-     (
-       scalar_name const& h_alpha
-      ,scalar_name const& v_alpha
-     )
-     {
-      scalar_name h_scale = 2 * tan( h_alpha / 2 );
-      scalar_name v_scale = 2 * tan( v_alpha / 2 );
+        template < typename scalar_name >
+         scalar_name
+         hv2d
+          (
+            scalar_name const& h_alpha
+           ,scalar_name const& v_alpha
+          )
+          {
+           scalar_name h_scale = 2 * tan( h_alpha / 2 );
+           scalar_name v_scale = 2 * tan( v_alpha / 2 );
 
-      scalar_name diagonal = sqrt( h_scale* h_scale + v_scale * v_scale );
+           scalar_name diagonal = sqrt( h_scale* h_scale + v_scale * v_scale );
 
-      return 2 * atan( diagonal / 2 );
-     }
+           return 2 * atan( diagonal / 2 );
+          }
 
        }
      }

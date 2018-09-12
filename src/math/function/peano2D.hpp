@@ -1,6 +1,8 @@
 #ifndef math_function_peano2D
 #define math_function_peano2D
 
+#include <array>
+
  // ::math::function::peano2D
 
 namespace math

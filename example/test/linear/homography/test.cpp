@@ -22,7 +22,7 @@ void hg()
     typedef ::math::linear::matrix::structure<double,3,3> matrix3_type;
     matrix3_type h;
 
-    ::math::linear::homography::make<double>( h, {0,0}, {0,0}, {1,0}, {1,0}, {0,1}, {0,1}, {1,1}, {1,1} );
+    ::math::linear::homography::construct<double>( h, {0,0}, {0,0}, {1,0}, {1,0}, {0,1}, {0,1}, {1,1}, {1,1} );
     print( h );
  }
  

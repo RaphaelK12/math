@@ -1,26 +1,28 @@
 #ifndef _DDMRM_math_random_sobol1d_HPP_
  #define _DDMRM_math_random_sobol1d_HPP_
 
+// ::math::random::sobol1D<scalar>
+ 
 #include <cstdint>
 
  namespace math
   {
    namespace random
     {
-
-       class Sobol1D
+      template< typename scalar_type >
+       class sobol1D
         {
          public:
-           typedef std::uint32_t    size_type;
-           typedef double         scalar_type;
+           typedef scalar_type         scalar_type;
+           typedef std::size_t         size_type;
 
          public:
-           Sobol1D()
+           sobol1D()
             {
              seed( 0 );
             }
 
-           Sobol1D( size_type const& seedX )
+           sobol1D( size_type const& seedX )
             {
              seed( seedX );
             }

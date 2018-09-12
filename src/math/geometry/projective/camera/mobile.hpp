@@ -1,6 +1,7 @@
 #ifndef math_geometry_projective_camera_mobile
 #define math_geometry_projective_camera_mobile
- // ::math::geometry::projective::camera::mobile< scalar_name >
+
+// ::math::geometry::projective::camera::mobile< scalar_name >
 
 #include "./optical.hpp"
 #include "../../../linear/vector/structure.hpp"
@@ -43,15 +44,22 @@ namespace math
              {
              }
 
-            template< typename number_name > // accept coordinates in pixels, return direction in world space
-              point3d_type ray( vector2d_type< number_name > const& xy )const
+            template< typename number_name > // Accept coordinates in pixels, return direction in world space
+             point3d_type rayXY( vector2d_type< number_name > const& xy )const
               {
                auto uv = m_optical.template uv<number_name>( xy );
-               point3d_type local{ uv[0], 1, uv[1] };
-               point3d_type world;
-               ::math::type::matrix::transform( world, m_2world.matrix(), local );
-               return world;
+               return this->rayUV( uv );
               }
+
+            // Accept coordinates in uv, return direction in world space
+            point3d_type rayUV( uv_type const& uv )const
+             {
+              point3d_type local{ uv[0], 1, uv[1] };
+              point3d_type direction;
+              ::math::linear::matrix::transform( direction, m_2world.matrix(), local );
+              ::math::linear::vector::subtraction( direction, this->to_world().vector() );
+              return direction;
+             }
 
             template< typename number_name >// accept point in world space return pixel coordinates
               vector2d_type< number_name > project( point3d_type const& point3d )const

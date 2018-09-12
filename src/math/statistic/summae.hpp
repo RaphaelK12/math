@@ -4,7 +4,7 @@
 // ::math::statistic::minimum<scalar_name,dimension_number>
 
 #include "../linear/vector/vector.hpp"
-#include "../linear/vector/set.hpp"
+#include "../linear/vector/fill.hpp"
 #include "../linear/vector/addition.hpp"
 
 
@@ -28,12 +28,12 @@ namespace math
 
          summae()
           {
-           ::math::linear::vector::set( m_value, 0 );
+           ::math::linear::vector::fill( m_value, 0 );
           }
 
          void reset()
           {
-           ::math::linear::vector::set( this->m_value, 0 );
+           ::math::linear::vector::fill( this->m_value, 0 );
           }
 
          void reset( sample_type const& sample )

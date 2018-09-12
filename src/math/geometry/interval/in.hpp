@@ -21,7 +21,7 @@
         bool
         in
          (
-                     ::math::geometry::interval::structure< scalar_name, dimension_number >                  & instance
+                     ::math::geometry::interval::structure< scalar_name, dimension_number >             const& instance
           ,typename  ::math::geometry::interval::structure< scalar_name, dimension_number >::point_type const& point
          )
          {

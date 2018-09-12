@@ -10,7 +10,7 @@
 #include "./scale.hpp"
 #include "./subtraction.hpp"
 #include "./NaN.hpp"
-#include "./set.hpp"
+#include "./system.hpp"
 
 #include "./column.hpp"
 #include "./row.hpp"

@@ -7,7 +7,7 @@
 
 #include "./structure.hpp"
 #include "../matrix/NaN.hpp"
-#include "../vector/set.hpp"
+#include "../vector/fill.hpp"
 
  namespace math
   {
@@ -17,11 +17,24 @@
       {
 
        template< typename scalar_name, unsigned dimension_number>
-        void NaN( ::math::linear::affine::structure<scalar_name,dimension_number> & a )
+        ::math::linear::affine::structure<scalar_name,dimension_number> const&
+        NaN( ::math::linear::affine::structure<scalar_name,dimension_number> & a )
          {
           ::math::linear::matrix::NaN( a.matrix() );
-          ::math::linear::vector::set<scalar_name>( a.vector(), std::numeric_limits<scalar_name>::quiet_NaN() );
+          ::math::linear::vector::fill<scalar_name>( a.vector(), std::numeric_limits<scalar_name>::quiet_NaN() );
+          return a;
          }
+
+
+       template< typename scalar_name, unsigned dimension_number>
+        ::math::linear::affine::structure<scalar_name,dimension_number> const&
+        NaN()
+         {
+          static ::math::linear::affine::structure<scalar_name,dimension_number> N = ::math::linear::affine::NaN( N );
+          return N;
+         }
+
+
 
       }
     }

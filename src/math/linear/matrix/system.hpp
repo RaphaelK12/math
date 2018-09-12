@@ -1,9 +1,9 @@
 #ifndef Dh_math_linear_matrix_set
 #define Dh_math_linear_matrix_set
 
- // ::math::linear::matrix::set(m,x,y)
- // ::math::linear::matrix::set(m,x,y,z)
- // ::math::linear::matrix::set(m,x,y,z,t)
+ // ::math::linear::matrix::system(m,x,y)
+ // ::math::linear::matrix::system(m,x,y,z)
+ // ::math::linear::matrix::system(m,x,y,z,t)
 
 #include "../vector/vector.hpp"
 #include "./structure.hpp"
@@ -17,7 +17,7 @@
       {
 
        template< typename scalar_name >
-        void set
+        void system
          (
            ::math::linear::matrix::structure<scalar_name,2,2>          & result
           ,::math::linear::vector::structure<scalar_name,2>      const & x
@@ -29,7 +29,7 @@
          }
 
        template< typename scalar_name >
-        void set
+        void system
          (
            ::math::linear::matrix::structure<scalar_name,3,3>          & result
           ,::math::linear::vector::structure<scalar_name,3>      const & x
@@ -43,7 +43,7 @@
          }
 
        template< typename scalar_name >
-        void set
+        void system
          (
            ::math::linear::matrix::structure<scalar_name,4,4>          & result
           ,::math::linear::vector::structure<scalar_name,4>      const & x

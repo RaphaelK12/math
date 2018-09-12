@@ -53,7 +53,6 @@ int main( int argc, char *argv[] )
   return EXIT_SUCCESS;
  }
 
-
 ```
 
 ### Install:
@@ -89,9 +88,9 @@ int main( int argc, char *argv[] )
     - plane
       * Plane structures and manipulation
     - projective
-      * TODO
+      * Epipolar functions.
     - quadric
-      * TODO
+      * create quadric from circle and ellipse
     - tetrahedron
       * Calculate volume
     - triangle

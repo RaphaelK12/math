@@ -9,7 +9,7 @@
 #include "../../../linear/vector/addition.hpp"
 #include "../../../linear/vector/distance.hpp"
 
-#include "./parametric.hpp"
+#include "../parametric.hpp"
 
 
 namespace math
@@ -66,8 +66,8 @@ namespace math
 
          point_type const& median()const
           {
-           ::math::linear::linear::addition( m_median, m_pointF, m_pointS );
-           ::math::linear::linear::scale<scalar_type>( m_median, 0.5 );
+           ::math::linear::vector::addition( m_median, m_pointF, m_pointS );
+           ::math::linear::vector::scale<scalar_type>( m_median, 0.5 );
            return m_median;
           }
 

@@ -4,8 +4,10 @@
  // ::math::linear::affine::construct<scalar_name,dimension_number>
 
 #include "./transform.hpp"
-#include "./set.hpp"
-
+#include "./structure.hpp"
+#include "./system.hpp"
+#include "./invert.hpp"
+#include "./compose.hpp"
 
 
 
@@ -38,10 +40,10 @@
          {
           ::math::linear::affine::structure<scalar_name,3> fs, t0, tt;
 
-          ::math::linear::affine::set( t, source[0], source[1], source[2], source[3] );
+          ::math::linear::affine::system( t, source[0], source[1], source[2], source[3] );
           ::math::linear::affine::invert( fs, t );
 
-          ::math::linear::affine::set( tt, target[0], target[1], target[2], target[3] );
+          ::math::linear::affine::system( tt, target[0], target[1], target[2], target[3] );
 
           ::math::linear::affine::compose( result, tt, fs );
          }

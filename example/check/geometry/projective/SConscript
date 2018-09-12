@@ -10,12 +10,11 @@ settings.accumulate( 'exception' )
 
 ## Set Run Time Library
 settings.accumulate( 'blank' )
-settings.accumulate( 'include', { '0' : '../../../../src' } )  
+settings.accumulate( 'include', { '0' : '../../../../../src' } ) 
 
 # Accumulate source
 source = []
-source +=   ['test.cpp']
-
+source +=   ['check.cpp']
 
 # Make native environment
 envProgram = nucleotide.Environment( settings ).native()

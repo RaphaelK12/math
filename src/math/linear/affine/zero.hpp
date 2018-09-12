@@ -5,7 +5,7 @@
 
 #include "./structure.hpp"
 #include "../matrix/zero.hpp"
-#include "../vector/set.hpp"
+#include "../vector/fill.hpp"
 
 
  namespace math
@@ -19,7 +19,15 @@
         void zero( ::math::linear::affine::structure<scalar_name,dimension_number> & a )
          {
           ::math::linear::matrix::zero( a.matrix() );
-          ::math::linear::vector::set<scalar_name>( a.vector(), 0 );
+          ::math::linear::vector::fill<scalar_name>( a.vector(), 0 );
+         }
+
+       template< typename scalar_name, unsigned dimension_number>
+        ::math::linear::affine::structure<scalar_name,dimension_number> const&
+        zero()
+         {
+          static ::math::linear::affine::structure<scalar_name,dimension_number> z = ::math::linear::affine::one( z );
+          return z;
          }
 
       }

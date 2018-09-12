@@ -85,13 +85,12 @@ namespace math
          ::math::linear::vector::subtraction( parametric.y(), parametric.origin() );
         }
 
-
       template<  typename scalar_name >
        void plane // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
         (
            ::math::geometry::plane::no3d<scalar_name>               & no3d
-          ,::math::linear::vector::point<scalar_name, 3>       const& first    //!< Homogenous coordinate of horizon point
-          ,::math::linear::vector::point<scalar_name, 3>       const& second   //!< Homogenous coordinate of horizon point
+          ,::math::linear::vector::point<scalar_name, 3>       const& first    //!< Homogeneous coordinate of horizon point
+          ,::math::linear::vector::point<scalar_name, 3>       const& second   //!< Homogeneous coordinate of horizon point
           ,::math::linear::vector::point<scalar_name, 3>       const& origin   //!< Any point of plane
         )
        {

@@ -5,7 +5,7 @@
 
 #include "./structure.hpp"
 #include "../matrix/one.hpp"
-#include "../vector/set.hpp"
+#include "../vector/fill.hpp"
 
 
  namespace math
@@ -16,10 +16,20 @@
       {
 
        template< typename scalar_name, unsigned dimension_number>
-        void one( ::math::linear::affine::structure<scalar_name,dimension_number> & a )
+        ::math::linear::affine::structure<scalar_name,dimension_number> &
+        one( ::math::linear::affine::structure<scalar_name,dimension_number> & a )
          {
           ::math::linear::matrix::one( a.matrix() );
-          ::math::linear::vector::set<scalar_name>( a.vector(), 0 );
+          ::math::linear::vector::fill<scalar_name>( a.vector(), 0 );
+          return a;
+         }
+
+       template< typename scalar_name, unsigned dimension_number>
+        ::math::linear::affine::structure<scalar_name,dimension_number> const&
+        one(  )
+         {
+          static ::math::linear::affine::structure<scalar_name,dimension_number> id = ::math::linear::affine::one( id );
+          return id;
          }
 
       }
