@@ -38,7 +38,7 @@ namespace math
         {
          ::math::linear::vector::structure<      scalar_name, 2 >           tmp;
 
-         ::math::lnear::homography::transform( tmp, matrix, result );
+         ::math::linear::homography::transform( tmp, matrix, result );
 
          result = tmp;
          return ;

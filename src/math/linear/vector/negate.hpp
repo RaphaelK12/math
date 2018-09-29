@@ -81,7 +81,7 @@
 
        template< typename scalar_name, unsigned dimension_number >
         inline
-        void
+        ::math::linear::vector::structure< scalar_name, dimension_number > &
         negate
          (
            ::math::linear::vector::structure< scalar_name, dimension_number >      & result_param
@@ -94,11 +94,12 @@
             --I_result;
              *I_result = - *I_result;
            }
+          return result_param;
          }
 
        template< typename scalar_name >
         inline
-        void
+        ::math::linear::vector::structure< scalar_name, 2 > &
         negate
          (
            ::math::linear::vector::structure< scalar_name, 2 >      & result_param
@@ -106,11 +107,12 @@
          {
           result_param[0] = - result_param[0];
           result_param[1] = - result_param[1];
+          return result_param;
          }
 
        template< typename scalar_name >
         inline
-        void
+        ::math::linear::vector::structure< scalar_name, 3 > &
         negate
          (
            ::math::linear::vector::structure< scalar_name, 3 >      & result_param
@@ -119,11 +121,12 @@
           result_param[0] = - result_param[0];
           result_param[1] = - result_param[1];
           result_param[2] = - result_param[2];
+          return result_param;
          }
 
        template< typename scalar_name >
         inline
-        void
+        ::math::linear::vector::structure< scalar_name, 4 >
         negate
          (
            ::math::linear::vector::structure< scalar_name, 4 >      & result_param
@@ -133,6 +136,7 @@
           result_param[1] = - result_param[1];
           result_param[2] = - result_param[2];
           result_param[3] = - result_param[3];
+          return result_param;
          }
 
      }

@@ -3,6 +3,7 @@
 
 #include <array>
 
+#include "./quadric.hpp"
 #include "./cubic.hpp"
 #include "../evaluate.hpp"
 
@@ -153,7 +154,7 @@
         >
         unsigned full( std::array<scalar_name,4> & result, std::array<scalar_name,5> const& coefficient, scalar_name const& epsilon = 1e-12 )
          {
-          return ::math::polynomial::solve::quartic::full<scalar_name>( zero.data(), coefficient.data(), epsilon );
+          return ::math::polynomial::solve::quartic::full<scalar_name>( result.data(), coefficient.data(), epsilon );
          }
 
         }

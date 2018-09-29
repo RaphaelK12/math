@@ -4,7 +4,7 @@
  // ::math::polynomial::solve::cubic<scalar_name>( result, coefficient, epsilon = 1e-6 )
 
 #include <cmath>
-#include "./quartic.hpp"
+#include "./quadric.hpp"
 #include "../../geometry/deg2rad.hpp"
 
 

@@ -40,8 +40,8 @@
          {
           ::math::linear::affine::structure<scalar_name,3> fs, t0, tt;
 
-          ::math::linear::affine::system( t, source[0], source[1], source[2], source[3] );
-          ::math::linear::affine::invert( fs, t );
+          ::math::linear::affine::system( t0, source[0], source[1], source[2], source[3] );
+          ::math::linear::affine::invert( fs, t0 );
 
           ::math::linear::affine::system( tt, target[0], target[1], target[2], target[3] );
 

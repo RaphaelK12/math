@@ -5,6 +5,8 @@
 // ::math::linear::vector::length( result, model, length  )
 // ::math::linear::vector::length( vector, length )
 
+#include <cmath>
+
 #include "./structure.hpp"
 
 #include "./scale.hpp"

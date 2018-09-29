@@ -27,9 +27,9 @@
           ,::math::linear::vector::structure< scalar_name, dimension_number > const& right_param
          )
          {
-          auto length = ::math::linear::vector::length( right )
-          ::math::linear::vector::scale( result, scalar_name(1)/length, right );
-          return result;
+          auto length = ::math::linear::vector::length( right_param );
+          ::math::linear::vector::scale( result_param, scalar_name(1)/length, right_param );
+          return result_param;
          }
 
        template< typename scalar_name, unsigned dimension_number >

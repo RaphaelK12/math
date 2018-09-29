@@ -1,8 +1,8 @@
 #ifndef _DDMRM_math_random_VanDerCorput_HPP_
  #define _DDMRM_math_random_VanDerCorput_HPP_
 
- // ::math::random::VanDerCorput( index, base )
- // ::math::random::VanDerCorput( index ); base = 2;
+ // ::math::random::VanDerCorput<scalar_name>( index, base )
+ // ::math::random::VanDerCorput<scalar_name>( index ); base = 2;
 
  namespace math
   {

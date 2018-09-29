@@ -3,17 +3,17 @@
 
 // ::math::random::sobol1D<scalar>
  
-#include <cstdint>
+#include <cstddef> 
 
  namespace math
   {
    namespace random
     {
-      template< typename scalar_type >
+      template< typename scalar_name >
        class sobol1D
         {
          public:
-           typedef scalar_type         scalar_type;
+           typedef scalar_name         scalar_type;
            typedef std::size_t         size_type;
 
          public:

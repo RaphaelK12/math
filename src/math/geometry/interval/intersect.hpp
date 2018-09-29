@@ -3,8 +3,12 @@
 
 // ::math::geometry::interval::intersect( )
 
+#include <limits>
+#include <tuple>
+
 #include "./structure.hpp"
 
+#include "../direction/parametric.hpp"
 
 
 
@@ -94,6 +98,81 @@
             result.m_corner[0][index] = std::max<scalar_name>( result.m_corner[0][index], right.m_corner[0][index] );
             result.m_corner[1][index] = std::min<scalar_name>( result.m_corner[1][index], right.m_corner[1][index] );
            }
+         }
+
+       template < typename scalar_name,unsigned dimension_number >
+        bool
+        intersect
+         (
+            std::tuple< unsigned, scalar_name, unsigned, scalar_name >                 & result
+          ,::math::geometry::interval::structure<scalar_name,dimension_number>    const& box
+          ,::math::geometry::direction::parametric<scalar_name, dimension_number> const& parametric
+          ,scalar_name     const& epsilon = 1e-12
+
+          )
+         {
+          typedef ::math::linear::vector::point<scalar_name, dimension_number> coord_type;
+
+          typedef std::tuple< unsigned, scalar_name, unsigned, scalar_name > result_type;
+
+          auto & Ir_lo_side   = std::get<0>( result );  Ir_lo_side = 1;
+          auto & Ir_lo_lambda = std::get<1>( result );  Ir_lo_lambda =  std::numeric_limits<scalar_name>::min();
+          auto & Ir_hi_side   = std::get<2>( result );  Ir_lo_side = 2;
+          auto & Ir_hi_lambda = std::get<3>( result );  Ir_hi_lambda =  std::numeric_limits<scalar_name>::max();
+
+          auto const& direction = parametric.direction();
+          auto const& origin    = parametric.origin();
+
+          using namespace ::math::linear::vector;
+          coord_type I_lo( box.lo() - origin );
+          coord_type I_hi( box.hi() - origin );
+
+          unsigned     I_lo_side   ;
+          scalar_name  I_lo_lambda ;
+          unsigned     I_hi_side   ;
+		  scalar_name  I_hi_lambda ;
+
+          for( int I_proj=0; I_proj < (int)dimension_number ; I_proj++ )
+           {
+            if( epsilon < direction[ I_proj ] )
+             {
+              I_lo_lambda = I_lo[ I_proj ] / direction[ I_proj ];
+              I_hi_lambda = I_hi[ I_proj ] / direction[ I_proj ];
+              I_lo_side = 2*I_proj+1;
+              I_hi_side = 2*I_proj+2;
+              goto L_intersect;
+             }
+
+            if( direction[ I_proj ] < -epsilon )
+             {
+              I_lo_lambda  = I_hi[ I_proj ] / direction[ I_proj ];
+              I_hi_lambda  = I_lo[ I_proj ] / direction[ I_proj ];
+              I_lo_side = 2 * I_proj+2;
+              I_hi_side = 2 * I_proj+1;
+              goto L_intersect;
+             }
+
+            if( ( scalar_name( 0 ) < I_lo[ I_proj ] ) || ( I_hi[ I_proj ] < scalar_name( 0 ) ) )
+             {
+              return false;
+             }
+
+            I_lo_lambda = -std::numeric_limits<scalar_name>::max();
+            I_hi_lambda =  std::numeric_limits<scalar_name>::max();
+
+
+            L_intersect:
+
+             if( Ir_lo_lambda  < I_lo_lambda ) { Ir_lo_lambda = I_lo_lambda; Ir_lo_side = I_lo_side; }
+             if( I_hi_lambda < Ir_hi_lambda  ) { Ir_hi_lambda = I_hi_lambda; Ir_hi_side = I_hi_side; }
+
+             if( Ir_hi_lambda  < Ir_lo_lambda  )
+              {
+               return false;
+              }
+           }
+
+          return true;
          }
 
       }
