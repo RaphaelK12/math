@@ -2,8 +2,6 @@
 
 using namespace GS_DDMRM::S_math::S_random;
 
-std::array< GC_sobol2D::T_uint32, 33 > GC_sobol2D::M2s_cache;
-
 GC_sobol2D::GC_sobol2D()
  {
   seed(0,0);
@@ -34,9 +32,9 @@ void GC_sobol2D::updateState()
       num >>= 1;
      }
    }
- 
+
    d0 ^= ( 0x80000000 ) >> c;
-   d1 ^= M2s_cache[ c ];
+   d1 ^= Fs_cache()[ c ];
    ++M2_index;
  }
 
@@ -51,12 +49,12 @@ void GC_sobol2D::next( T_scalar &P_x, T_scalar &P_y )
 
 void GC_sobol2D::Fs_init()
  {
-  T_uint32 c = M2s_cache[0] = 1 << 31;
+  T_uint32 c = Fs_cache()[0] = 1 << 31;
 
   for( T_uint32 i = 1; i < 32; i++ )
    {
     c = c ^ (c >> 1);
-    M2s_cache[i] = c;
+    Fs_cache()[i] = c;
    }
  }
- 
+

@@ -1,7 +1,10 @@
 #ifndef _DDMRM_math_random_sobol2d_HPP_
  #define _DDMRM_math_random_sobol2d_HPP_
-// math::random::sobol2D<scalar>
 
+// ::math::random::sobol2D<scalar>
+
+#include <cstdint>
+#include <array>
 
 namespace math
  {
@@ -42,28 +45,16 @@ namespace math
           this->updateState();
          }
 
+        void operator()( scala_type &P_x, scala_type &P_y ){ return this->next( P_x, P_y); }
 
         T_uint32 getPos() { return M2_index; }
 
      private:
-       typedef std::array< T_uint32, 33 > T_cache;
        // state data
        T_uint32 M2_index, m_d0, m_d1;
 
-       // direction table
-       static T_cache M2s_cache;
 
-       static void Fs_init()
-        {
-         T_uint32 c = M2s_cache[0] = 1 << 31;
-
-         for( T_uint32 i = 1; i < 32; i++ )
-          {
-           c = c ^ (c >> 1);
-           M2s_cache[i] = c;
-          }
-        }
-
+     private:
        void updateState()
         {
          // = Integer.numberOfTrailingZeros(~M2_index);
@@ -78,9 +69,41 @@ namespace math
           }
 
           m_d0 ^= ( 0x80000000 ) >> c;
-          m_d1 ^= M2s_cache[ c ];
+          m_d1 ^= Fs_cache()[ c ];
           ++M2_index;
         }
+
+     private:
+       typedef std::array< T_uint32, 33 > T_cache;
+
+       static T_cache M2s_cache; //!< direction table
+
+       static void Fs_init()
+        {
+         T_uint32 c = F2s_cache()[0] = 1 << 31;
+
+         for( T_uint32 i = 1; i < 32; i++ )
+          {
+           c = c ^ (c >> 1);
+           F2s_cache()[i] = c;
+          }
+        }
+
+    public:
+      static T_cache const& Fs_cache()
+       {
+        //static T_cache Is_cache;
+        //return Is_cache;
+        return M2s_cache;
+       }
+
+    private:
+      static T_cache & F2s_cache()
+       {
+        //static T_cache Is_cache;
+        //return Is_cache;
+        return M2s_cache;
+       }
 
      };
 

@@ -11,13 +11,13 @@ namespace math
    {
 
     template< typename scalar_name >
-     inline void peano2D( scalar_name & x, scalar_name &y, scalar_name P_value, int P_iterations = 16 )
+     inline void peano2D( scalar_name & x, scalar_name &y, scalar_name P_value, int iterations = 16 )
       {
        scalar_name add = scalar_name( 1 );
 
-       x = y = scalar_name( 1 ) / ( 1 << P_iterations );
+       x = y = scalar_name( 1 ) / ( 1 << iterations );
 
-       while( P_iterations-- )
+       while( iterations-- )
         {
          add *= scalar_name( 0.5 );
          if( P_value < scalar_name( 0.25 )  )    /*1*/
@@ -53,11 +53,10 @@ namespace math
       }
 
     template < typename scalar_name, typename size_name=int >
-     void peano2d( std::array<scalar_name, 2 > & coord, scalar_name const& value, size_name P_iterations = 16 )
+     void peano2D( std::array<scalar_name, 2 > & coord, scalar_name const& value, size_name iterations = 16 )
       {
-       ::math::function::peano2d( coord[0], coord[1], value, P_iterations );
+       ::math::function::peano2d( coord[0], coord[1], value, iterations );
       }
-
 
    }
  }

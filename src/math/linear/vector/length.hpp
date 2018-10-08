@@ -53,17 +53,16 @@
 
        template< typename scalar_name, unsigned dimension_number/*, typename N_report */ >
         inline
-        scalar_name //!<N_report
+        scalar_name
         length
          (
            ::math::linear::vector::structure< scalar_name, dimension_number >    & vector_param
           ,scalar_name                                           const& length_param
          )
          {
-          using namespace ::math::linear::vector;
           scalar_name old_length = ::math::linear::vector::length<scalar_name,scalar_name,dimension_number>( vector_param );
           if( 0 == old_length ) return old_length;
-          vector_param *= length_param / old_length;
+          ::math::linear::vector::scale( vector_param, length_param / old_length );
           return old_length;
          }
 
