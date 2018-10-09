@@ -1,6 +1,6 @@
 #ifndef math_geometry_interval_extend_hpp_
  #define math_geometry_interval_extend_hpp_
- 
+
 // ::math::geometry::interval::extend( )
 
 #include "./structure.hpp"
@@ -14,6 +14,26 @@
     {
      namespace interval
       {
+
+       template
+        <
+          typename scalar_name
+         ,unsigned dimension_number
+        >
+       void extend
+        (
+                   ::math::geometry::interval::structure<scalar_name,dimension_number>                  & result
+         ,         ::math::geometry::interval::structure<scalar_name,dimension_number>             const& original
+         ,typename ::math::geometry::interval::structure<scalar_name,dimension_number>::point_type const& point
+        )
+        {
+          result[1] = point;
+         ::math::linear::vector::max( result[1], result[1], original[0] );
+         ::math::linear::vector::max( result[1], result[1], original[1] );
+          result[0] = point;
+         ::math::linear::vector::min( result[0], result[0], original[0] );
+         ::math::linear::vector::min( result[0], result[0], original[1] );
+        }
 
        template
         <
@@ -50,6 +70,22 @@
         {
          ::math::geometry::interval::extend( result, other[0] );
          ::math::geometry::interval::extend( result, other[1] );
+        }
+
+       template
+        <
+          typename scalar_name
+         ,unsigned dimension_number
+        >
+       void extend
+        (
+          ::math::geometry::interval::structure<scalar_name,dimension_number>      & result
+         ,::math::geometry::interval::structure<scalar_name,dimension_number> const& left
+         ,::math::geometry::interval::structure<scalar_name,dimension_number> const& right
+        )
+        {
+         result = left;
+         ::math::geometry::interval::extend( result, right );
         }
 
       }
