@@ -108,7 +108,6 @@
           ,::math::geometry::interval::structure<scalar_name,dimension_number>    const& box
           ,::math::geometry::direction::parametric<scalar_name, dimension_number> const& parametric
           ,scalar_name     const& epsilon = 1e-12
-
           )
          {
           typedef ::math::linear::vector::point<scalar_name, dimension_number> coord_type;
@@ -123,14 +122,14 @@
           auto const& direction = parametric.direction();
           auto const& origin    = parametric.origin();
 
-          using namespace ::math::linear::vector;
-          coord_type I_lo( box.lo() - origin );
-          coord_type I_hi( box.hi() - origin );
+          //using namespace ::math::linear::vector;
+          coord_type I_lo; ::math::linear::vector::subtraction( I_lo, box.lo(), origin );
+          coord_type I_hi; ::math::linear::vector::subtraction( I_hi, box.hi(), origin );
 
           unsigned     I_lo_side   ;
           scalar_name  I_lo_lambda ;
           unsigned     I_hi_side   ;
-		  scalar_name  I_hi_lambda ;
+          scalar_name  I_hi_lambda ;
 
           for( int I_proj=0; I_proj < (int)dimension_number ; I_proj++ )
            {

@@ -47,7 +47,7 @@
         public:
           scalar_type next()
            {
-            return ::math::random::VanDerCorput<scalar_type,size_type, base_size>( M_index );
+            return ::math::random::VanDerCorput<scalar_type,size_type, base_size>( M_index++ );
            }
 
          scalar_type operator()(){ return this->next(); }
