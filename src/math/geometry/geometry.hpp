@@ -10,3 +10,13 @@
 
 #include "./deg2rad.hpp"
 #include "./rad2deg.hpp"
+
+
+#include "./cartesian2cylindric.hpp"
+#include "./cartesian2polar.hpp"
+#include "./cartesian2spherical.hpp"
+#include "./cylindric2cartesian.hpp"
+#include "./cylindric2spherical.hpp"
+#include "./polar2cartesian.hpp"
+#include "./spherical2cartesian.hpp"
+#include "./spherical2cylindric.hpp"
