@@ -3,3 +3,4 @@
 #include "./peano2D.hpp"
 #include "./peano3D.hpp"
 #include "./peanoND.hpp"
+#include "./convex.hpp"

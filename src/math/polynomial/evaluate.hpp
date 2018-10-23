@@ -31,7 +31,13 @@
       scalar_name evaluate( scalar_name const& paramter, scalar_name const* coefficient, std::size_t const& size )
        {
         // TODO
-        return coefficient[0] + paramter * coefficient[1] ;
+        scalar_name result = coefficient[size-1];
+
+        //for( auto index = size-1; 0 < index ; --index )
+        // {
+        //  result = result*paramter + coefficient[index];
+        // }
+        return result;
        }
 
      template
