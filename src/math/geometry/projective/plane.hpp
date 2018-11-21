@@ -25,6 +25,21 @@ namespace math
     namespace projective
      {
 
+      template<  typename scalar_name>
+       void plane // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
+        (
+          ::math::geometry::plane::no3d<scalar_name>            & no3d
+         ,::math::geometry::direction::ABC2D<scalar_name> const& horizon
+         ,::math::linear::vector::point<scalar_name, 3>   const& origin   //!< Any point of plane
+        )
+        {
+         no3d.normal()[0] = -horizon.A();
+         no3d.normal()[1] = -horizon.C();
+         no3d.normal()[2] = -horizon.B();
+         ::math::linear::vector::length<scalar_name>( no3d.normal(), scalar_name(1) );
+         no3d.origin() = origin;
+        }
+
       template<  typename scalar_name >
        void plane  // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
         (
@@ -48,6 +63,7 @@ namespace math
          no3d.origin() = { origin[0], scalar_name( 1 ), origin[1] };
         }
 
+
       template<  typename scalar_name >
        void plane // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
         (
@@ -59,9 +75,14 @@ namespace math
         )
         {
          typedef ::math::geometry::direction::ABC2D<scalar_name> abc2d_type;
+         typedef ::math::linear::vector::point<scalar_name, 3>           point3D_type;
+
          ::math::geometry::direction::horizon<scalar_name> vanish;
          vanish.process( a0, a1, a2, a3 );
-         ::math::geometry::projective::plane( no3d, abc2d_type( vanish.line() ), { a0[0], scalar_name(1), a0[1] } );
+
+         point3D_type origin{ a0[0], scalar_name(1), a0[1] };
+
+         ::math::geometry::projective::plane( no3d, abc2d_type( vanish.line() ), origin );
         }
 
       template<  typename scalar_name >
@@ -85,6 +106,8 @@ namespace math
          ::math::linear::vector::subtraction( parametric.y(), parametric.origin() );
         }
 
+
+
       template<  typename scalar_name >
        void plane // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
         (
@@ -98,22 +121,6 @@ namespace math
         vanish.process( first, second );
         ::math::geometry::projective::plane( no3d, ::math::geometry::direction::ABC2D<scalar_name>( vanish.line() ), origin );
        }
-
-      template<  typename scalar_name>
-       void plane // Assumed pinhole camera z-up, x, - right, y -strait ahead, project on to plane Z0X ( 0*x + 1*y + 0*z=0 )
-        (
-          ::math::geometry::plane::no3d<scalar_name>            & no3d
-         ,::math::geometry::direction::ABC2D<scalar_name> const& horizon
-         ,::math::linear::vector::point<scalar_name, 3>   const& origin   //!< Any point of plane
-
-        )
-        {
-         no3d.normal()[0] = -horizon.A();
-         no3d.normal()[1] = -horizon.C();
-         no3d.normal()[2] = -horizon.B();
-         ::math::linear::vector::length<scalar_name>( no3d.normal(), scalar_name(1) );
-         no3d.origin() = origin;
-        }
 
      }
    }

@@ -33,8 +33,8 @@ namespace math
              typedef ::math::geometry::plane::no3d<scalar_name> no3d_type;
 
              line()
+              :m_leftIP{ {0,1,0}, { 0, 1, 0 } }
               {
-               m_leftIP =  no3d_type { {0,1,0}, { 0, 1, 0 } };
                m_ePlane.origin( ) = {0,0,0};
               }
 

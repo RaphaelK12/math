@@ -1,3 +1,5 @@
+#!/bin/bash
+
 pwd
 
 g++ -fexceptions -std=c++11 -g -I../../../src clamper_test.cpp             -o  clamper_test

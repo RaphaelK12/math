@@ -23,7 +23,7 @@
             seed( 0 );
            }
 
-          sobol1D( size_type const& seedX )
+          explicit sobol1D( size_type const& seedX )
            {
             seed( seedX );
            }

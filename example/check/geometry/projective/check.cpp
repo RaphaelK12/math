@@ -14,7 +14,7 @@ int main( int argc, char *argv[] )
   ::math::geometry::plane::parametric3d<double>      parametric3d;
   ::math::geometry::plane::noNd<double, 5>           c;
 
-  ::math::linear::vector::point<double,3>             point3;  point3 = point3;
+//::math::linear::vector::point<double,3>             point3;
   ::math::linear::vector::point<double,2>             point2;
   ::math::geometry::direction::ABC2D<double>             abc;
   ::math::linear::vector::point<double,3>             h1, h2, o;

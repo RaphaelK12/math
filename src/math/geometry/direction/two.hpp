@@ -2,10 +2,10 @@
 #define math_geometry_direction_two
 
 // ::math::geometry::direction::two<scalar_name,dimension_number>
+#include <cmath>
 
 #include "../../linear/vector/structure.hpp"
-
-
+#include "../../linear/vector/addition.hpp"
 
 
 

@@ -37,7 +37,7 @@
              {
              }
 
-            simple2D( base2D_type const& base )
+            explicit simple2D( base2D_type const& base )
              {
               *this = base;
              }

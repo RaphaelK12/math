@@ -25,9 +25,9 @@
            ::math::geometry::interval::structure< scalar_name, dimension_number >  const& model
          )
          {
-          unsigned i = N_dimension;
+          // unsigned i = N_dimension;
 
-          //while( i-- )
+          // TODO while( i-- )
             //if( [ i ] < [ i ] ) std::swap( [ i ], [ i ] );
 
          }

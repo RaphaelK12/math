@@ -84,9 +84,10 @@
            {  //! https://en.wikipedia.org/wiki/Eigenvalue_algorithm#2.C3.972_matrices
             public:
               typedef scalar_name scalar_type;
+
               typedef ::math::linear::matrix::eigen::data< scalar_name, 2 > data_type;
 
-              typedef typename data_type::scalar_type  scalar_type;
+              typedef typename data_type::size_type      size_type;
               typedef typename data_type::vector_type  vector_type;
               typedef typename data_type::matrix_type  matrix_type;
 
@@ -174,7 +175,7 @@
                   ,1
                  };
 
-                int count = ::math::polynomial::solve::cubic::full<scalar_type>( m_value.data(), coefficient, this->m_epsilon );
+                int count = ::math::polynomial::solve::cubic::full<scalar_type>( this->m_value.data(), coefficient, this->m_epsilon );
 
                 if( 0 == count )
                  {
@@ -185,8 +186,8 @@
                  {
                   static matrix_type s_I{ 1,0,0, 0,1,0, 0,0,1 };
 
-                  coefficient[0] = - coefficient[0] / m_value[0];
-                  coefficient[1] =  coefficient[2] + m_value[0];
+                  coefficient[0] = - coefficient[0] / this->m_value[0];
+                  coefficient[1] =  coefficient[2] + this->m_value[0];
                   coefficient[2] = 1;
 
                   matrix_type tmp0, tmp1, tmp2;
