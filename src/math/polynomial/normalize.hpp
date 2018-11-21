@@ -35,7 +35,7 @@
 
          for( index=0; index < size; index++ )
           {
-           coefficient[I_index] /= I_max;
+           coefficient[index] /= I_max;
           }
 
          return false;

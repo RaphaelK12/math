@@ -2,8 +2,7 @@
 #include <iomanip>
 #include <string>
 
-#include "math/geometry/direction/parametric.hpp"
-#include "math/geometry/ellipse/ellipse.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 

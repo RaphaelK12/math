@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <string>
 
-#include "math/geometry/direction/direction.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 
@@ -11,12 +11,13 @@ int main( int argc, char *argv[] )
   cout << "Hello World" << endl;
 
   ::math::linear::vector::point<double,2>            point2;
-  ::math::linear::vector::point<double,3>            point3;
+  ::math::linear::vector::point<double,3>            point3{1,1,2}; point3 = point3;
 
   ::math::geometry::direction::two<double,2>            two;
   ::math::geometry::direction::polar<double>            po;
   ::math::geometry::direction::parametric<double, 2>    pp;
   ::math::geometry::direction::parametric<double, 3>    pp3;
+  ::math::geometry::direction::parametric<double, 4>    pp4;
   ::math::geometry::direction::parametric<double,10>    pp10;
   ::math::geometry::direction::ABC2D<double>            abc;
 
@@ -45,7 +46,7 @@ int main( int argc, char *argv[] )
   ::math::geometry::direction::L2L< double, 2> distance2; distance2.process( pp, pp );
 
    ::math::geometry::direction::L2L< double,3> distance3; distance3.process( pp3, pp3 );
-  ::math::geometry::direction::L2L< double, 4> distance4; //distance4.process( pp, pp );
+  ::math::geometry::direction::L2L< double, 4> distance4; distance4.process( pp4, pp4 );
   ::math::geometry::direction::L2L< double,10> distance10; distance10.process( pp10, pp10 );
   
   ::math::geometry::direction::distance( pp3, pp3 );

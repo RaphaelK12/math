@@ -31,12 +31,12 @@
             typedef ::math::linear::vector::point<scalar_type,6> coefficient_type;
             typedef ::math::linear::matrix::structure<scalar_type,3,3> matrix_type;
 
-            typedef ::math::geometry::circle::unit                       circle_unit2D_type;
+            typedef ::math::geometry::circle::unit<scalar_type,2>          circle_unit2D_type;
             typedef ::math::geometry::circle::simple<scalar_type,2>      circle_simple2D_type;
 
-            typedef ::math::geometry::ellipse::simple2D<scalar_type>     ellipse_simple2D_type;
+            typedef ::math::geometry::ellipse::simple2D<scalar_type>      ellipse_simple2D_type;
             typedef ::math::geometry::ellipse::general2D<scalar_type>    ellipse_general2D_type;
-            typedef ::math::geometry::ellipse::base2D<scalar_type>      ellipse_base2D_type;
+            typedef ::math::geometry::ellipse::base2D<scalar_type>          ellipse_base2D_type;
 
             typedef ::math::geometry::quadric::structure2d<scalar_type> this_type;
 

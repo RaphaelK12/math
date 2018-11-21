@@ -15,17 +15,19 @@ namespace math
        {
 
         template < typename scalar_name >
-    scalar_name
-    va2h
+         scalar_name
+         va2h
           (
-       scalar_name const& h_alpha
-      ,scalar_name const& aspect
+            scalar_name const& h_alpha //!< horizontal angle of view
+           ,scalar_name const& aspect  //!< Aspect ration width::height .e.g. 16:9
           )
           {
-      scalar_name v_scale = 2 * tan( v_alpha / 2 );
-      scalar_name h_scale = v_scale * aspect;
+           scalar_name h_scale = 2 * tan( h_alpha / 2 );
+           scalar_name v_scale = h_scale * aspect;
 
-      return 2 * atan( h_scale / 2 );
+           scalar_name diagonal = sqrt( h_scale* h_scale + v_scale * v_scale );
+
+           return 2 * atan( diagonal / 2 );
           }
 
        }

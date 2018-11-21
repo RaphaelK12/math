@@ -114,8 +114,8 @@ int main( int argc, char *argv[] )
   - statistic
       * Gaussian, average, count.
 
-
-
-
-
+### Note:
+Tested against :
+ - gcc 6.4.0
+ - MSVC 2015 14.0 Update 3
 

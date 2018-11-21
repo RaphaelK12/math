@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "math/linear/affine/affine.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ int main( int argc, char *argv[] )
 
   ::math::linear::affine::structure<double,3> a1,a2,a3;
   ::math::linear::vector::structure<double,3> v1,v2,v3;
-  ::math::linear::matrix::structure<double,3,3> m1,m2,m3;
+  ::math::linear::matrix::structure<double,3,3> m1,m2,m3; m2 = m3;
 
   ::math::linear::affine::addition(a1,a2);
   ::math::linear::affine::addition(a1,a2,a3);

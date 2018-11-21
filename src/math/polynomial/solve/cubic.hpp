@@ -105,13 +105,13 @@
              }
             else if (R2 < Q3)
              {
-              scalar_name sgnR = (R >= 0 ? 1 : -1);
+              scalar_name sgnR = scalar_name(R >= 0 ? 1 : -1);
               scalar_name ratio = sgnR * sqrt (R2 / Q3);
               scalar_name theta = acos (ratio);
               scalar_name norm = -scalar_name(2) * sqrt (Q);
-              result[0] = norm * cos (theta / 3) - a / 3;
-              result[1] = norm * cos ((theta + ::math::geometry::deg2rad( 360.0 ) ) / scalar_name(3)) - a / scalar_name(3);
-              result[2] = norm * cos ((theta - ::math::geometry::deg2rad( 360.0 ) ) / scalar_name(3)) - a / scalar_name(3);
+              result[0] =scalar_name( norm * cos (theta / 3) - a / 3 );
+              result[1] =scalar_name( norm * cos ((theta + ::math::geometry::deg2rad( 360.0 ) ) / scalar_name(3)) - a / scalar_name(3) );
+              result[2] =scalar_name( norm * cos ((theta - ::math::geometry::deg2rad( 360.0 ) ) / scalar_name(3)) - a / scalar_name(3) );
 
               /* Sort result[x] into increasing order */
 
@@ -134,7 +134,7 @@
              }
             else
              {
-              scalar_name sgnR = (R >= 0 ? 1 : -1);
+              scalar_name sgnR = scalar_name(R >= 0 ? 1 : -1);
               scalar_name A = -sgnR * pow (fabs (R) + sqrt (R2 - Q3), scalar_name(1)/scalar_name(3));
               scalar_name B = Q / A ;
               result[0] = A + B - a / scalar_name(3);

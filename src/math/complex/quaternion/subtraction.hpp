@@ -3,7 +3,9 @@
 
  // ::math::complex::quaternion::subtraction<scalar_name>
 
-#include <array>
+//#include <array>
+
+#include "./structure.hpp"
 
 
  namespace math

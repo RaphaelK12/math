@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <string>
 
-#include "math/polynomial/solve/solve.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 
@@ -10,16 +10,16 @@ int main( int argc, char *argv[] )
  {
   cout << "Hello World" << endl;
 
-  std::array<float,10>   r;
+//std::array<float,10>   r;
   std::array<float,1>   r1;
   std::array<float,2>   r2;
   std::array<float,3>   r3;
   std::array<float,4>   r4;
 
-  std::array<float,10>   c;
+ // std::array<float,10>   c;
   std::array<float,2>   c2;
   std::array<float,3>   c3;
-  std::array<float,4>   c4;
+  std::array<float,4>   c4{1,2,3,4};
   std::array<float,5>   c5;
 
 

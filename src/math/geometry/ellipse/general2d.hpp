@@ -62,7 +62,7 @@
 
             explicit general2D( simple2D_type const& simple )
              {
-              *this = base;
+              *this = simple;
              }
 
             this_type & operator=( base2D_type const& base )

@@ -74,7 +74,7 @@
           scalar_name const& q = coefficient[1];
           scalar_name const& r = coefficient[0];
 
-          scalar_name resolventC[ 4 ]={ -q*q, 2*p*p-8*r, 8*p, 8 };
+          scalar_name resolventC[ 4 ]={ -q*q, 2*p*p-scalar_name(8)*r, scalar_name(8)*p, scalar_name(8) };
           scalar_name resultC[ 3 ];
           unsigned countC = ::math::polynomial::solve::cubic::full( resultC, resolventC, epsilon );
           if( 0 == countC )
@@ -90,8 +90,8 @@
 
           unsigned count=0;
 
-          scalar_name quadCa[3]={ p/2 + m - q/( 2 * sqrt( 2*m ) ),  sqrt( 2 * m ), scalar_name(1) }; count  = ::math::polynomial::solve::quadric::full( result,       quadCa, epsilon );
-          scalar_name quadCb[3]={ p/2 + m + q/( 2 * sqrt( 2*m ) ), -sqrt( 2 * m ), scalar_name(1) }; count += ::math::polynomial::solve::quadric::full( result+count, quadCb, epsilon );
+          scalar_name quadCa[3]={ scalar_name( p/2 + m - q/( 2 * sqrt( 2*m ) ) ), scalar_name(  sqrt( 2 * m ) ), scalar_name(1) }; count  = ::math::polynomial::solve::quadric::full( result,       quadCa, epsilon );
+          scalar_name quadCb[3]={ scalar_name( p/2 + m + q/( 2 * sqrt( 2*m ) ) ), scalar_name( -sqrt( 2 * m ) ), scalar_name(1) }; count += ::math::polynomial::solve::quadric::full( result+count, quadCb, epsilon );
 
           std::array<scalar_name,5> depressedCf={ r, q, p, 0, 1 };
           ::math::polynomial::evaluate( result[0], depressedCf );

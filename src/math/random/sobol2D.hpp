@@ -16,7 +16,7 @@ namespace math
      {
      public:
          typedef std::uint32_t T_uint32;
-         typedef scalar_name scala_type;
+         typedef scalar_name scalar_type;
 
      public:
 
@@ -37,7 +37,7 @@ namespace math
          M2_index  = 0;
         }
 
-        void next( scala_type &P_x, scala_type &P_y )
+        void next( scalar_type &P_x, scalar_type &P_y )
          {
           T_uint32 Is_max = 0xFFFFFF;
           P_x = (m_d0 >> 8) * ( 1.0/ Is_max );
@@ -45,7 +45,7 @@ namespace math
           this->updateState();
          }
 
-        void operator()( scala_type &P_x, scala_type &P_y ){ return this->next( P_x, P_y); }
+        void operator()( scalar_type &P_x, scalar_type &P_y ){ return this->next( P_x, P_y); }
 
         T_uint32 getPos() { return M2_index; }
 

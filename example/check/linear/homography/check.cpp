@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <chrono>
 
-#include "math/linear/homography/homography.hpp"
+#include "math/math.hpp"
 
 template< typename scalar_name, unsigned width_number, unsigned height_number >
  void print ( ::math::linear::matrix::structure<scalar_name,width_number,height_number> const& m )

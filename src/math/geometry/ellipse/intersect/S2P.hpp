@@ -3,10 +3,10 @@
 
  // ::math::geometry::ellipse::intersectS2P<scalar_name>
 
-#include "./simple2d.hpp"
-#include "../circle/unit.hpp"
-#include "../circle/intersect/U2P.hpp"
-#include "../direction/parametric.hpp"
+#include "../simple2d.hpp"
+#include "../../circle/unit.hpp"
+#include "../../circle/intersect/U2P.hpp"
+#include "../../direction/parametric.hpp"
 
  namespace math
   {

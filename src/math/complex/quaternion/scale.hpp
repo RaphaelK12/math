@@ -5,6 +5,8 @@
 
 #include <array>
 
+#include "./structure.hpp"
+
 
  namespace math
   {

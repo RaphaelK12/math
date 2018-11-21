@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "math/geometry/projective/camera/camera.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 

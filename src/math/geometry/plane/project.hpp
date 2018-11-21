@@ -33,7 +33,7 @@ namespace math
             auto lambda = ::math::linear::vector::dot( contra_heading, no3d.normal() );
             lambda /=  length2;
 
-            ::math::linear::vector::combine( project, 1, point, lambda, no3d.normal() );
+            ::math::linear::vector::combine( projection, 1, point, lambda, no3d.normal() );
            }
 
         };

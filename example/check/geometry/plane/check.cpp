@@ -2,8 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "math/geometry/plane/plane.hpp"
-#include "math/geometry/direction/direction.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 
@@ -20,7 +19,7 @@ int main( int argc, char *argv[] )
 
   double l;
    ::math::linear::vector::point<double,3>             point3;
-   ::math::linear::vector::point<double,2>             point2;
+   ::math::linear::vector::point<double,2>             point2;   point2 = point2;
    ::math::geometry::direction::ABC2D<double>             abc;
 
   ::math::geometry::direction::parametric<double, 3 > parametric;

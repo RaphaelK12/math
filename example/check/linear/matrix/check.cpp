@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <chrono>
 
-#include "math/linear/matrix/matrix.hpp"
+#include "math/math.hpp"
 
 
 template< typename scalar_name, unsigned width_number, unsigned height_number >
@@ -22,10 +22,9 @@ template< typename scalar_name, unsigned width_number, unsigned height_number >
 
 int main( int argc, char*argv[] )
  {
-  std::cin.get();
 
   ::math::linear::matrix::structure<double,10,11> mAB;
-  ::math::linear::matrix::structure<double,11,12> mBC;
+//::math::linear::matrix::structure<double,11,12> mBC;
   ::math::linear::matrix::structure<double,2,2>   m22;
   ::math::linear::matrix::structure<double,3,3>   m33;
   ::math::linear::matrix::structure<double,4,4>   m44;
@@ -117,6 +116,7 @@ int main( int argc, char*argv[] )
     ::math::linear::matrix::transform( v3, v3, m33 );
     ::math::linear::matrix::transform( v4, v4, m44 );
 
+    std::cin.get();
 
  return 0;
  }

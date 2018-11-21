@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <string>
 
-#include "math/geometry/circle/circle.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 

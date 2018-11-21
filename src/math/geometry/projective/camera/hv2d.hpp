@@ -17,8 +17,8 @@ namespace math
          scalar_name
          hv2d
           (
-            scalar_name const& h_alpha
-           ,scalar_name const& v_alpha
+            scalar_name const& h_alpha //!< horizontal angle of view
+           ,scalar_name const& v_alpha //!< vertical angle of view
           )
           {
            scalar_name h_scale = 2 * tan( h_alpha / 2 );

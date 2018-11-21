@@ -4,9 +4,9 @@
 // ::math::geometry::ellipse::B2P<scalar_name>
 // ::math::geometry::ellipse::intersect<scalar_name>(l1, l2, base2d, parametric )
 
-#include "./base2d.hpp"
-#include "../circle/unit.hpp"
-#include "../direction/parametric.hpp"
+#include "../base2d.hpp"
+#include "../../circle/unit.hpp"
+#include "../../direction/parametric.hpp"
 
  namespace math
   {

@@ -42,7 +42,7 @@
          )
          {
           ::math::linear::vector::point<scalar_name,dimension_number>          p;
-             
+
           ::math::linear::vector::subtraction( p, point, circle.center() );
           return ::math::linear::vector::length( p ) - circle.radius();
          }

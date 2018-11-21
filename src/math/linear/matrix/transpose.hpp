@@ -40,7 +40,10 @@
           for( unsigned i=0; i< dimension_number; i++ )
            for( unsigned j=0; j< dimension_number; j++ )
             {
-             std::swap<scalar_name>( m[i][j], m[j][i] );
+             //std::swap<scalar_name>( m[i][j], m[j][i] );
+             auto t = m[i][j]; 
+             m[i][j] = m[j][i];
+             m[j][i]  = t;
             }
          }
 

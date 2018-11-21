@@ -55,7 +55,7 @@ namespace math
     template < typename scalar_name, typename size_name=int >
      void peano2D( std::array<scalar_name, 2 > & coord, scalar_name const& value, size_name iterations = 16 )
       {
-       ::math::function::peano2d( coord[0], coord[1], value, iterations );
+       ::math::function::peano2D( coord[0], coord[1], value, iterations );
       }
 
    }

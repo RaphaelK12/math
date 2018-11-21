@@ -3,13 +3,12 @@
 
  // ::math::geometry::ellipse::intersectG2P<scalar_name>
 
-#include "./general2d.hpp"
-#include "../circle/unit.hpp"
-#include "../circle/intersect/U2P.hpp"
-#include "../direction/parametric.hpp"
-#include "../../linear/vector/rotate.hpp"
-#include "../../linear/vector/subtraction.hpp"
-#include "./general2d.hpp"
+#include "../general2d.hpp"
+#include "../../circle/unit.hpp"
+#include "../../circle/intersect/U2P.hpp"
+#include "../../direction/parametric.hpp"
+#include "../../../linear/vector/rotate.hpp"
+#include "../../../linear/vector/subtraction.hpp"
 
 
 

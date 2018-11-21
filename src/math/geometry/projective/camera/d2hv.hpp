@@ -14,22 +14,22 @@ namespace math
       namespace camera
        {
 
-   template < typename scalar_name >
-    std::pair<scalar_name,scalar_name>
-    d2hv
-     (
-       scalar_name const& alpha
-      ,scalar_name const& h_scale
-      ,scalar_name const& v_scale
-     )
-     {
-      scalar_name diagonal = sqrt( h_scale* h_scale + v_scale * v_scale );
-      scalar_name focus = (diagonal/2) / tan( alpha / 2 ) ;
+        template < typename scalar_name >
+         std::pair<scalar_name,scalar_name>
+         d2hv
+          (
+            scalar_name const& alpha //!< diagonal angle of view
+           ,scalar_name const& h_scale  //!< 16
+           ,scalar_name const& v_scale  //!<  9
+          )
+          {
+           scalar_name diagonal = sqrt( h_scale* h_scale + v_scale * v_scale );
+           scalar_name focus = (diagonal/2) / tan( alpha / 2 ) ;
 
-      scalar_name h_alpha = 2 * atan( (h_scale/2) / focus );
-      scalar_name v_alpha = 2 * atan( (v_scale/2) / focus );
-      return std::make_pair( h_alpha, v_alpha );
-     }
+           scalar_name h_alpha = 2 * atan( (h_scale/2) / focus );
+           scalar_name v_alpha = 2 * atan( (v_scale/2) / focus );
+           return std::make_pair( h_alpha, v_alpha );
+          }
 
        }
      }

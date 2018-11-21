@@ -5,6 +5,7 @@
 // ::math::geometry::direction::angle( abc, abc )
 
 #include "../../linear/vector/structure.hpp"
+#include "../../linear/vector/angle.hpp"
 #include "./two.hpp"
 #include "./abc.hpp"
 

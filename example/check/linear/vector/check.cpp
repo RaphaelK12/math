@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "math/linear/vector/vector.hpp"
+#include "math/math.hpp"
 
 using namespace std;
 

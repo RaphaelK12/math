@@ -9,14 +9,14 @@ namespace math
    {
 
     template < typename scalar_name, typename size_name=int >
-     void peano3d( scalar_name & x, scalar_name & y, scalar_name &z, scalar_name const& value, size_name interations = 16 )
+     void peano3d( scalar_name & x, scalar_name & y, scalar_name &z, scalar_name const& value, size_name iteration = 16 )
       {
        size_name i, pos;
        scalar_name add = scalar_name( 1 );
 
-       x = y = z = scalar_name( 1 ) / ( 1 << interations );
+       x = y = z = scalar_name( 1 ) / ( 1 << iteration );
 
-       whule( interations-- )
+       while( iteration-- )
         {
          pos = 0;
          add *= scalar_name( 0.5 );
@@ -41,9 +41,9 @@ namespace math
 
 
     template < typename scalar_name, typename size_name=int >
-     void peano3d( std::array<scalar_name, 3 > & coord, scalar_name const& value, size_name P_interations = 16 )
+     void peano3d( std::array<scalar_name, 3 > & coord, scalar_name const& value, size_name iteration = 16 )
       {
-       ::math::function::peano3d( coord[0], coord[1], coord[2], value, interations );
+       ::math::function::peano3d( coord[0], coord[1], coord[2], value, iteration );
       }
 
    }

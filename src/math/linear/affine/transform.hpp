@@ -4,6 +4,7 @@
  // ::math::linear::affine::transform<scalar_name,dimension_number>
 
 #include "../vector/structure.hpp"
+#include "../matrix/transform.hpp"
 #include "./structure.hpp"
 
  namespace math
