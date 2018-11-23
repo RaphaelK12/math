@@ -55,9 +55,9 @@
               auto const & A = m_coefficient[0] = a2 * this_type::sqr( sinT ) + b2 * this_type::sqr( cosT );
               auto const & B = m_coefficient[1] = 2 * ( b2 - a2 ) * sinT * cosT;
               auto const & C = m_coefficient[2] = a2 * this_type::sqr( cosT ) + b2 * this_type::sqr( sinT );
-              auto const & D = m_coefficient[3] =  - 2 * A * x -      B * y;
-              auto const & E = m_coefficient[4] =      - B * x -  2 * C * y;
-              auto const & F = m_coefficient[5] = A * this_type::sqr( x ) + B*x*y+ C*this_type::sqr( y ) - a2 * b2;
+              /*auto const & D = */m_coefficient[3] =  - 2 * A * x -      B * y;
+              /*auto const & E = */m_coefficient[4] =      - B * x -  2 * C * y;
+              /*auto const & F = */m_coefficient[5] = A * this_type::sqr( x ) + B*x*y+ C*this_type::sqr( y ) - a2 * b2;
              }
 
             explicit structure2d( circle_simple2D_type const& that )

@@ -47,8 +47,7 @@ namespace math
             template< typename number_name > // Accept coordinates in pixels, return direction in world space
              point3d_type rayXY( vector2d_type< number_name > const& xy )const
               {
-               auto uv = m_optical.template uv<number_name>( xy );
-               return this->rayUV( uv );
+               return this->rayUV( m_optical.template uv<number_name>( xy ) );
               }
 
             // Accept coordinates in uv, return direction in world space
