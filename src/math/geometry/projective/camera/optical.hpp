@@ -6,7 +6,7 @@
 #include <cmath>
 #include <tuple>
 
-#include "math/linear/vector/vector.hpp"
+#include "../../../linear/vector/vector.hpp"
 
 #include "./d2hv.hpp"
 #include "./ha2d.hpp"

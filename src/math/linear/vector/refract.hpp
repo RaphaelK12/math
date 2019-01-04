@@ -1,7 +1,7 @@
 #ifndef math_library_linear_algebra__vector_refract_HPP_
  #define math_library_linear_algebra__vector_refract_HPP_
 
-/*refract( & result_param
+/* ::math::linear::vector::refract( & result_param
           , ray_param
           , normal_param
           ,scalar_name  const& air_param

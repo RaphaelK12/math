@@ -35,7 +35,7 @@ namespace math
         scalar_name  const& higher = scalar_name ( 1 )
        )
        {
-        return ( lower < value? (         scalar_name( ::fmod( value - lower,  higher - lower ) ) + lower ):
+        return ( lower < value? (         scalar_name(  ::fmod( value - lower,  higher - lower ) ) + lower ):
                                (  higher - scalar_name( ::fmod( lower  - value, higher - lower ) )        )  );
        }
 

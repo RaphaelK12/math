@@ -28,15 +28,15 @@
           ,::math::linear::vector::structure< scalar_name, dimension_number > const& right_param
          )
          {
-          // TODO
-          scalar_name      * I_result = result_param.data()+ dimension_number;
-          scalar_name const* I_right  = right_param.data() + dimension_number;
+          scalar_name      * I_result = result_param.data()+ dimension_number - 1;
+          scalar_name const* I_right  = right_param.data() + dimension_number - 1;
 
           while( I_result != result_param.data() )
            {
             --I_result; --I_right;
-             *I_result = - *I_right;
+            *I_result = *I_right / right_param[dimension_number-1];
            }
+          result_param[dimension_number-1] = 1;
          }
 
        template< typename scalar_name >

@@ -3,7 +3,7 @@
 
 // ::math::geometry::projective::camera::pinhole< scalar >
 
-#include "math/linear/vector/structure.hpp"
+#include "../../../linear/vector/structure.hpp"
 
 /*
           ^

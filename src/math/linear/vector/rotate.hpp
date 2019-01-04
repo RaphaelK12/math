@@ -56,11 +56,11 @@
         rotate
          (
            ::math::linear::vector::structure< scalar_name, 2 >        & result_param
-          ,                  value_name             const& angle_param
+          ,                  value_name                          const&  angle_param
          )
          {
           ::math::linear::vector::structure< scalar_name, 2 > I_tmp;
-          math::linear::vector::rotate( I_tmp, angle_param, result_param );
+          ::math::linear::vector::rotate( I_tmp, angle_param, result_param );
           result_param = I_tmp;
          }
 
@@ -70,8 +70,8 @@
         rotateX
          (
            ::math::linear::vector::structure< scalar_name, 3 >         & result_param
-          ,       value_name                         const&  angle_param,
-           ::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
+          ,       value_name                                      const&  angle_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
          )
         {
          result_param[0] = 1 * point_param[0] +                 0 * point_param[1] +                  0 * point_param[2];
@@ -85,11 +85,11 @@
         rotateX
          (
            ::math::linear::vector::structure< scalar_name, 3 >         & result_param
-          ,       value_name                         const&  angle_param
+          ,       value_name                                      const&  angle_param
          )
         {
          ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         math::linear::vector::rotateX( I_tmp, angle_param, result_param );
+         ::math::linear::vector::rotateX( I_tmp, angle_param, result_param );
          result_param = I_tmp;
         }
 
@@ -99,8 +99,8 @@
         rotateY
          (
            ::math::linear::vector::structure< scalar_name, 3 >         & result_param
-          ,       value_name                         const&  angle_param,
-           ::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
+          ,       value_name                                      const&  angle_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
          )
         {
          result_param[0] =  cos( angle_param ) * point_param[0] + 0 * point_param[1] + sin( angle_param )* point_param[2];
@@ -118,7 +118,7 @@
          )
         {
          ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         math::linear::vector::rotateY( I_tmp, angle_param, result_param );
+         ::math::linear::vector::rotateY( I_tmp, angle_param, result_param );
          result_param = I_tmp;
         }
 
