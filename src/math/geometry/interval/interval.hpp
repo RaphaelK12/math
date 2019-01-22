@@ -4,7 +4,7 @@
 #include "./in.hpp"
 #include "./out.hpp"
 #include "./intersect.hpp"
-//#include "./scale.hpp"
+#include "./inflate.hpp"
 #include "./valid.hpp"
 #include "./volume.hpp"
 #include "./translate.hpp"

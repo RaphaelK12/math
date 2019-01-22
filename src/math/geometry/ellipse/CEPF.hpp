@@ -21,7 +21,7 @@
       {
 
        template< typename scalar_name >
-        struct CEPF
+        struct CEPF //!< Find two concentric ellipse
          {
           public:
             typedef scalar_name scalar_type;
@@ -33,7 +33,7 @@
 
             CEPF()
              {
-              // TODO m_angle =  ::math::geometry::rad2deg( 6 );
+              m_small_angle =  ::math::geometry::rad2deg( 6 );
              }
 
             static bool containe( ellipse_type const& left, ellipse_type const& right )
@@ -49,7 +49,7 @@
                }
 
               auto angle = ::math::geometry::rad2deg ( fabs( right.rotation()-  left.rotation() ) );
-              if( ( m_angle < angle ) && ( angle < ( 180 - m_angle ) ) )
+              if( ( m_small_angle < angle ) && ( angle < ( 180 - m_small_angle ) ) )
                {
                 return false;
                }
@@ -75,6 +75,8 @@
             couple_type const& result(){ return m_couple; }
           private:
             couple_type m_couple;
+          private:
+            scalar_type m_small_angle;
          };
 
 

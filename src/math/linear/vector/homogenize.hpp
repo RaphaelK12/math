@@ -89,14 +89,14 @@
            ::math::linear::vector::structure< scalar_name, dimension_number >      & result_param
          )
          {
-          // TODO
-          scalar_name      * I_result = result_param.data()+ dimension_number;
+          scalar_name      * I_result = result_param.data()+ dimension_number - 1;
 
           while( I_result != result_param.data() )
            {
             --I_result;
-             *I_result = - *I_result;
+            *I_result /= result_param[dimension_number-1];
            }
+          result_param[dimension_number-1] = 1;
          }
 
        template< typename scalar_name >

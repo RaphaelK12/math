@@ -6,6 +6,7 @@
 
 #include "../../linear/vector/structure.hpp"
 #include "../../linear/vector/angle.hpp"
+#include "../../linear/vector/load.hpp"
 #include "./two.hpp"
 #include "./abc.hpp"
 
@@ -47,7 +48,10 @@ namespace math
              ,ABC_type    const & right
             )
             {
-             return 0; //!< TODO
+             vector_type ln; ::math::linear::vector::load( ln, left.A(),  left.B()  );
+             vector_type rn; ::math::linear::vector::load( rn, right.A(), right.B() );
+
+             return ::math::linear::vector::angle( ln, rn );
             }
 
            static scalar_type process

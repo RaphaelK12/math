@@ -11,27 +11,27 @@
     {
 
      template< typename scalar_name, typename size_name = unsigned >
-      inline scalar_name VanDerCorput( size_name index, size_name const& base )
-       {
-        scalar_name Ir_vdc = 0, I_denom = 1;
+      inline scalar_name VanDerCorput( size_name index, scalar_name const& base )
+       { //! RosettaCodeData copy/paste. However optimize this is result :) 
+        scalar_name result = 0, denominator = 1;
         while( index )
          {
-          Ir_vdc += ( index % base) / ( I_denom *= base );
-          index /= base; // note: conversion from 'double' to 'int'
+          result += fmod( index, base ) / ( denominator *= base );
+          index /= base;
          }
-        return Ir_vdc;
+        return result;
        }
 
      template< typename scalar_name, typename size_name, size_name base_size = 2 >
-      inline scalar_name VanDerCorput( size_name index )
+      inline scalar_name VanDerCorput( size_name index ) //!< Optimized when base is integer number
        {
-        scalar_name Ir_vdc = 0, I_denom = 1;
+        scalar_name result = 0, denominator = 1;
         while( index )
          {
-          Ir_vdc += ( index % base_size ) / ( I_denom *= base_size );
+          result += ( index % base_size ) / ( denominator *= base_size );
           index /= base_size;
          }
-        return Ir_vdc;
+        return result;
        }
 
      template< typename scalar_name, typename size_name = unsigned, size_name base_size = 2 >

@@ -1,3 +1,5 @@
+#ifndef math_6B6F3CC0_BF60_4B84_BC92_C3D25AB1135E
+#define math_6B6F3CC0_BF60_4B84_BC92_C3D25AB1135E
 
 #include <cmath>
 
@@ -14,3 +16,4 @@
 #include "./random/random.hpp"
 #include "./statistic/statistic.hpp"
 
+#endif

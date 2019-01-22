@@ -1,14 +1,3 @@
-//! @warning  Use it at your own risk.
-//! @copyright *this file is FREEWARE. 
-//! @file clamper_test.cpp
-//! @author Dejan D. M. Milosavljevic
-//! @version 1.0
-//! @date 2003
-//! @description Test for clampers.
-//! @warning  Use it at your own risk.
-//! @copyright *this file is FREEWARE. 
-
-
 #include <iostream>
 #include <iomanip>
 

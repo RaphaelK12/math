@@ -4,3 +4,6 @@
 #include "./peano3D.hpp"
 #include "./peanoND.hpp"
 #include "./convex.hpp"
+#include "./gabor.hpp"
+
+#include "./distribution/distribution.hpp"

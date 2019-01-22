@@ -80,6 +80,7 @@
        const ::math::constants::scalar_t PHI_inv_2     =  0.159154943091895336       ;
        const ::math::constants::scalar_t PHI_invSQRT   =  0.564189583547756286948    ;
        const ::math::constants::scalar_t PHI_2invSQRT  =  1.12837916709551257390     ;
+       const ::math::constants::scalar_t PHI_invSQRT2  =  0.39894228040143267793994605993438;//!< 1/sqrt(2*pi)
 
     }
   }

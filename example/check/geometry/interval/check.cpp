@@ -24,18 +24,19 @@ int main( int argc, char *argv[] )
 
   ::math::geometry::interval::correct( i1 );
   ::math::geometry::interval::correct( i1, i1 );
-  
+
   ::math::geometry::interval::extend( i1, p1 );
   ::math::geometry::interval::extend( i1, i1 );
-  
+
   ::math::geometry::interval::in(  i1, p1 );
   ::math::geometry::interval::out( i1, p1 );
 
   ::math::geometry::interval::intersect( i1, i1, i1 );
   ::math::geometry::interval::intersect_weak( i1, i1, i1 );
-  
+
     ::math::geometry::interval::translate( i1, p1 );
 
-  
+    ::math::geometry::interval::inflate( i1, p1, p1, i2 );
+
   return EXIT_SUCCESS;
  }

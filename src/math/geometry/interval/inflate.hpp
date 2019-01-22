@@ -1,9 +1,8 @@
 #ifndef math_geometry_interval_scale_hpp_
  #define math_geometry_interval_scale_hpp_
 
-// ::math::geometry::interval::scale( )
+// ::math::geometry::interval::inflate( )
 
-#include "../../linear/vector/scale.hpp"
 #include "./structure.hpp"
 
 
@@ -17,18 +16,21 @@
        template< typename scalar_name, unsigned dimension_number >
         inline
         bool
-        scale
+        inflate
          (
            ::math::geometry::interval::structure< scalar_name, dimension_number >       & result
-           ::math::linear::vector::structure< scalar_name, dimension_number >      const& pivot
+          ,::math::linear::vector::structure< scalar_name, dimension_number >      const& pivot
           ,::math::linear::vector::structure< scalar_name, dimension_number >      const& scale
-           ::math::geometry::interval::structure< scalar_name, dimension_number >  const& model
+          ,::math::geometry::interval::structure< scalar_name, dimension_number >  const& model
          )
          {
-          // unsigned i = N_dimension;
+          auto index = dimension_number;
 
-          // TODO while( i-- )
-            //if( [ i ] < [ i ] ) std::swap( [ i ], [ i ] );
+          while( index-- )
+           {
+            result[1][index] = scale[index]*(model[1][index] - pivot[index] ) + pivot[index];
+            result[0][index] = scale[index]*(model[0][index] - pivot[index] ) + pivot[index];
+           }
 
          }
 
