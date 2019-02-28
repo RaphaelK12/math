@@ -112,7 +112,7 @@
          {
           typedef ::math::linear::vector::point<scalar_name, dimension_number> coord_type;
 
-          typedef std::tuple< unsigned, scalar_name, unsigned, scalar_name > result_type;
+          //typedef std::tuple< unsigned, scalar_name, unsigned, scalar_name > result_type;
 
           auto & Ir_lo_side   = std::get<0>( result );  Ir_lo_side = 1;
           auto & Ir_lo_lambda = std::get<1>( result );  Ir_lo_lambda =  std::numeric_limits<scalar_name>::min();

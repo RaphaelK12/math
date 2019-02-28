@@ -15,7 +15,7 @@
 
        template< typename scalar_name, unsigned dimension_number >
         inline
-        bool
+        void
         inflate
          (
            ::math::geometry::interval::structure< scalar_name, dimension_number >       & result

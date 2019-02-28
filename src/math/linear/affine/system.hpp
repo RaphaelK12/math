@@ -23,9 +23,9 @@
         void system
          (
            ::math::linear::affine::structure<scalar_name, 2>                & affine
-          ,::math::linear::vector::structure<scalar_name, 3>           const& vector
-          ,::math::linear::vector::structure<scalar_name, 3>           const& x
-          ,::math::linear::vector::structure<scalar_name, 3>           const& y
+          ,::math::linear::vector::structure<scalar_name, 2>           const& vector
+          ,::math::linear::vector::structure<scalar_name, 2>           const& x
+          ,::math::linear::vector::structure<scalar_name, 2>           const& y
          )
          {
           ::math::linear::matrix::system( affine.matrix(), x, y );

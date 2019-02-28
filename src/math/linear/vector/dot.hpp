@@ -27,8 +27,6 @@
          , ::math::linear::vector::structure< scalar_name, dimension_number > const& right_param
          )
          {
-          typedef ::math::linear::vector::structure< scalar_name, dimension_number > Tf_array;
-
           auto I_projection = dimension_number;
           scalar_name const *I_left  = &left_param[0];
           scalar_name const *I_right = &right_param[0];

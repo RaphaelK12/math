@@ -19,3 +19,6 @@
 /example/test/msvc/2015/x64
 /example/test/msvc/2015/math2015.VC.db
 /example/test/msvc/2015/math2015.VC.VC.opendb
+example/test/codeblocks/math.depend
+example/test/codeblocks/bin
+example/test/codeblocks/obj

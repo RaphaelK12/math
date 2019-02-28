@@ -28,8 +28,6 @@
           ,::math::linear::vector::point<scalar_name, 2 > const& a2
           )
          {
-          typedef ::math::linear::vector::point<scalar_name, 2 > point_type;
-
           scalar_name const& Ax = a0[0];
           scalar_name const& Ay = a0[1];
           scalar_name const& Bx = a1[0];

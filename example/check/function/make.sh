@@ -7,4 +7,6 @@ g++ -fexceptions -std=c++11 -g -I../../../src peano_test.cpp               -o  p
 g++ -fexceptions -std=c++11 -g -I../../../src distribution.cpp             -o  distribution
 g++ -fexceptions -std=c++11 -g -I../../../src vap.cpp                      -o  vap
 g++ -fexceptions -std=c++11 -g -I../../../src gabor.cpp                    -o  gabor
+g++ -fexceptions -std=c++11 -g -I../../../src bais.cpp                     -o bais
+g++ -fexceptions -std=c++11 -g -I../../../src gain.cpp                     -o gain
 

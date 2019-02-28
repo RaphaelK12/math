@@ -5,5 +5,7 @@
 #include "./peanoND.hpp"
 #include "./convex.hpp"
 #include "./gabor.hpp"
+#include "./bais.hpp"
+#include "./gain.hpp"
 
 #include "./distribution/distribution.hpp"
