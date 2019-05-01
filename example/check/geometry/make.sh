@@ -2,6 +2,8 @@
 
 pwd
 
+g++ -fexceptions -std=c++11 -g -I../../../src coord.cpp               -o  coord
+
 cd ./circle
 ./make.sh
 cd ..

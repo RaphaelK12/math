@@ -28,7 +28,7 @@ int main( int argc, char *argv[] )
 
   ::math::geometry::direction::rotate( two, 123, two );
   ::math::geometry::direction::rotate( po, 123, po );
-  ::math::geometry::direction::rotate( pp, 123, pp );
+  ::math::geometry::direction::rotate( pp, point2, 123, pp );
   ::math::geometry::direction::rotate( abc, 123, abc );
 
   ::math::geometry::direction::rotate( two, {1,2}, 12, two );

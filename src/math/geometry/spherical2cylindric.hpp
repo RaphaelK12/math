@@ -13,9 +13,9 @@ namespace math
     template< typename scalar_name >
      ::math::linear::vector::point<scalar_name,3>
      spherical2cylindric( ::math::linear::vector::point<scalar_name,3> const& point )
-      {
-       // TODO
-       ::math::linear::vector::point<scalar_name,3> result;
+      {// ( r, phi, theta ) -> ( r, phi, z ) 
+       auto cartesian = ::math::geometry::spherical2cartesian( point );
+       auto result    = ::math::geometry::cartesian2cylindric( cartesian );
        return result;
       }
 

@@ -11,6 +11,8 @@
 #include "./two.hpp"
 #include "./ABC.hpp"
 
+#include "../../linear/vector/rotate.hpp"
+
 
 
  namespace math
@@ -102,9 +104,11 @@
          {
           //X = x * cos( angle_param ) - y * sin( angle_param );
           //Y = x * sin( angle_param ) + y * cos( angle_param );
+           auto const& A = direction_param.A();
+           auto const& B = direction_param.B();
 
-          result_param.A() =  direction_param.A() * cos( angle_param ) +  direction_param.B() * sin( angle_param );
-          result_param.B() = -direction_param.A() * sin( angle_param ) +  direction_param.B() * cos( angle_param );
+          result_param.A() =  A * cos( angle_param ) +  B * sin( angle_param );
+          result_param.B() = -A * sin( angle_param ) +  B * cos( angle_param );
           result_param.C() = direction_param.C();
          }
 
@@ -137,9 +141,9 @@
           ,       value_name                                const&     angle_param
           ,::math::geometry::direction::polar<scalar_name>  const& direction_param
          )
-         { // TODO
-          result_param = direction_param;
-          result_param.angle() += angle_param;
+         {
+          ::math::linear::vector::rotate( result_param.origin(), angle_param, direction_param.origin() );
+          result_param.angle() = direction_param.angle() + angle_param;
          }
 
        template< typename scalar_name, typename value_name >
@@ -152,9 +156,9 @@
           ,       value_name                                const&     angle_param
           ,::math::geometry::direction::polar<scalar_name>  const& direction_param
          )
-         { // TODO
-          result_param = direction_param;
-          result_param.angle() += angle_param;
+         {
+          ::math::linear::vector::rotate( result_param.origin(), angle_param, direction_param.origin(), center_param );
+          result_param.angle() = direction_param.angle() + angle_param;
          }
 
       }
