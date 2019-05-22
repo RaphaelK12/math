@@ -66,6 +66,25 @@
          }
 
        template < typename scalar_name,unsigned dimension_number >
+        bool
+        intersect_check
+         (
+           ::math::geometry::interval::structure<scalar_name,dimension_number> const& left
+          ,::math::geometry::interval::structure<scalar_name,dimension_number> const& right
+          )
+         {
+          int index = dimension_number;
+
+          while( index-- )
+           {
+            if( left.m_corner[1][index] < right.m_corner[0][index] ) return false;
+            if( right.m_corner[1][index] <  left.m_corner[0][index] ) return false;
+           }
+
+          return true;
+         }
+
+       template < typename scalar_name,unsigned dimension_number >
         void
         intersect_weak
          (

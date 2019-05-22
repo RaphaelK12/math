@@ -25,9 +25,11 @@
         {
          public:
            typedef ::math::linear::vector::point<scalar_name, dimension_number > point_type;
+           typedef std::array<point_type, 2 > container_type;
 
            structure() {}
            structure( point_type const& first, point_type const& second ):m_corner{ first, second }{}
+           explicit structure( container_type const& c ):m_corner{ c }{}
 
            point_type const& operator[]( unsigned const index )const{ return m_corner[index]; }
            point_type      & operator[]( unsigned const index )     { return m_corner[index]; }
@@ -41,8 +43,11 @@
            point_type const& hi( )const{ return m_corner[1]; }
            point_type      & hi( )     { return m_corner[1]; }
 
+           container_type const& container()const{ return m_corner; }
+           container_type      & container()     { return m_corner; }
+
          public:
-           point_type m_corner[2];
+           container_type m_corner;
         };
 
        template

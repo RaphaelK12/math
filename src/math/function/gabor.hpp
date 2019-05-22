@@ -38,9 +38,9 @@ namespace math
       scalar_type imaginary( point_type const& point_param )const { return 0; }
 
        public:
-         scalar_type m_frequency     = scalar_name(2) *  math::constants::PHI/5 ;
-         scalar_type m_angle    = 0;
-         scalar_type m_phase_shift    = math::constants::PHI/2;
+         scalar_type m_frequency           = scalar_name(2) *  math::constants::PHI/5 ;
+         scalar_type m_angle               = 0;
+         scalar_type m_phase_shift         = math::constants::PHI/2;
          scalar_type m_standard_deviation  = 0.32125;
          point_type  m_gamma   {1,1};
        public:

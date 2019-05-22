@@ -65,11 +65,6 @@ int main( int argc, char *argv[] )
    - MSVC : /Ic:\my-work-folder\my-git-folder\math\src
    - gcc  : -I/home/my-user-name/my-work-folder/my-git-folder/math/src
 
-### Tested against:
-  - GCC 5.4.0 20160609
-  - MSVC 2017 (15.3.2)
-  - MSVC 2015 Update 3
-
 ### Content in details:
   - complex
     - quaternion
@@ -114,8 +109,8 @@ int main( int argc, char *argv[] )
   - statistic
       * Gaussian, average, count.
 
-### Note:
-Tested against :
- - gcc 6.4.0
- - MSVC 2015 14.0 Update 3
+### Tested against:
+  - GCC 7.4.0 
+  - MSVC 2017 (15.3.2)
+  - MSVC 2015 Update 3
 

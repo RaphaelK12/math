@@ -42,19 +42,19 @@
         >
        void extend
         (
-                   ::math::geometry::interval::structure<scalar_name,dimension_number>                  & interval
+                   ::math::geometry::interval::structure<scalar_name,dimension_number>                  & result
          ,typename ::math::geometry::interval::structure<scalar_name,dimension_number>::point_type const& point
         )
         {
-         auto max = point;
-         ::math::linear::vector::max( max, max, interval[0] );
-         ::math::linear::vector::max( max, max, interval[1] );
-         auto min = point;
-         ::math::linear::vector::min( min, min, interval[0] );
-         ::math::linear::vector::min( min, min, interval[1] );
+         auto minimum = point;
+         ::math::linear::vector::min( minimum, minimum, result[0] );
+         ::math::linear::vector::min( minimum, minimum, result[1] );
+         auto maximum = point;
+         ::math::linear::vector::max( maximum, maximum, result[0] );
+         ::math::linear::vector::max( maximum, maximum, result[1] );
 
-         interval[0] = min;
-         interval[1] = max;
+         result[0] = minimum;
+         result[1] = maximum;
         }
 
        template

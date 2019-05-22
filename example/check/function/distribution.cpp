@@ -21,31 +21,59 @@ int main( int argc, char *argv[] )
   auto height = 1500;
   auto width  = 1500;
   image.resize( height * width, 0 );
+  double lo_x = -4; 
+  double lo_y = -4;
+  double hi_x = +4;
+  double hi_y = +4;
+
+  double scale_x = (hi_x-lo_x)/width;  double move_x = lo_x;
+  double scale_y = height/( hi_y-lo_y );  double move_y = height/2;
 
   for( int i=0; i< width; ++i)
    {
-    double x = 5*( i/(width/2.0) - 1.0);
+    double x = scale_x * i + move_x;
 
-    auto v = ::math::function::distribution::normal<double>( x, 0.9, 0 );
-    int y= int( ((v) * (height/30) +(height/2) ) ); y = height-y-1; auto index = width *y + i;image[ index ] = 255;
+    double v = 0;
+    int y= int( (v) * scale_y + move_y ); y = height-y-1; auto index = width *y + i;if( (0<index)&&(index< image.size()))image[ index ] = 255;
+
+    v = 0.5;
+    y= int( (v) * scale_y + move_y ); y = height-y-1; index = width *y + i;if( (0<index)&&(index< image.size()))image[ index ] = 255;
+
+    v = 1;
+    y= int( (v) * scale_y + move_y ); y = height-y-1; index = width *y + i;if( (0<index)&&(index< image.size()))image[ index ] = 255;
+
+    v = ::math::function::distribution::normal<double>( x );
+    y= int( (v) * scale_y + move_y ); y = height-y-1; index = width *y + i;if( (0<index)&&(index< image.size()))image[ index ] = 255;
+
+    v = ::math::function::distribution::normal<double>( x, sqrt( 2 * 3.141 ), 0 );
+    y= int( (v) * scale_y + move_y ); y = height-y-1;index = width *y + i; if( (0<index)&&(index< image.size()))image[ index ] = 255;
+
+    v = ::math::function::distribution::normal<double>( x, 0.9, 0 );
+    y= int( (v) * scale_y + move_y ); y = height-y-1;index = width *y + i; if( (0<index)&&(index< image.size()))image[ index ] = 255;
 
     v = ::math::function::distribution::normal<double>( x, 0.8, 0 );
-    y= int( ((v) * (height/30) +(height/2) ) ); y = height-y-1;index = width *y + i; image[ index ] = 255;
+    y= int( (v) * scale_y + move_y ); y = height-y-1;index = width *y + i; if( (0<index)&&(index< image.size()))image[ index ] = 255;
 
-    v = ::math::function::distribution::normal<double>( x, 0.7, 0 );
-    y= int( ((v) * (height/30) +(height/2) ) ); y = height-y-1;index = width *y + i;  image[ index ] = 255;
+    v = ::math::function::distribution::normal<double>( x, 0.7, -0.1 );
+    y= int( (v) * scale_y + move_y ); y = height-y-1;index = width *y + i;  if( (0<index)&&(index< image.size()))image[ index ] = 255;
 
-    v = ::math::function::distribution::normal<double>( x, 0.6, 0 );
-    y= int( ((v) * (height/30) +(height/2) ) ); y = height-y-1;index = width *y + i; image[ index ] = 255;
+    v = ::math::function::distribution::normal<double>( x, 0.6, 0.1 );
+    y= int( (v) * scale_y + move_y ); y = height-y-1;index = width *y + i; if( (0<index)&&(index< image.size()))image[ index ] = 255;
 
+    v = -1*::math::function::distribution::normal_cumulative<double>( x, 0.8 ) + ::math::function::distribution::normal_cumulative_ZS<double>( x, 0.8 );
+    y= int( (v) * scale_y + move_y ); y = height-y-1;index = width *y + i; if( (0<index)&&(index< image.size()))image[ index ] = 255;
 
-    //index = width *i + width/2;image[ index ] = 255;
-   image[ index ] = 255;
+    v = -1*::math::function::distribution::normal_cumulative<double>( x, 0.7 ) + ::math::function::distribution::normal_cumulative_ZS<double>( x, 0.7 );
+    y= int( (v) * scale_y + move_y ); y = height-y-1;index = width *y + i; if( (0<index)&&(index< image.size()))image[ index ] = 255;
+
+    v = -1*::math::function::distribution::normal_cumulative<double>( x, 0.6 ) + ::math::function::distribution::normal_cumulative_ZS<double>( x, 0.6 );
+    y= int( (v) * scale_y + move_y ); y = height-y-1; index = width *y + i; if( (0<index)&&(index< image.size()))image[ index ] = 255;
+
    }
 
   //{ std::ofstream( "image2.pgm" ) << PNM::save( image, width, height, PNM::P2 ); }
-
-  //std::cin.get();
+   std::cout << "Done" << std::endl;
+  std::cin.get();
   return EXIT_SUCCESS;
  }
 
