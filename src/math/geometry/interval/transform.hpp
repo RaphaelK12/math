@@ -6,7 +6,7 @@
 #include "./structure.hpp"
 
 #include "../../linear/affine/transform.hpp"
-
+#include "../../algorithm/variation.hpp"
 
 
  namespace math
@@ -26,6 +26,24 @@
           ,::math::geometry::interval::structure< scalar_name, dimension_number >   const& model
          )
          {
+          typedef ::math::linear::vector::point< scalar_name, dimension_number >  point_type;
+          ::math::linear::affine::transform( result[0], affine, model[0] );
+          result[1]= result[0];
+
+          std::array<unsigned, dimension_number > variator{0};
+
+          while( ::math::algorithm::next_variation(variator.begin(), variator.end(), 0, 2 ) )
+           {
+            point_type a, b;
+            for( unsigned index=0; index < dimension_number; ++index )
+             {
+              a[index] = model[variator[index]][index];
+             }
+            ::math::linear::affine::transform( b, affine, a );
+            ::math::geometry::interval::extend( result, b );
+           }
+
+
          }
 
        template< typename scalar_name >

@@ -13,6 +13,7 @@
 #include "./dot.hpp"
 #include "./homogenize.hpp"
 #include "./invert.hpp"
+#include "./inverts.hpp"
 #include "./length.hpp"
 #include "./max.hpp"
 #include "./min.hpp"

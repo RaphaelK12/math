@@ -26,17 +26,10 @@
 
        template< typename scalar_name, unsigned dimension_number>
         ::math::linear::affine::structure<scalar_name,dimension_number> const&
-        one(  )
+        one()
          {
           static ::math::linear::affine::structure<scalar_name,dimension_number> identical = ::math::linear::affine::one( identical );
           return identical;
-         }
-
-       template< typename scalar_name, unsigned dimension_number>
-        ::math::linear::affine::structure<scalar_name,dimension_number> &
-        id( ::math::linear::affine::structure<scalar_name,dimension_number> & a )
-         {
-          return ::math::linear::affine::one<scalar_name,dimension_number>( a );
          }
 
        template< typename scalar_name, unsigned dimension_number>
@@ -44,6 +37,13 @@
         id()
          {
           return ::math::linear::affine::one<scalar_name,dimension_number>();
+         }
+
+       template< typename scalar_name, unsigned dimension_number>
+        ::math::linear::affine::structure<scalar_name,dimension_number> &
+        id( ::math::linear::affine::structure<scalar_name,dimension_number> & a )
+         {
+          return ::math::linear::affine::one<scalar_name,dimension_number>( a );
          }
 
 
