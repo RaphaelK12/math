@@ -16,6 +16,7 @@ void check2d()
   ::math::linear::affine::system( a1, v1, v2, v3 );
 
   ::math::linear::affine::construct( a1, { v1, v2, v3}, { v1, v2, v3} );
+  ::math::linear::affine::construct( a1, a2, a3 );
 
  }
 
@@ -28,6 +29,7 @@ void check2d()
 
   ::math::linear::affine::system( a1, v1, v2, v3, v4, v5 );
   ::math::linear::affine::construct( a1, { v1, v2, v3, v4, v5 }, { v1, v2, v3, v4, v5 } );
+  ::math::linear::affine::construct( a1, a2, a3 );
  }
 
 int main( int argc, char *argv[] )
@@ -65,10 +67,9 @@ int main( int argc, char *argv[] )
   ::math::linear::affine::transform(v1,a1,v2);
   ::math::linear::affine::transform(v1,a1);
 
-
-   ::math::linear::affine::system( a1, v1, v2, v3, v4 );
-     ::math::linear::affine::construct( a1, { v1, v2, v3, v4 }, { v1, v2, v3, v4 } );
-
+  ::math::linear::affine::system( a1, v1, v2, v3, v4 );
+  ::math::linear::affine::construct( a1, { v1, v2, v3, v4 }, { v1, v2, v3, v4 } );
+  ::math::linear::affine::construct( a1, a2, a3 );
 
   return EXIT_SUCCESS;
  }
