@@ -4,6 +4,7 @@
 #include "./addition.hpp"
 #include "./compose.hpp"
 #include "./invert.hpp"
+#include "./id.hpp"
 #include "./structure.hpp"
 #include "./transform.hpp"
 #include "./zero.hpp"
