@@ -26,7 +26,7 @@
 
        template< typename scalar_name, unsigned dimension_number>
         ::math::linear::affine::structure<scalar_name,dimension_number> const&
-        one(  )
+        one()
          {
           static ::math::linear::affine::structure<scalar_name,dimension_number> identical = ::math::linear::affine::one( identical );
           return identical;

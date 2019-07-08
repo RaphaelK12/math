@@ -115,14 +115,14 @@ namespace math
            return m_summae.value() / m_count.value();
           }
 
-         operator sample_type const& () const
+         operator sample_type () const
           {
            return value();
           }
 
          size_type const& count()const
           {
-           return m_count;
+           return m_count.value();
           }
 
          private:

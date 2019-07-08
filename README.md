@@ -1,7 +1,7 @@
 # Miscellaneous mathematical structures and function
 
 ### Status:
-- In progress
+- Some kind of Beta.
 
 ### Description
  - Yet another c++ library with various mathematical structures and function.
@@ -110,7 +110,7 @@ int main( int argc, char *argv[] )
       * Gaussian, average, count.
 
 ### Tested against:
-  - GCC 7.4.0 
+  - GCC 7.4.0
   - MSVC 2017 (15.3.2)
   - MSVC 2015 Update 3
 

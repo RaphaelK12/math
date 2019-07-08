@@ -17,6 +17,7 @@ namespace math
       {
        public:
          typedef size_name size_type;
+         typedef size_name value_type;
 
          count()
           {
@@ -38,18 +39,18 @@ namespace math
            m_value ++;
           }
 
-         size_type const& value()const
+         value_type const& value()const
           {
            return m_value;
           }
 
-         operator size_type const& () const
+         operator value_type const& () const
           {
            return value();
           }
 
         private:
-          size_type m_value;
+          value_type m_value;
       };
 
    }

@@ -12,6 +12,11 @@ int main( int argc, char *argv[] )
 
   typedef ::math::geometry::interval::structure<float,10> interval_t;
   typedef ::math::geometry::interval::structure<float,10>::point_type point_t;
+  typedef ::math::linear::affine::structure<float,10> affine10_t;
+
+  typedef ::math::geometry::interval::structure<float,3> interval3_t;
+  typedef ::math::geometry::interval::structure<float,3>::point_type point3_t;
+  typedef ::math::linear::affine::structure<float,3> affine3_t;
 
   interval_t  i1, i2, i3;
   point_t  p1, p2, p3;  p2 = p2; p3=p3;
@@ -38,5 +43,12 @@ int main( int argc, char *argv[] )
 
     ::math::geometry::interval::inflate( i1, p1, p1, i2 );
 
+  affine10_t  a10;
+  ::math::geometry::interval::transform(i1, a10, i2 );
+
+  affine3_t  a3;
+
+  interval3_t  i3_1, i3_2;
+  ::math::geometry::interval::transform( i3_1, a3, i3_2 );
   return EXIT_SUCCESS;
  }
