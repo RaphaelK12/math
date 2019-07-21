@@ -28,7 +28,7 @@
           ::math::linear::vector::structure< number_name, dimension_number > const& vector_param
          )
          {
-          return std::sqrt( ::math::linear::vector::dot( vector_param, vector_param ) );
+          return static_cast<scalar_name>( std::sqrt( ::math::linear::vector::dot( vector_param, vector_param ) ) );
          }
 
        template< typename scalar_name, unsigned dimension_number/*, typename N_report */ >

@@ -19,7 +19,7 @@ int main( int argc, char *argv[] )
   typedef ::math::linear::affine::structure<float,3> affine3_t;
 
   interval_t  i1, i2, i3;
-  point_t  p1, p2, p3;  p2 = p2; p3=p3;
+  point_t  p1, p2{0}, p3{0};  p2 = p2; p3=p3;
 
   ::math::geometry::interval::center( p1, i1 );
 

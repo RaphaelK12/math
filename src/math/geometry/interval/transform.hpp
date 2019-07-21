@@ -32,7 +32,7 @@
 
           std::array<unsigned, dimension_number > variator{0};
 
-          while( ::math::algorithm::next_variation(variator.begin(), variator.end(), 0, 2 ) )
+          while( ::math::algorithm::next_variation<unsigned>(variator.begin(), variator.end(), 0, 2 ) )
            {
             point_type a, b;
             for( unsigned index=0; index < dimension_number; ++index )

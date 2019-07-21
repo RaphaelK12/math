@@ -28,7 +28,7 @@ int main( int argc, char *argv[] )
     double xr = ( x/(width/2.0) - 1.0);
     double yr = ( y/(width/2.0) - 1.0);
 
-   image[ width*y+x ] = 127*(::math::function::gabor2D<double>{}({xr,yr}) + 1);
+   image[ width*y+x ] = std::uint8_t( 127*(::math::function::gabor2D<double>{}({xr,yr}) + 1) );
    }
 
   //{ std::ofstream( "gabor.pgm" ) << PNM::save( image, width, height, PNM::P2 ); }

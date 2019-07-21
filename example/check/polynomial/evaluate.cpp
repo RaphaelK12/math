@@ -10,7 +10,7 @@ int main( int argc, char *argv[] )
  {
   cout << "Hello World" << endl;
 
-  std::array<float,1>   c1{1.234};
+  std::array<float,1>   c1{1.234f};
   std::array<float,2>   c2{1,2};
   std::array<float,3>   c3{1,2,3,};
   std::array<float,4>   c4{1,2,3,4};

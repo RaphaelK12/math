@@ -14,6 +14,12 @@ namespace math
        return (scalar_output_name(degree) / scalar_output_name(180) ) * scalar_output_name( 3.14159265358979323846264338327950288419716939937510 );
       }
 
+    template< typename scalar_name, typename scalar_output_name = double >
+     constexpr scalar_output_name deg2rad( scalar_name const&& degree )
+      {
+       return (scalar_output_name(degree) / scalar_output_name(180) ) * scalar_output_name( 3.14159265358979323846264338327950288419716939937510 );
+      }
+
    }
  }
 

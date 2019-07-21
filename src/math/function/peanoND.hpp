@@ -22,28 +22,29 @@ namespace math
          coord[ i ] = scalar_name( 1 )/( 1 << iteration );
         }
 
-      for( i=0; i < iteration; ++i )
-       {
-        int pos = 0;
-        add *= scalar_name( 0.5 );
+       for( i=0; i < iteration; ++i )
+        {
+         int pos = 0;
+         add *= scalar_name( 0.5 );
 
-        do
-         {
-          if( value < sub )
-           {
-            _d = dimension_number;
-            while( _d-- )
-             if( pos & ( 1 << _d ) )
-              coord[ _d ] += add;
+         do
+          {
+           if( value < sub )
+            {
+             _d = dimension_number;
+             while( _d-- )
+              if( pos & ( 1 << _d ) )
+               coord[ _d ] += add;
 
-            value *=  mul;
-            break;
-           }
-          value -= sub; pos ++;
-         }
-        while( 0.0 < value );
-       }
-     }
+             value *=  mul;
+             break;
+            }
+           value -= sub; pos ++;
+          }
+         while( 0.0 < value );
+        }
+      }
+
    }
  }
 
