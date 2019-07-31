@@ -30,6 +30,7 @@ int main( int argc, char *argv[] )
 
   ::math::polynomial::solve::quadric::full<float>( r2, c3 );
   ::math::polynomial::solve::cubic::full<float>( r3, c4 );
+  ::math::polynomial::solve::cubic::depressing<float>( c2, c4 );
 
   ::math::polynomial::solve::quartic::bi<float>(        r4.data(), c5.data() );
   ::math::polynomial::solve::quartic::depressed<float>( r4.data(), c5.data() );

@@ -150,6 +150,68 @@
            {
             return ::math::polynomial::solve::cubic::full<scalar_name>( result.data(), coefficient.data(), epsilon );
            }
+
+         template
+          <
+            typename scalar_name
+          >
+          bool depressing( std::array<scalar_name,2> & result, std::array<scalar_name,4> const coefficient, scalar_name const& epsilon = 1e-12 )
+           {
+            auto &p  = result[1];
+            auto &q  = result[0];
+
+            auto &A  = coefficient[3];
+            auto &B  = coefficient[2];
+            auto &C  = coefficient[1];
+            auto &D  = coefficient[0];
+
+            auto a3 = A*A*A;
+
+            if( ( -epsilon < a3 ) && ( a3 < epsilon ) ) return false;
+
+            p = (3*A*C-B*B)/(3*A*A);
+            q = (2*B*B*B-9*A*B*C-27*A*A*D)/(27*a3);
+            return true;
+           }
+
+      //   template
+      //    <
+      //      typename scalar_name
+      //    >
+      //    int depressed( std::array<scalar_name,3> & result, std::array<scalar_name,2> const coefficient, scalar_name const& epsilon = 1e-12 )
+      //     { // todo
+      //      int type = 0;
+      //      auto const& q = coefficient[0];
+      //      auto const& p = coefficient[1];
+      //      auto const& a = coefficient[2];
+      //
+      //      scalar_name d = pow(q/scalar_name(2),2) + cbr(p/scalar_name(3),3);
+      //
+      //      if( epsilon < d )
+      //       {
+      //        d = sqrt( d );
+      //        result[0] = cbrt( -q/scalar_name(2) - d ) + cbrt( -q/scalar_name(2) + d );
+      //        return 1;
+      //       }
+      //
+      //      if( d < epsilon )
+      //       {
+      //
+      //        return 3;
+      //       }
+      //
+      //
+      //       {
+      //        result[0] = cbrt( -q/scalar_name(2) ) + cbrt( -q/scalar_name(2) );
+      //        result[1] = -result[0];
+      //
+      //        return 2;
+      //       }
+      //
+      //      return 0;
+      //     }
+      //
+      //
         }
       }
     }

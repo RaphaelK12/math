@@ -23,7 +23,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\check\geometry\circle\check.cpp">
+    <ClCompile Include="..\..\..\check\linear\vector\check.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
