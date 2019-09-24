@@ -1,6 +1,8 @@
 #ifndef Dh_DDMRM_math_polynomial_evaluate_HPP_
  #define Dh_DDMRM_math_polynomial_evaluate_HPP_
 
+// math::polynomial::evaluate
+
  #include <array>
  #include <vector>
 

@@ -38,11 +38,16 @@
               scalar_name r2[2];
               switch( ::math::polynomial::solve::quadric::full( r2, coefficient+1, epsilon ) )
                {
-                case( 0 ): { result[0] = 0; return 1; }
+                case( 0 ):
+                  {
+                   result[0] = 0; result[1] = result[2] = NAN;
+                   return 1;
+                  }
                 case( 1 ):
                  {
                   result[0] = std::min<scalar_name>( 0, r2[0] );
                   result[1] = std::max<scalar_name>( 0, r2[0] );
+                  result[2] = NAN;
                   return 2;
                  }
 
@@ -57,7 +62,7 @@
                   return 3;
                  }
                }
-
+              result[0] = result[1] = result[2] = NAN;
               return 0;
              }
 
@@ -82,7 +87,8 @@
               result[0] = - a / scalar_name(3);
               result[1] = result[0];
               result[2] = result[0];
-              return -3;
+              result[1] =result[2] = result[3] = NAN;
+              return 1;
              }
             else if( fabs( CR2 - CQ3 ) < epsilon )
              {
@@ -93,14 +99,15 @@
                 result[0] = -scalar_name(2) * sqrtQ  - a / scalar_name(3);
                 result[1] = sqrtQ - a / scalar_name(3);
                 result[2] = result[1];
+                result[2] = NAN;
                 return 2;
                }
               else
                {
                 result[0] =   - sqrtQ - a / scalar_name(3);
-                result[1] =   result[0];
-                result[2] = 2 * sqrtQ - a / scalar_name(3);
-                return -2;
+                result[1] = 2 * sqrtQ - a / scalar_name(3);
+                result[2] = NAN;
+                return 2;
                }
              }
             else if (R2 < Q3)
@@ -138,6 +145,7 @@
               scalar_name A = -sgnR * pow (fabs (R) + sqrt (R2 - Q3), scalar_name(1)/scalar_name(3));
               scalar_name B = Q / A ;
               result[0] = A + B - a / scalar_name(3);
+              result[1] = result[2] = NAN;
               return 1;
              }
           }
@@ -154,24 +162,28 @@
          template
           <
             typename scalar_name
-          >
-          bool depressing( std::array<scalar_name,2> & result, std::array<scalar_name,4> const coefficient, scalar_name const& epsilon = 1e-12 )
+          >    //    [0] + [1] *x + [2] * x^2+ [3] * x^3  = 0
+           scalar_name depressing( std::array<scalar_name,4> & result, std::array<scalar_name,4> const coefficient, scalar_name const& epsilon = 1e-12 )
            {
-            auto &p  = result[1];
-            auto &q  = result[0];
+            scalar_name shift = NAN;
 
             auto &A  = coefficient[3];
             auto &B  = coefficient[2];
             auto &C  = coefficient[1];
             auto &D  = coefficient[0];
 
-            auto a3 = A*A*A;
+            if( ( -epsilon < shift ) && ( shift < epsilon ) ) return shift;
 
-            if( ( -epsilon < a3 ) && ( a3 < epsilon ) ) return false;
+            shift =   -B/( 3 * A );
+                       result[3] = coefficient[3];
+                       result[2] = 0;
+            auto &p  = result[1];
+            auto &q  = result[0];
 
-            p = (3*A*C-B*B)/(3*A*A);
-            q = (2*B*B*B-9*A*B*C-27*A*A*D)/(27*a3);
-            return true;
+            p = C + B * shift ;
+            q = D + (scalar_name(2)/scalar_name(3))* B*shift*shift   + C * shift ;
+
+            return -shift;
            }
 
       //   template

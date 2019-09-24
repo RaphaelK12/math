@@ -1,37 +1,36 @@
 #ifndef Dh_DDMRM_math_polynomial_optimize_HPP_
  #define Dh_DDMRM_math_polynomial_optimize_HPP_
- 
- #include "simple.hpp"
 
- namespace S_DDMRM
-  {
-   namespace S_math
-    {
-     namespace S_polynomial
-      {
-        template< typename N_value >
-         inline      
-         bool 
-         GF_optimize
-          (
-            GC_simple<N_value>     * P_simple
-           ,N_value           const& P_epsilon = N_value( 0 )
-         )
+// math::polynomial::optimize( )
+
+#include <array>
+
+ namespace math
+   {
+    namespace polynomial
+     {
+
+     template< typename scalar_name >
+      inline
+      void
+      optimize( scalar_name* coefficient, std::size_t const& size, scalar_name const& epsilon = 1e-8 )
+       {
+        for( std::size_t  index=0; index < size; index++ )
          {
-          typedef           GC_simple<N_value>  Tf_simple;
-                 
-                   typename Tf_simple::T_size  I_index;       
-                 
-          for( I_index=0; I_index <= P_simple->F_degree(); I_index++ )       
+          if( fabs( coefficient[index] ) < epsilon )
            {
-            if( fabs( (*P_simple)[I_index] ) < P_epsilon )        
-             (*P_simple)[I_index] = N_value(0);
-           }        
-                 
-          return true;                
+            coefficient[index] = 0;
+           }
          }
-   
-      }
+       }
+       
+      template< typename scalar_name, unsigned size_number >
+       inline
+       void optimize( std::array< scalar_name, size_number> &coefficient, scalar_name const& epsilon = 1e-6 )
+        {
+         return math::polynomial::optimize( coefficient.data(), coefficient.size(), epsilon );
+        }
+
     }
   }
 

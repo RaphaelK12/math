@@ -15,7 +15,7 @@
 
       template< typename scalar_name >
        inline
-       bool normalize( scalar_name* coefficient, std::size_t const& size, scalar_name const& epsilon = 1e-6 )
+       bool normalize( scalar_name* coefficient, std::size_t const& size, scalar_name const& epsilon = 1e-8 )
         {
          std::size_t  index;
          scalar_name  I_max= coefficient[0];
@@ -38,12 +38,19 @@
            coefficient[index] /= I_max;
           }
 
-         return false;
+         return true;
         }
 
       template< typename scalar_name >
        inline
-       bool normalize( ::math::polynomial::structure::dynamic< scalar_name > const&coefficient, scalar_name const& epsilon = 1e-6 )
+       bool normalize( ::math::polynomial::structure::dynamic< scalar_name > &coefficient, scalar_name const& epsilon = 1e-6 )
+        {
+         return math::polynomial::normalize( coefficient.data(), coefficient.size(), epsilon );
+        }
+        
+      template< typename scalar_name, unsigned size_number >
+       inline
+       bool normalize( ::math::polynomial::structure::fixed< scalar_name, size_number > &coefficient, scalar_name const& epsilon = 1e-6 )
         {
          return math::polynomial::normalize( coefficient.data(), coefficient.size(), epsilon );
         }

@@ -17,13 +17,14 @@
         <
           typename scalar_name
         >
-        inline unsigned linear( scalar_name zero[1], scalar_name const coefficient[2], scalar_name const& epsilon = 1e-6 )
+        inline unsigned linear( scalar_name root[1], scalar_name const coefficient[2], scalar_name const& epsilon = 1e-6 )
         {
          if( ( -epsilon < coefficient[1] ) && ( coefficient[1] < epsilon ) )
           {
+           root[0] = NAN;
            return 0;
           }
-         zero[0] = -coefficient[0]/coefficient[1];
+         root[0] = -coefficient[0]/coefficient[1];
 
          return 1;
         }
