@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\check\polynomial\solve\test.cpp">
+    <ClCompile Include="..\..\..\readme.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

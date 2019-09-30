@@ -1,10 +1,10 @@
-#ifndef math_polynomial_solve_cubic_HPP_
- #define math_polynomial_solve_cubic_HPP_
+#ifndef math_polynomial_cubic_solve_HPP_
+ #define math_polynomial_cubic_solve_HPP_
 
- // ::math::polynomial::solve::cubic<scalar_name>( result, coefficient, epsilon = 1e-6 )
+ // ::math::polynomial::cubic::solve::***<scalar_name>( result, coefficient, epsilon = 1e-6 )
 
 #include <cmath>
-#include "./quadric.hpp"
+#include "../quadric/solve.hpp"
 #include "../../geometry/deg2rad.hpp"
 
 
@@ -13,9 +13,9 @@
   {
    namespace polynomial
     {
-     namespace solve
+     namespace cubic
       {
-       namespace cubic
+       namespace solve
         {
 
          /*
@@ -26,17 +26,17 @@
           <
             typename scalar_name
           > // copy paste from gsl_poly_solve_cubic
-          int full( scalar_name result[3], scalar_name const coefficient[4], scalar_name const& epsilon = 1e-12 )
+          int general( scalar_name result[3], scalar_name const coefficient[4], scalar_name const& epsilon = 1e-12 )
            {
             if( ( -epsilon < coefficient[3] ) && ( coefficient[3] < epsilon ) )
              {
-              return ::math::polynomial::solve::quadric::full( result, coefficient, epsilon );
+              return ::math::polynomial::quadric::solve::general( result, coefficient, epsilon );
              }
 
             if( ( -epsilon < coefficient[0] ) && ( coefficient[0] < epsilon ) )
              {
               scalar_name r2[2];
-              switch( ::math::polynomial::solve::quadric::full( r2, coefficient+1, epsilon ) )
+              switch( ::math::polynomial::quadric::solve::general( r2, coefficient+1, epsilon ) )
                {
                 case( 0 ):
                   {
@@ -154,36 +154,9 @@
           <
             typename scalar_name
           >
-          int full( std::array<scalar_name,3> & result, std::array<scalar_name,4> const coefficient, scalar_name const& epsilon = 1e-12 )
+          int general( std::array<scalar_name,3> & result, std::array<scalar_name,4> const coefficient, scalar_name const& epsilon = 1e-12 )
            {
-            return ::math::polynomial::solve::cubic::full<scalar_name>( result.data(), coefficient.data(), epsilon );
-           }
-
-         template
-          <
-            typename scalar_name
-          >    //    [0] + [1] *x + [2] * x^2+ [3] * x^3  = 0
-           scalar_name depressing( std::array<scalar_name,4> & result, std::array<scalar_name,4> const coefficient, scalar_name const& epsilon = 1e-12 )
-           {
-            scalar_name shift = NAN;
-
-            auto &A  = coefficient[3];
-            auto &B  = coefficient[2];
-            auto &C  = coefficient[1];
-            auto &D  = coefficient[0];
-
-            if( ( -epsilon < shift ) && ( shift < epsilon ) ) return shift;
-
-            shift =   -B/( 3 * A );
-                       result[3] = coefficient[3];
-                       result[2] = 0;
-            auto &p  = result[1];
-            auto &q  = result[0];
-
-            p = C + B * shift ;
-            q = D + (scalar_name(2)/scalar_name(3))* B*shift*shift   + C * shift ;
-
-            return -shift;
+            return ::math::polynomial::cubic::solve::general<scalar_name>( result.data(), coefficient.data(), epsilon );
            }
 
       //   template

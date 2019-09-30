@@ -4,8 +4,8 @@
  // ::math::linear::matrix::eigen::data<scalar_name,width_number,height_number>
  // ::math::linear::matrix::eigen::algoritham<scalar_name,width_number,height_number>
 
-#include "../../polynomial/solve/quadric.hpp"
-#include "../../polynomial/solve/cubic.hpp"
+#include "../../polynomial/quadric/solve.hpp"
+#include "../../polynomial/cubic/solve.hpp"
 
 
 #include "./structure.hpp"
@@ -107,7 +107,7 @@
                   , 1
                  };
 
-                this->m_count = ::math::polynomial::solve::quadric::full<scalar_name>( this->m_value.data(), coefficient, this->m_epsilon );
+                this->m_count = ::math::polynomial::quadric::solve::general<scalar_name>( this->m_value.data(), coefficient, this->m_epsilon );
 
                 if( 0 == this->m_count )
                  {
@@ -175,7 +175,7 @@
                   ,1
                  };
 
-                int count = ::math::polynomial::solve::cubic::full<scalar_type>( this->m_value.data(), coefficient, this->m_epsilon );
+                int count = ::math::polynomial::cubic::solve::general<scalar_type>( this->m_value.data(), coefficient, this->m_epsilon );
 
                 if( 0 == count )
                  {

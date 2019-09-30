@@ -1,9 +1,9 @@
-#ifndef math_polynomial_solve2_HPP_
- #define math_polynomial_solve2_HPP_
+#ifndef math_polynomial_quadric_solve_HPP_
+ #define math_polynomial_quadric_solve_HPP_
 
-// ::math::polynomial::solve::quadric::full<scalar_name>( root, coefficient, epsilon = 1e-6 )
+// ::math::polynomial::solve::quadric::general<scalar_name>( root, coefficient, epsilon = 1e-6 )
 
-#include "./linear.hpp"
+#include "../linear/solve.hpp"
 
 
  #define math_polynomial_solve_quadric(_a,_b,_c,_d,_t1,_t2) \
@@ -26,9 +26,9 @@
   {
    namespace polynomial
     {
-     namespace solve
+     namespace quadric
       {
-       namespace quadric
+       namespace solve
         {
 
          template
@@ -54,7 +54,7 @@
               return 0;
              }
 
-            if( root[0] < solution  )
+            if( solution  < epsilon )
              {
               solution = 0;
               root[1] = NAN;
@@ -87,7 +87,7 @@
              }
 
             root[0] = - sqrt( solution );
-            root[1] = - solution;
+            root[1] = - root[0];
             return 2;
            }
 
@@ -95,7 +95,7 @@
           <
             typename scalar_name
           > // C + B *x + A * x^2 = 0
-          int full( scalar_name root[2], scalar_name const coefficient[3], scalar_name const& epsilon = 1e-6 )
+          int general( scalar_name root[2], scalar_name const coefficient[3], scalar_name const& epsilon = 1e-6 )
            {
             scalar_name const& a = coefficient[2];
             if( ( -epsilon < a ) && ( a < epsilon ) )
@@ -108,7 +108,7 @@
             scalar_name const& c = coefficient[0];
             if( ( -epsilon < b ) && ( b < epsilon ) )
              {
-              return ::math::polynomial::solve::quadric::depressed( root, c, a, epsilon );
+              return ::math::polynomial::quadric::solve::depressed( root, c, a, epsilon );
              }
 
             if( ( -epsilon < c ) && ( c < epsilon ) )
@@ -162,19 +162,19 @@
           <
             typename scalar_name
           > // C + B *x + A * x^2 = 0
-          inline unsigned full( std::array<scalar_name,2> & root, std::array<scalar_name,3> const & coefficient, scalar_name const& epsilon = 1e-6 )
+          inline unsigned general( std::array<scalar_name,2> & root, std::array<scalar_name,3> const & coefficient, scalar_name const& epsilon = 1e-6 )
            {
-            return ::math::polynomial::solve::quadric::full( root.data(), coefficient.data(), epsilon );
+            return ::math::polynomial::quadric::solve::general( root.data(), coefficient.data(), epsilon );
            }
 
          template
           <
             typename scalar_name
           >// C + B *x + A * x^2 = 0
-          inline unsigned full( scalar_name &z0, scalar_name &z1, std::array<scalar_name,3> const & coefficient, scalar_name const& epsilon = 1e-6 )
+          inline unsigned general( scalar_name &z0, scalar_name &z1, std::array<scalar_name,3> const & coefficient, scalar_name const& epsilon = 1e-6 )
            {
             scalar_name root[2];
-            auto count = ::math::polynomial::solve::quadric::full( root, coefficient.data(), epsilon );
+            auto count = ::math::polynomial::quadric::solve::general( root, coefficient.data(), epsilon );
             z0 = root[0];
             z1 = root[1];
             return count;
@@ -190,7 +190,7 @@
             scalar_name const& c = coefficient[0];
             if( ( -epsilon < b ) && ( b < epsilon ) )
              {
-              return ::math::polynomial::solve::quadric::trivial<scalar_name>( root, c, epsilon );
+              return ::math::polynomial::quadric::solve::trivial<scalar_name>( root, c, epsilon );
              }
 
             if( ( -epsilon < c ) && ( c < epsilon ) )
@@ -210,6 +210,7 @@
 
             if( d < - epsilon )
              {
+              root[1] =  root[0] = NAN;
               return 0;
              }
 
@@ -235,31 +236,9 @@
           inline int monic( scalar_name root[2], scalar_name const C, scalar_name const B, scalar_name const& epsilon = 1e-6 )
            {
             scalar_name coefficinet[2]={ C, B };
-            return ::math::polynomial::solve::quadric::monic( root, coefficinet, epsilon );
+            return ::math::polynomial::quadric::solve::monic( root, coefficinet, epsilon );
            }
 
-         template
-          <
-            typename scalar_name
-          >  // [0] + [1] *x + [2] * x^2 = 0
-          scalar_name depressing( std::array<scalar_name,3> & result, std::array<scalar_name,3> const coefficient, scalar_name const& epsilon = 1e-6 )
-           {
-            scalar_name const& a= coefficient[2];
-            scalar_name const& b= coefficient[1];
-            scalar_name const& c= coefficient[0];
-
-            scalar_name shift = NAN;
-            if( (-epsilon < a ) &&( a < epsilon ) )
-             {
-              return shift;
-             }
-            shift = -b/( 2 * a );
-
-            result[0] =  c + b * shift + shift * shift * a;
-            result[1] =  0;
-            result[2] =  a;
-            return -shift ;
-           }
         }
       }
     }

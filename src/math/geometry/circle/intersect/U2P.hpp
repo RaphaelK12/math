@@ -11,7 +11,7 @@
 #include "../../../linear/vector/dot.hpp"
 
 
-#include "../../../polynomial/solve/quadric.hpp"
+#include "../../../polynomial/quadric/solve.hpp"
 
 
 
@@ -52,7 +52,7 @@
                };
               scalar_type zero[2];
 
-              switch( ::math::polynomial::solve::quadric::full( zero, coefficient, epsilon ) )
+              switch( ::math::polynomial::quadric::solve::general( zero, coefficient, epsilon ) )
                {
                 case( 0 ):
                  {

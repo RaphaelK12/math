@@ -12,6 +12,7 @@
     {
      namespace solve
       {
+       // namespace linear {
 
        template
         <
@@ -37,6 +38,8 @@
          {
           return ::math::polynomial::solve::linear( zero.data(),  coefficient.data(), epsilon );
          }
+
+       // }
 
       }
     }

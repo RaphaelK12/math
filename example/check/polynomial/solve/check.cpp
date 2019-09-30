@@ -27,12 +27,11 @@ int main( int argc, char *argv[] )
   ::math::polynomial::solve::linear<float>( r1, c2 );
   ::math::polynomial::solve::linear<float>( r1.data(), c2.data() );
 
-  ::math::polynomial::solve::quadric::full<float>( r2, c3 );
-  ::math::polynomial::solve::cubic::full<float>( r3, c4 );
+  ::math::polynomial::quadric::solve::general<float>( r2, c3 );
+  ::math::polynomial::cubic::solve::general<float>( r3, c4 );
 
-  ::math::polynomial::solve::quartic::bi<float>(        r4.data(), c5.data() );
-  ::math::polynomial::solve::quartic::depressed<float>( r4.data(), c5.data() );
-  ::math::polynomial::solve::quartic::full<float>(      r4.data(), c5.data() );
+  ::math::polynomial::quartic::solve::bi<float>(        r4.data(), c5.data() );
+  ::math::polynomial::quartic::solve::general<float>(      r4.data(), c5.data() );
 
 
   cin.get();
