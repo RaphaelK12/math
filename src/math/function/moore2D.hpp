@@ -13,7 +13,7 @@ namespace math
     template< typename scalar_name >
      inline void moore2D( scalar_name & x, scalar_name &y, scalar_name P_value, int iterations = 16 )
       {
-
+       // TODO
       }
 
     template < typename scalar_name, typename size_name=int >

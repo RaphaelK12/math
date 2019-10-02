@@ -15,3 +15,5 @@
 #include "./horizon.hpp"
 
 #include "./affine.hpp"
+
+#include "./bisector.hpp"

@@ -29,3 +29,7 @@ cd ..
 cd ./statistic
 ./make.sh
 cd ..
+
+cd ./topology
+./make.sh
+cd ..

@@ -29,13 +29,13 @@ int main( int argc, char *argv[] )
   clock_t t = clock();
 
 
-  LOAD7( I_vec, 5, 5, 5, 5, 5, 5, 5 );
+  LOAD7( I_vec, 0, 0, 0, 5, 5, 5, 5 );
   do
    {
     comb1++;
     copy( I_vec.begin(), I_vec.begin()+3, ostream_iterator<int>(cout, ", " ) ); cout << endl;
    }
-  while( ::math::algorithm::next_variation( I_vec.begin(), I_vec.begin()+3, 0, 6 ) );
+  while( ::math::algorithm::next_variation( I_vec.begin(), I_vec.begin()+3, 6, 0, 1 ) );
 
   cout << endl;
   cout << "comb1 " << comb1 << endl;

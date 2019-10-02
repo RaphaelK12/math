@@ -26,7 +26,7 @@ namespace math
        >
        void
        redirect( ::math::geometry::direction::ABC2D< scalar_name > & direction )
-        {
+        { // flip direction
          direction.A() = -direction.A();
          direction.B() = -direction.B();
          direction.C() = -direction.C();
@@ -38,7 +38,7 @@ namespace math
        >
        void
        redirect( ::math::geometry::direction::polar< scalar_name >  & direction )
-        {
+        { // flip direction
          direction.fix();
          direction.angle() += ::math::geometry::deg2rad( 180.0 );
          direction.fix();
@@ -52,7 +52,7 @@ namespace math
        >
        void
        redirect( ::math::geometry::direction::parametric< scalar_name, dimesion_number > & direction )
-        {
+        { // flip direction
          ::math::linear::vector::negate( direction.direction() );
         }
 
@@ -63,7 +63,7 @@ namespace math
        >
        void
        redirect( ::math::geometry::direction::two< scalar_name, dimesion_number > & direction )
-        {
+        { // flip direction
          std::swap( direction.first(), direction.second() );
         }
 

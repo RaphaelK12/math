@@ -9,3 +9,6 @@
 #include "./project.hpp"
 
 #include "./affine.hpp"
+
+#include "./abcd.hpp"
+#include "./fit3d.hpp"

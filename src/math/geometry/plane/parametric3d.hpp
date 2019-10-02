@@ -16,11 +16,14 @@ namespace math
     namespace plane
      {
 
-      template
-       <
-         typename scalar_name
-       >
-       class no3d;
+      template < typename scalar_name >
+       class ABCD3D;
+
+      template< typename scalar_name >
+        class no3d;
+
+      template < typename scalar_name >
+       class parametric3d;
 
       template
        <
@@ -32,8 +35,12 @@ namespace math
 
            typedef scalar_name scalar_type;
            typedef ::math::linear::vector::structure<scalar_name,3>  point3d_type, point_type;
-           typedef ::math::geometry::plane::no3d<scalar_name> no3d_type;
 
+           typedef ::math::geometry::plane::ABCD3D<scalar_name>              ABCD3D_type;
+           typedef ::math::geometry::plane::no3d<scalar_name>                  no3d_type;
+           typedef ::math::geometry::plane::parametric3d<scalar_name>  parametric3d_type, this_type;
+
+         public:
            parametric3d( )
             {
             }
@@ -45,9 +52,21 @@ namespace math
             {
             }
 
+         public:
+           explicit parametric3d( ABCD3D_type const& no )
+            {
+              *this = no;
+            }
+
            explicit parametric3d( no3d_type const& no )
             {
               *this = no;
+            }
+         public:
+           parametric3d &operator=( ABCD3D_type const& abcd )
+            {
+             // TODO
+             return *this;
             }
 
            parametric3d &operator=( no3d_type const& no )

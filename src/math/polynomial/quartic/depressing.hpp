@@ -16,7 +16,7 @@
        template
          <
          typename scalar_name
-         >
+         >// TODO MONIC variant also
          scalar_name depressing( scalar_name result[5], scalar_name const coefficient[5], scalar_name const& epsilon = 1e-12 )
           {
            scalar_name shift = NAN;

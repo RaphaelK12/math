@@ -35,7 +35,7 @@
               case( 2 ):
                {
                 if( r2[1] < -epsilon ) { goto case_1; }
-                if( r2[1] <  epsilon ) {  root[count++] = 0; goto case_1; }
+                if( r2[1] < +epsilon ) { root[count++] = 0; goto case_1; }
               //if( epsilon < r2[1] )
                  {
                   root[count++] = - sqrt( r2[1] );
@@ -46,7 +46,7 @@
                {
                 case_1:
                 if( r2[0] < -epsilon ) { goto case_0; }
-                if( r2[0] < epsilon ) {root[count++] = 0; goto case_0; }
+                if( r2[0] < +epsilon ) { root[count++] = 0; goto case_0; }
               //if( epsilon < r2[0] )
                  {
                   root[count++] = - sqrt( r2[0] );
@@ -98,19 +98,6 @@
 
           scalar_name quadCa[2]={ scalar_name( p/2 + m - q/( 2 * sqrt( 2*m ) ) ), scalar_name( +sqrt( 2 * m ) ) }; count += ::math::polynomial::quadric::solve::monic( root+count, quadCa, epsilon );
           scalar_name quadCb[2]={ scalar_name( p/2 + m + q/( 2 * sqrt( 2*m ) ) ), scalar_name( -sqrt( 2 * m ) ) }; count += ::math::polynomial::quadric::solve::monic( root+count, quadCb, epsilon );
-
-          switch( count )
-           {
-            case(4):
-              if( root[1] < root[0] )std::swap( root[0], root[1] );
-              if( root[2] < root[1] )std::swap( root[1], root[2] );
-              if( root[3] < root[2] )std::swap( root[2], root[3] );
-            case(3):
-              if( root[1] < root[0] )std::swap( root[0], root[1] );
-              if( root[2] < root[1] )std::swap( root[1], root[2] );
-            case(2): if( root[1] < root[0] )std::swap( root[0], root[1] );
-            case(1): break;
-           }
 
           return count;
          }
@@ -167,7 +154,7 @@
               t = p / 2;
 
               count += ::math::polynomial::quadric::solve::trivial( root+count, t, epsilon );
-              goto label_sort;
+              return count;
              }
 
             t = ( p - sqrt( D ) ) / 2;
@@ -175,7 +162,7 @@
 
             count += ::math::polynomial::quadric::solve::trivial( root+count, t, epsilon );
             count += ::math::polynomial::quadric::solve::trivial( root+count, v, epsilon );
-            goto label_sort;
+            return count;
            }
           else
            {
@@ -185,22 +172,6 @@
             v = ( p + U - q/u )/2;
             scalar_name quadCa[2]={ t, s }; count += ::math::polynomial::quadric::solve::monic( root+count, quadCa, epsilon );
             scalar_name quadCb[2]={ v, u }; count += ::math::polynomial::quadric::solve::monic( root+count, quadCb, epsilon );
-           }
-
-          label_sort:
-          switch( count )
-           {
-            case(4):
-              if( root[1] < root[0] )std::swap( root[0], root[1] );
-              if( root[2] < root[1] )std::swap( root[1], root[2] );
-              if( root[3] < root[2] )std::swap( root[2], root[3] );
-            case(3):
-             if( root[1] < root[0] )std::swap( root[0], root[1] );
-             if( root[2] < root[1] )std::swap( root[1], root[2] );
-            case(2): 
-              if( root[1] < root[0] )std::swap( root[0], root[1] );
-            case(1): 
-              break;
            }
 
           return count;
@@ -229,7 +200,7 @@
           unsigned count=0;
           unsigned count_real=0;
           std::array<scalar_name,2> g;
-          switch( ::math::polynomial::quadric::solve::monic( g.data(),  B-y, -A ) )
+          switch( ::math::polynomial::quadric::solve::monic( g.data(),  B-y, -A, epsilon ) )
            {
             case(0) : return 0;
             case(1) : g[1] = g[0]; count = 2; count_real += 1; break;
@@ -237,7 +208,7 @@
            }
 
           std::array<scalar_name,2> h;
-          switch( ::math::polynomial::quadric::solve::monic( h.data(),    D, -y ) )
+          switch( ::math::polynomial::quadric::solve::monic( h.data(),    D, -y, epsilon ) )
            {
             case(0) : return 0;
             case(1) : h[1] = h[0]; count = 4; count_real +=1;  break;
@@ -256,19 +227,6 @@
            }
 
           count += ::math::polynomial::quadric::solve::monic( root+count, h[1], g[1] );
-
-          switch( count )
-           {
-            case(4):
-              if( root[1] < root[0] )std::swap( root[0], root[1] );
-              if( root[2] < root[1] )std::swap( root[1], root[2] );
-              if( root[3] < root[2] )std::swap( root[2], root[3] );
-            case(3):
-              if( root[1] < root[0] )std::swap( root[0], root[1] );
-              if( root[2] < root[1] )std::swap( root[1], root[2] );
-            case(2): if( root[1] < root[0] )std::swap( root[0], root[1] );
-            case(1): break;
-           }
 
           return count;
          }
@@ -298,6 +256,9 @@
             return ::math::polynomial::quartic::solve::bi( root, c2, epsilon );
            }
 
+
+          // scalar_name shift = ::math::polynomial::quartic::depressing( depressedC, coefficient, epsilon );
+          // scalar_name shift = ::math::polynomial::quartic::monic( depressedC, depressedC, epsilon );
           scalar_name const& a4 = coefficient[4];
           scalar_name const& a3 = coefficient[3];
           scalar_name const& a2 = coefficient[2];
