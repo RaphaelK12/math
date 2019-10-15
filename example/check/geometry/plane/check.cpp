@@ -36,6 +36,29 @@ int main( int argc, char *argv[] )
   ::math::geometry::plane::distance( point3, no3d );
 
   std::vector< ::math::linear::vector::point<double,3> > cloud;
+
+  cloud.clear();
+  cloud.push_back({1,0,0});
+  cloud.push_back({0,1,0});
+  cloud.push_back({0,0,1});
+  ::math::geometry::plane::fit( no3d, cloud );
+
+  cloud.clear();
+  cloud.push_back({0,0,0});
+  cloud.push_back({1,0,0});
+  cloud.push_back({0,1,0});
+  ::math::geometry::plane::fit( no3d, cloud );
+
+  cloud.clear();
+  cloud.push_back({0,0,0});
+  cloud.push_back({1,0,0});
+  cloud.push_back({0,0,1});
+  ::math::geometry::plane::fit( no3d, cloud );
+
+  cloud.clear();
+  cloud.push_back({0,0,0});
+  cloud.push_back({0,1,0});
+  cloud.push_back({0,0,1});
   ::math::geometry::plane::fit( no3d, cloud );
 
 
