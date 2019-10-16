@@ -218,7 +218,7 @@ void NNG()
   sico.push( {1,0}, {} );
   sico.push( {1,3}, {} );
 
-  ::math::topology::sico::NNG<data_type,float,2>( sico );
+  ::math::topology::sico::NNG<float,2,data_type>( sico );
   print( sico );
  }
 
@@ -232,7 +232,7 @@ void delaunay()
   sico.push( {0,2}, {} );
   sico.push( {1,3}, {} );
 
-  ::math::topology::sico::delaunay<data_type,double>( sico );
+  ::math::topology::sico::delaunay<double>( sico );
   print( sico );
   SVG( "simple.svg", sico );
 
@@ -241,7 +241,7 @@ void delaunay()
    {
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
    }
-  ::math::topology::sico::delaunay<data_type,double>( sico );
+  ::math::topology::sico::delaunay<double>( sico );
   SVG( "rand-100.svg", sico );
 
   sico.clear();
@@ -249,7 +249,7 @@ void delaunay()
   {
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
   }
-  ::math::topology::sico::delaunay<data_type,double>( sico );
+  ::math::topology::sico::delaunay<double>( sico );
   SVG( "rand-1000.svg", sico );
 }
 

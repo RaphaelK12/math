@@ -19,15 +19,15 @@ namespace math
 
      template
        <
-        typename      data_name //!< Essentially whatever. Copyable
-        ,typename   scalar_name
+         typename   scalar_name
+        ,typename     data_name //!< Essentially whatever. Copyable
        >
-       std::size_t delaunay //!< delaunay Triangulation
+       std::size_t delaunay //!< Delaunay Triangulation
        (
          ::math::topology::sico::container<data_name>       & result
        )
        {
-       ::math::topology::sico::NNG<data_name,scalar_name,2>( result );
+       ::math::topology::sico::NNG<scalar_name,2,data_name>( result );
 
         for( std::size_t a=0; a < result.size(1); ++a )
          {
@@ -35,13 +35,13 @@ namespace math
           auto const& B = simplex.face()[0];
           auto const& C = simplex.face()[1];
 
-          auto const & first   = ::math::topology::sico::vector::point<data_name,scalar_name,2>( result.vertex( B ) );
-          auto const & second  = ::math::topology::sico::vector::point<data_name,scalar_name,2>( result.vertex( C ) );
+          auto const & first   = ::math::topology::sico::vector::point<scalar_name,2>( result.vertex( B ) );
+          auto const & second  = ::math::topology::sico::vector::point<scalar_name,2>( result.vertex( C ) );
           for( std::size_t A =0; A < result.size(0); ++A )
            {
             if( A == B ) continue;
             if( A == C ) continue;
-            auto const & third  = ::math::topology::sico::vector::point<data_name,scalar_name,2>( result.vertex( A ) );
+            auto const & third  = ::math::topology::sico::vector::point<scalar_name,2>( result.vertex( A ) );
 
             ::math::geometry::circle::simple<scalar_name,2> circle;
             if( false == ::math::geometry::circle::construct( circle, first, second, third ) )
@@ -54,7 +54,7 @@ namespace math
               if( T == A ) continue;
               if( T == B ) continue;
               if( T == C ) continue;
-              auto const & fourth  = ::math::topology::sico::vector::point<data_name,scalar_name,2>( result.vertex( T ) );
+              auto const & fourth  = ::math::topology::sico::vector::point<scalar_name,2>( result.vertex( T ) );
               if( true == ::math::geometry::circle::inside<scalar_name>( circle, fourth ) )
                {
                 flag = false;

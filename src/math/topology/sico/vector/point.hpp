@@ -21,9 +21,9 @@ namespace math
 
        template
          <
-           typename         data_name //!< Essentially whatever. Copyable
-          ,typename     scalar_number
+           typename     scalar_number
           ,unsigned   dimesion_number
+          ,typename         data_name //!< Essentially whatever. Copyable
          >
          ::math::linear::vector::point< scalar_number, dimesion_number > const & 
          point 
