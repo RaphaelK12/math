@@ -57,7 +57,7 @@
         length
          (
            ::math::linear::vector::structure< scalar_name, dimension_number >    & vector_param
-          ,scalar_name                                           const& length_param
+          ,scalar_name                                                      const& length_param
          )
          {
           scalar_name old_length = ::math::linear::vector::length<scalar_name,scalar_name,dimension_number>( vector_param );
