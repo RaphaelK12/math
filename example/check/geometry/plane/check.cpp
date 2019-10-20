@@ -63,7 +63,6 @@ void fit3d_Y()
   //std::cout << __LINE__ << ". "; print( cloud_normal( cloud ) ); std::cout << " == "; ::math::geometry::plane::fit( no3d, cloud );   print( no3d.normal() ); std::cout << std::endl;
 }
 
-
 void fit3d_Z()
  {
   ::math::geometry::plane::no3d<double>                no3d;
@@ -147,15 +146,15 @@ int main( int argc, char *argv[] )
   b=a;
 
   double l;
-   ::math::linear::vector::point<double,3>             point3;
-   ::math::linear::vector::point<double,2>             point2{0};   point2 = point2;
+  ::math::linear::vector::point<double,3>             point3;
+  ::math::linear::vector::point<double,2>             point2{0};   point2 = point2;
 
-   ::math::geometry::direction::ABC2D<double>             abc;
-   ::math::geometry::plane::ABCD3D<double>             abcd;
+  ::math::geometry::direction::ABC2D<double>           abc;
+  ::math::geometry::plane::ABCD3D<double>             abcd;
 
-   abcd    =  no3d; abcd    = param3d;
-   no3d    =  abcd; no3d    = param3d;
-   param3d =  abcd; param3d = abcd;
+  abcd    =  no3d; abcd    = param3d;
+  no3d    =  abcd; no3d    = param3d;
+  param3d =  abcd; param3d = abcd;
 
   ::math::geometry::direction::parametric<double, 3 > parametric;
 
@@ -169,6 +168,11 @@ int main( int argc, char *argv[] )
   fit3d_Z();
 
   fit3d();
+
+  auto plane1 = ::math::geometry::plane::bisector( point3, point3 );
+  ::math::linear::vector::point<double,10>             point10a;
+  ::math::linear::vector::point<double,10>             point10b;
+  auto planeN = ::math::geometry::plane::bisector( point10a, point10b );
 
   return EXIT_SUCCESS;
  }

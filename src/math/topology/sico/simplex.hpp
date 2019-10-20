@@ -21,6 +21,7 @@ namespace math
          public:
            typedef size_t size_type;
            typedef std::vector<size_type> face_type;
+           typedef std::vector<size_type> cell_type;
            typedef std::initializer_list<size_type> list_type;
 
            explicit simplex( data_name const& data_param ):m_data(data_param){ }
@@ -37,6 +38,12 @@ namespace math
            face_type      & face()      { return m_face; }
          private:
            face_type m_face;
+
+         public:
+           cell_type const& cell() const{ return m_cell; }
+           cell_type      & cell()      { return m_cell; }
+         private:
+           cell_type m_cell;
         };
 
      }

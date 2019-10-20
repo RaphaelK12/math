@@ -65,7 +65,20 @@ namespace math
          public:
            parametric3d &operator=( ABCD3D_type const& abcd )
             {
-             // TODO
+             no3d_type no3d;
+             no3d = abcd;
+             *this = no3d;
+
+            point_type normal;
+            point_type origin;
+            if(false){
+             ::math::linear::vector::load( normal, abcd.A(), abcd.B(), abcd.C() );
+             scalar_type dot= ::math::linear::vector::dot( normal, normal ) ;
+             scalar_type lambda = -abcd.D()/ dot;
+             ::math::linear::vector::scale( this->m_origin, lambda, normal );
+            }
+
+
              return *this;
             }
 
@@ -74,26 +87,24 @@ namespace math
              this->m_origin = no.origin();
 
              point_type x{0,0,0};
-
-             int index = 0;
-
-             if( fabs( no.normal()[1] ) < fabs( no.normal()[index] ) )
-              {
-               index = 1;
-              }
-
-             if( fabs( no.normal()[2] ) < fabs( no.normal()[index] ) )
-              {
-               index = 2;
-              }
-
-             x[index] = scalar_type( 1 );
+             {
+              int index = 0;
+              if( fabs( no.normal()[1] ) < fabs( no.normal()[index] ) )
+               {
+                index = 1;
+               }
+              if( fabs( no.normal()[2] ) < fabs( no.normal()[index] ) )
+               {
+                index = 2;
+               }
+              x[index] = scalar_type( 1 );
+             }
 
              ::math::linear::vector::cross( this->m_Y, no.normal(), x );
-             ::math::linear::vector::length<scalar_type>( this->m_Y, 1 );
+             ::math::linear::vector::length( this->m_Y, scalar_type(1) );
 
              ::math::linear::vector::cross( this->m_X, this->m_Y, no.normal() );
-             ::math::linear::vector::length<scalar_type>( this->m_X, 1 );
+             ::math::linear::vector::length( this->m_X, scalar_type(1) );
 
              return *this;
             }

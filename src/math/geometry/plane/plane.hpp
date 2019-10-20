@@ -12,3 +12,4 @@
 
 #include "./abcd.hpp"
 #include "./fit3d.hpp"
+#include "./bisector.hpp"

@@ -70,6 +70,7 @@ namespace math
              ::math::topology::sico::closure( closure, dimension, index, sc );
              lower_level.insert( lower_level.end(), closure.begin(), closure.end() );
             }
+
            std::sort( lower_level.begin(), lower_level.end() );
            lower_level.erase( std::unique( lower_level.begin(), lower_level.end() ), lower_level.end() );
           }
@@ -83,26 +84,41 @@ namespace math
        >
        inline size_t closure // All (sub-)faces as new topology
         (
-           ::math::topology::sico::container<data_name>      & result
-         , std::size_t                                  const& dimension
-         , std::size_t                                  const& index
-         , ::math::topology::sico::container<data_name> const& sc // can be very big.
+          ::math::topology::sico::container<data_name>      & result
+         ,std::size_t                                  const& dimension
+         ,std::size_t                                  const& index
+         ,::math::topology::sico::container<data_name> const& sico // can be very big.
         )
         {
          result.clear();
-         if( false == sc.exists( dimension, index ) )
+         if( false == sico.exists( dimension, index ) )
           {
            return result.size();
           }
 
-          // TODO
          std::vector< std::vector< std::size_t > > closure;
-         ::math::topology::sico::closure( closure, dimension, index, sc );
+         ::math::topology::sico::closure( closure, dimension, index, sico );
+
+         std::vector< std::size_t > reindex;
+         reindex = closure[0];
+         for( std::size_t index=0; index < closure[0].size(); ++index )
+          {
+           result.push( sico.vertex( reindex[index] ), {} );
+          }
 
          // TODO calc reindex
-         for( std::size_t level=1; level < dimension; ++level )
+         // TODO face_type face;
+         for( std::size_t level=0; level < dimension; ++level )
           {
-           // TODO
+           for( std::size_t index=0; index < closure[level].size(); ++index )
+            {
+             // TODO face.reserve( sico.simplex( level, index ).face().size() );
+             for( std::size_t fi=0; fi< sico.simplex( level, index ).face().size(); ++ fi)
+              {
+               // face[ index ] = TODO
+              }
+             // TODO result.push( sico.simplex( level, closure[ reindex[index] ] ).data(), face );
+            }
           }
 
          return result.size();
