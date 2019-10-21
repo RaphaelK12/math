@@ -1,13 +1,13 @@
 #ifndef math_topology_sico_HyperPoint
 #define math_topology_sico_HyperPoint
 
-// ::math::topology::sico::hyper_point<data_name>( result, level, index, container )
+// ::math::topology::sico::hyper_point<data_name>( result, level, index, structure )
 
 
 
 #include <algorithm>
 #include <vector>
-#include "./container.hpp"
+#include "./structure.hpp"
 
 namespace math
  {
@@ -25,7 +25,7 @@ namespace math
            std::vector< std::size_t >              & result
          , std::size_t const& dimension
          , std::size_t const& index
-         ,::math::topology::sico::container<data_name> const& sc
+         ,::math::topology::sico::structure<data_name> const& sc
         )
         {
          result.clear();

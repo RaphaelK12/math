@@ -5,7 +5,7 @@
 
 #include <algorithm>
 #include <vector>
-#include "./container.hpp"
+#include "./structure.hpp"
 
 namespace math
  {
@@ -20,13 +20,13 @@ namespace math
        >
        size_t push
         (
-          ::math::topology::sico::container<data_name>      & sc
+          ::math::topology::sico::structure<data_name>      & sc
          , data_name                                   const& data
          ,::std::initializer_list<std::size_t>         const& list
         )
         {
-         typedef ::math::topology::sico::container<data_name> container_type;
-         typedef typename container_type::simplex_type          simplex_type;
+         typedef ::math::topology::sico::structure<data_name> structure_type;
+         typedef typename structure_type::simplex_type          simplex_type;
          typedef typename simplex_type::face_type                  face_type;
 
          return sc.push( data, face_type( list ) );

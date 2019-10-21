@@ -4,9 +4,10 @@
 #include <fstream>
 
 #include "math/topology/topology.hpp"
+#include "./SVG.hpp"
 
  template< typename data_type >
- void print( ::math::topology::sico::container<data_type> const& sico  )
+ void print( ::math::topology::sico::structure<data_type> const& sico  )
   {
    std::cout << "{ " << std::endl;
    for( size_t dimension=0; dimension < sico.size(); ++dimension )
@@ -27,10 +28,9 @@
     }
    std::cout << "}" << std::endl;
   }
-
-
+ 
 template< typename data_type >
- void print_new( ::math::topology::sico::container<data_type> const& sico  )
+ void print_new( ::math::topology::sico::structure<data_type> const& sico  )
   {
    std::cout << "{ " << std::endl;
    for( size_t dimension=0; dimension < sico.size(); ++dimension )
@@ -72,8 +72,6 @@ void print( std::vector<data_name> const& v )
   std::cout << "]" << std::endl;
  }
 
-
-
 template < typename data_name >
 void print( std::vector<std::vector<data_name>> const& v )
  {
@@ -95,46 +93,123 @@ void print( std::vector<std::vector<data_name>> const& v )
   std::cout << "}" << std::endl;
  }
 
-// <svg height="210" width="500">
-//    <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
-// </svg>
+ template< typename  scalar_name >
+  void SVG
+   (
+     std::string const& filename
+    , typename ::math::topology::sico::intersect_struct<std::array<scalar_name,2> >::result_type  const  & result
+    ,::math::topology::sico::structure<std::array<scalar_name,2> >       const& left
+    ,::math::topology::sico::structure<std::array<scalar_name,2 > >       const& right
+   )
+ {
+  typedef  ::math::topology::sico::structure<std::array<scalar_name,2> > structure_type;
+
+  structure_type left_new;
+  structure_type right_new;
+  for( std::size_t dimension=0; dimension < 1; ++dimension )
+   {
+    for( std::size_t index=0; index < result[0].first.size(); ++index )
+     {
+      auto const & simplex = left.simplex( dimension, result[dimension].first[index] );
+      left_new.push( simplex.data(), {} );
+     }
+    for( std::size_t index=0; index < result[0].second.size(); ++index )
+     {
+      auto const & simplex = right.simplex( dimension, result[dimension].second[index] );
+      right_new.push( { simplex.data()[0]+1.0f, simplex.data()[1]+0.0f }, {} );
+     }
+   }
+
+  for( std::size_t dimension=1; dimension < std::min( left.size(), result.size() ); ++dimension )
+   {
+    for( std::size_t index=0; index < result[dimension].first.size(); ++index )
+     {
+      auto const & simplex = left.simplex( dimension, result[dimension].first[index] );
+      typename structure_type::face_type face_new;
+      auto const& low = result[dimension-1].first;
+      for( auto const& face_index: simplex.face() )
+       {
+        face_new.push_back( std::find( low.begin(), low.end(), face_index ) - low.begin()   );
+       }
+      left_new.push( simplex.data(), face_new );
+     }
+   }
+
+  for( std::size_t dimension=1; dimension < std::min( right.size(), result.size() ); ++dimension )
+   {
+    for( std::size_t index=0; index < result[dimension].second.size(); ++index )
+     {
+      auto const & simplex = right.simplex( dimension, result[dimension].second[index] );
+      typename structure_type::face_type face_new;
+      auto const& low = result[dimension-1].second;
+      for( auto const& face_index: simplex.face() )
+       {
+        face_new.push_back( std::find( low.begin(), low.end(), face_index ) - low.begin() );
+       }
+      right_new.push( simplex.data(), face_new );
+     }
+   }
+
+  structure_type  result_new;
+  ::math::topology::sico::concatenate( result_new, left_new, right_new );
+  static int count=0;
+  SVG<float>( filename, result_new );
+ }
+
+template< typename data_name >
+ void make_tetraedar( ::math::topology::sico::structure<data_name> & sico )
+ {
+   std::cout << __FUNCTION__ << std::endl;
+   sico.clear();
+   sico.push(data_name{}, {});  // New point
+   sico.push(data_name{}, {});  // New point
+   sico.push(data_name{}, {});  // New point
+   sico.push(data_name{}, {});  // New point
+
+   sico.push(data_name{}, {0,1});  // 0 - line
+   sico.push(data_name{}, {0,2});  // 1 - line
+   sico.push(data_name{}, {0,3});  // 2 -line
+
+   sico.push(data_name{}, {1,2});  // 3 -line
+   sico.push(data_name{}, {1,3});  // 4 -line
+   sico.push(data_name{}, {2,3});  // 5 -line
+
+   sico.push(data_name{}, {0,1,3}); // triangle
+   sico.push(data_name{}, {1,2,5}); // triangle
+   sico.push(data_name{}, {3,4,5}); // triangle
+   sico.push(data_name{}, {0,2,4}); // triangle
+
+   sico.push( data_name{}, {0,1,2,3} ); // tetra
+ }
 
 template< typename scalar_name >
- void SVG( std::string const& filename, ::math::topology::sico::container<std::array<scalar_name,2> > const&  sico )
-  {
-   std::ofstream ofs( filename );
-   ofs << "<svg height=\"10\" width=\"10\">" << std::endl;
-   for( size_t index=0; index < sico.size(1) ; ++index )
-    {
-     auto simplex = sico.simplex( 1, index );
-     auto first = sico.vertex( simplex.face()[0] ).data();
-     auto second = sico.vertex( simplex.face()[1] ).data();
-     ofs << "<line "
-              << " x1=\""<< 10* first[0]  << "\""
-              << " y1=\""<< 10* first[1]  << "\""
-              << " x2=\""<< 10* second[0] << "\""
-              << " y2=\""<< 10* second[1] << "\""
-              <<" style=\"stroke:rgb(255,0,0);stroke-width:0.01\" />"
-         << std::endl;
-    }
-   ofs << "</svg>" << std::endl;
-  }
+ void make_random_square( ::math::topology::sico::structure<std::array<scalar_name,2>> & sico, size_t const& count )
+ {
+   std::cout << __FUNCTION__ << std::endl;
+  sico.clear();
+  for( std::size_t i=0; i < count; ++i )
+   {
+    sico.push( {scalar_name ( rand()/(double)RAND_MAX), scalar_name( rand()/(double)RAND_MAX )} , {} );
+   }
+  ::math::topology::sico::delaunay<scalar_name>( sico );
+ }
 
-void hyper_point( ::math::topology::sico::container<float> const& sico )
+
+void hyper_point( ::math::topology::sico::structure<float> const& sico )
  {
   std::cout << __FUNCTION__ << std::endl;
   ::std::vector<size_t> r;
   ::math::topology::sico::hyper_point( r, 3, 0, sico );  print( r );
  }
 
-void join( ::math::topology::sico::container<float> const& sico )
+void concatenate( ::math::topology::sico::structure<float> const& sico )
  {
   std::cout << __FUNCTION__ << std::endl;
-  ::math::topology::sico::container<float> r;
+  ::math::topology::sico::structure<float> r;
   ::math::topology::sico::concatenate( r, sico, sico );
  }
 
-void vertex( ::math::topology::sico::container<float> const& sico )
+void vertex( ::math::topology::sico::structure<float> const& sico )
  {
   std::cout << __FUNCTION__ << std::endl;
   ::std::vector<size_t> r;
@@ -143,28 +218,28 @@ void vertex( ::math::topology::sico::container<float> const& sico )
   ::math::topology::sico::vertex( r, 0, 4, sico ); print( r );
 }
 
-void find( ::math::topology::sico::container<float> const& needle, ::math::topology::sico::container<float> const& haystack  )
+void find( ::math::topology::sico::structure<float> const& needle, ::math::topology::sico::structure<float> const& haystack  )
  {
   std::cout << __FUNCTION__ << std::endl;
-  ::math::topology::sico::container<float> position;
+  ::math::topology::sico::structure<float> position;
   //::math::topology::sico::find( position, needle, haystack );
   print( position );
  }
 
-void erase( ::math::topology::sico::container<float> const& sico  )
+void erase( ::math::topology::sico::structure<float> const& sico  )
  {
   std::cout << __FUNCTION__ << std::endl;
-  ::math::topology::sico::container<float> copy = sico ;
+  ::math::topology::sico::structure<float> copy = sico ;
   print( copy );
   copy = sico; std::cout<< "this::erase(0,0): " ;copy.erase(0,0);  print( copy );
   copy = sico; std::cout<< "this::erase(0,1): " ;copy.erase(0,1);  print( copy );
   copy = sico; std::cout<< "this::erase(1,0): " ;copy.erase(1,0);  print( copy );
  }
 
-void trim( ::math::topology::sico::container<float> const& sico  )
+void trim( ::math::topology::sico::structure<float> const& sico  )
  {
   std::cout << __FUNCTION__ << std::endl;
-  ::math::topology::sico::container<float> copy = sico ;
+  ::math::topology::sico::structure<float> copy = sico ;
   print( copy );
   copy = sico; std::cout<< "this::trim(6): " ;copy.trim(6);  print( copy );
   copy = sico; std::cout<< "this::trim(5): " ;copy.trim(5);  print( copy );
@@ -175,7 +250,7 @@ void trim( ::math::topology::sico::container<float> const& sico  )
   copy = sico; std::cout<< "this::trim(0): " ;copy.trim(0);  print( copy );
 }
 
-void closur( ::math::topology::sico::container<float> const& sico )
+void closur( ::math::topology::sico::structure<float> const& sico )
  {
   std::cout << __FUNCTION__ << std::endl;
   std::vector< std::vector<std::size_t > > closure;
@@ -186,7 +261,7 @@ void closur( ::math::topology::sico::container<float> const& sico )
   ::math::topology::sico::closure( closure, 3, 0, sico ); print( closure );
  }
 
-void star( ::math::topology::sico::container<float> & sico )
+void star( ::math::topology::sico::structure<float> & sico )
  {
   std::cout << __FUNCTION__ << std::endl;
   std::vector< std::size_t >                r0;
@@ -199,7 +274,7 @@ void star( ::math::topology::sico::container<float> & sico )
   ::math::topology::sico::star <float>( rX, 3, 0, sico ); print( rX );
 }
 
-void star2( ::math::topology::sico::container<float> const& sico  )
+void star2( ::math::topology::sico::structure<float> const& sico  )
  {
   std::cout << __FUNCTION__ << std::endl;
   std::vector< std::size_t > l;
@@ -210,8 +285,7 @@ void star2( ::math::topology::sico::container<float> const& sico  )
   ::math::topology::sico::star( l, 2, 3, sico ); print( l );
 }
 
-
-void link( ::math::topology::sico::container<float> & sico )
+void link( ::math::topology::sico::structure<float> & sico )
  {
   std::cout << __FUNCTION__ << std::endl;
   std::vector< std::size_t >                r0;
@@ -242,12 +316,51 @@ void link( ::math::topology::sico::container<float> & sico )
   ::math::topology::sico::link <float>( r0, 3, 3, sico ); print( r0 );
 }
 
+void intersect( void )
+{
+  ::math::topology::sico::structure< std::array<float,2> > left, right;
+
+  left.push( {0,0}, {} );
+  left.push( {0,1}, {} );
+  left.push( {1,0}, {} );
+  left.push( {1,2}, {} );
+
+  left.push( {0,0}, {0,1} );
+  left.push( {0,0}, {0,2} );
+  left.push( {0,0}, {1,2} );
+  //left.push( {0,0}, {2,3} );
+
+  right.push( {0,0}, {} );
+  right.push( {0,1}, {} );
+  right.push( {1,0}, {} );
+  //right.push( {1,2}, {} );
+  right.push( {0,0}, {0,1} );
+  right.push( {0,0}, {0,2} );
+  right.push( {0,0}, {1,2} );
+
+  //make_tetraedar( left );
+  //make_tetraedar( right );
+
+  ::math::topology::sico::intersect_struct<float>::result_type result;
+ ::math::topology::sico::intersect( result, left, right );
+
+ SVG( "intersect-simple.svg", result, left, right );
+                                 
+ make_random_square( left, 17 );   SVG<float>( "intersect-rand-0-left.svg", left );
+ make_random_square( right, 14 );  SVG<float>( "intersect-rand-1-right.svg", right );
+
+ ::math::topology::sico::intersect( result, left, right );
+
+ SVG( "intersect-rand-2-result.svg",result, left, right );
+}
+
+
 void NNG()
  {
   std::cout << __FUNCTION__ << std::endl;
 
   typedef std::array<float,2> data_type;
-  ::math::topology::sico::container<data_type>   sico;
+  ::math::topology::sico::structure<data_type>   sico;
 
   sico.push( {0,0}, {} );
   sico.push( {0,1}, {} );
@@ -263,7 +376,7 @@ void delaunay()
   std::cout << __FUNCTION__ << std::endl;
 
   typedef std::array<double,2> data_type;
-  ::math::topology::sico::container<data_type>   sico;
+  ::math::topology::sico::structure<data_type>   sico;
 
   sico.push( {0,0}, {} );
   sico.push( {1,0}, {} );
@@ -272,7 +385,7 @@ void delaunay()
 
   ::math::topology::sico::delaunay<double>( sico );
   print( sico );
-  SVG( "simple.svg", sico );
+  SVG<double>( "simple.svg", sico );
 
   sico.clear();
   for( int i=0; i < 10; ++i )
@@ -280,7 +393,7 @@ void delaunay()
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
    }
   ::math::topology::sico::delaunay<double>( sico );
-  SVG( "rand-10.svg", sico );
+  SVG<double>( "rand-10.svg", sico );
 
 
   sico.clear();
@@ -289,7 +402,7 @@ void delaunay()
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
    }
   ::math::topology::sico::delaunay<double>( sico );
-  SVG( "rand-100.svg", sico );
+  SVG<double>( "rand-100.svg", sico );
 
   sico.clear();
   for( int i=0; i < 1000; ++i )
@@ -297,41 +410,23 @@ void delaunay()
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
   }
   ::math::topology::sico::delaunay<double>( sico );
-  SVG( "rand-1000.svg", sico );
-}
+  SVG<double>( "rand-1000.svg", sico );
 
-void make_tetraedar( ::math::topology::sico::container<float> & sico  )
- {
-  std::cout << __FUNCTION__ << std::endl;
   sico.clear();
-  sico.push(0, {});  // New point
-  sico.push(1, {});  // New point
-  sico.push(2, {});  // New point
-  sico.push(3, {});  // New point
-
-  sico.push(0, {0,1});  // 0 - line
-  sico.push(1, {0,2});  // 1 - line
-  sico.push(2, {0,3});  // 2 -line
-
-  sico.push(3, {1,2});  // 3 -line
-  sico.push(4, {1,3});  // 4 -line
-  sico.push(5, {2,3});  // 5 -line
-
-  sico.push(0, {0,1,3}); // triangle
-  sico.push(1, {1,2,5}); // triangle
-  sico.push(2, {3,4,5}); // triangle
-  sico.push(3, {0,2,4}); // triangle
-
-  ::math::topology::sico::push<float>( sico, 0.123f, {0,1,2,3} ); // tetra
- }
-
+  for( int i=0; i < 10000; ++i )
+  {
+    sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
+  }
+  ::math::topology::sico::delaunay<double>( sico );
+  SVG<double>( "rand-10000.svg", sico );
+}
 
 int main( int argc, char *argv[] )
  {
   srand(0);
   std::cout << "Hello World" << std::endl;
 
-  ::math::topology::sico::container<float> left;
+  ::math::topology::sico::structure<float> left;
 
   left.push(0.0f, {});  // New point
   left.push(0.1f, {});  // New point
@@ -344,7 +439,7 @@ int main( int argc, char *argv[] )
   left.push(3.0f, {0,1,2}); // triangle
   print( left );
 
-  ::math::topology::sico::container<float> right;
+  ::math::topology::sico::structure<float> right;
 
   right.push(0, {});  // New point
   right.push(1, {});  // New point
@@ -381,14 +476,14 @@ int main( int argc, char *argv[] )
   ::math::topology::sico::push<float>( right, 0.123f, {0,1,2,3} ); // tetra
   print( right );
 
-  ::math::topology::sico::container<float> tetra;
+  ::math::topology::sico::structure<float> tetra;
   make_tetraedar( tetra );
   print( tetra );
 
   right.find( {0,1,2,3} );
 
   hyper_point( right );
-  join( right );
+  concatenate( right );
   vertex( right );
   erase( left );
   erase( right );
@@ -398,6 +493,7 @@ int main( int argc, char *argv[] )
   star( tetra );
   star2( right );
   link( tetra );
+  intersect( );
   NNG();
   delaunay();
 

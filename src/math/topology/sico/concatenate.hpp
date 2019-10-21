@@ -3,6 +3,7 @@
 
 // ::math::topology::sico::concatenation<data_name>
 
+#include "./structure.hpp"
 
 namespace math
  {
@@ -17,12 +18,12 @@ namespace math
        >
        size_t concatenate
         (
-          ::math::topology::sico::container<data_name>      & result
-         ,::math::topology::sico::container<data_name> const&  left
-         ,::math::topology::sico::container<data_name> const&  right
+          ::math::topology::sico::structure<data_name>      & result
+         ,::math::topology::sico::structure<data_name> const&  left
+         ,::math::topology::sico::structure<data_name> const&  right
         )
         {
-         typedef ::math::topology::sico::container<data_name> container_type;
+         typedef ::math::topology::sico::structure<data_name> structure_type;
          result = left;
 
          std::size_t offset = 0;
@@ -37,7 +38,7 @@ namespace math
            }
          }
 
-         for( std::size_t dimension=1; dimension < right.dimension(); ++dimension )
+         for( std::size_t dimension=1; dimension < right.size(); ++dimension )
           {
            offset = left.size(dimension-1);
            face_result.resize( dimension + 1 );

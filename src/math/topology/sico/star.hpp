@@ -1,13 +1,13 @@
 #ifndef math_topology_sico_star
 #define math_topology_sico_star
 
-// ::math::topology::sico::star <data_name>( result, dimension, index, container )
-// ::math::topology::sico::star <data_name>( result<<>>, dimension, index, container )
+// ::math::topology::sico::star <data_name>( result, dimension, index, structure )
+// ::math::topology::sico::star <data_name>( result<<>>, dimension, index, structure )
 
 
 #include <algorithm>
 #include <vector>
-#include "./container.hpp"
+#include "./structure.hpp"
 
 namespace math
  {
@@ -25,7 +25,7 @@ namespace math
            std::vector< std::size_t >                       & result
          , std::size_t                                 const& dimension
          , std::size_t                                 const& index
-         ,::math::topology::sico::container<data_name> const& sico
+         ,::math::topology::sico::structure<data_name> const& sico
         )
         {
          result.clear();
@@ -46,7 +46,7 @@ namespace math
            std::vector< std::vector< std::size_t > >        & result
          , std::size_t                                 const& dimension
          , std::size_t                                 const& index
-         ,::math::topology::sico::container<data_name> const& sico
+         ,::math::topology::sico::structure<data_name> const& sico
         )
         {
          result.clear();

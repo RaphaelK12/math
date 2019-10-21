@@ -1,5 +1,4 @@
-#include "./simplex.hpp"
-#include "./container.hpp"
+#include "./structure.hpp"
 #include "./point.hpp"
 #include "./push.hpp"
 #include "./concatenate.hpp"
@@ -9,6 +8,9 @@
 #include "./closure.hpp"
 #include "./skeleton.hpp"
 #include "./link.hpp"
+#include "./simplex/simplex.hpp"
+#include "./intersect.hpp"
 
 // Dependent from ::linear::vector::distance
 #include "./vector/vector.hpp"
+#include "./property/property.hpp"

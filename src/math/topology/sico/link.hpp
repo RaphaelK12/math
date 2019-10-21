@@ -1,13 +1,13 @@
 #ifndef math_topology_sico_link
 #define math_topology_sico_link
 
-// ::math::topology::sico::closure <data_name>( result, dimension, index, container )
-// ::math::topology::sico::closure <data_name>( result<<>>, dimension, index, container )
-// ::math::topology::sico::closure <data_name>( container, dimension, index, container )
+// ::math::topology::sico::closure <data_name>( result, dimension, index, structure )
+// ::math::topology::sico::closure <data_name>( result<<>>, dimension, index, structure )
+// ::math::topology::sico::closure <data_name>( structure, dimension, index, structure )
 
 #include <algorithm>
 #include <vector>
-#include "./container.hpp"
+#include "./structure.hpp"
 #include "./star.hpp"
 
 namespace math
@@ -26,7 +26,7 @@ namespace math
            std::vector< std::size_t >                        & result
          , std::size_t                                  const& dimension
          , std::size_t                                  const& index
-         , ::math::topology::sico::container<data_name> const& sc
+         , ::math::topology::sico::structure<data_name> const& sc
         )
         { // todo
          result.clear();

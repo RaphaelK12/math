@@ -1,11 +1,11 @@
 #ifndef math_topology_sico_facet
 #define math_topology_sico_facet
 
-// ::math::topology::sico::facet<data_name>( dimension, index, container )
+// ::math::topology::sico::facet<data_name>( dimension, index, structure )
 
 #include <algorithm>
 #include <vector>
-#include "./container.hpp"
+#include "./structure.hpp"
 
 namespace math
  {
@@ -22,7 +22,7 @@ namespace math
         (
            std::size_t                                 const& dimension
          , std::size_t                                 const& index
-         ,::math::topology::sico::container<data_name> const& sc
+         ,::math::topology::sico::structure<data_name> const& sc
         )
         {
          if( false == sc.exists( dimension, index ) )
