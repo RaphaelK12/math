@@ -32,100 +32,159 @@ namespace math
            typedef ::math::topology::sico::structure<data_name> structure_type;
 
          public:
-           static size_type process( result_type & result, structure_type const& left, structure_type const& right )
+           static size_type process( result_type & result, structure_type const& left_sico, structure_type const& right_sico )
             {
              result.clear();
-             result.reserve( std::min( left.size(), right.size() ) );
-             result.resize(1);
-             for( size_type left_index=0; left_index< left.size(0) ; ++left_index )
-              {
-               auto const& left_point = left.vertex( left_index );
-               for( size_type right_index=0; right_index< right.size(0) ; ++right_index )
-                {
-                 auto const& right_point = right.vertex( right_index );
-                 if( left_point.cell().size() != right_point.cell().size() )
-                  {
-                   continue;
-                  }
-                 result[0].first.push_back( left_index );
-                 result[0].second.push_back( right_index );
-                }
-              }
+             result.reserve( std::min( left_sico.size(), right_sico.size() ) );
+
              {
-              auto & first = result[0].first;
-              std::sort( first.begin(), first.end()  ); first.erase( std::unique( first.begin(), first.end() ), first.end() );
-              auto & second = result[0].second;
-              std::sort( second.begin(), second.end() ); second.erase( std::unique( second.begin(), second.end() ), second.end() );
-             }
+              result.resize(1);
+              index_type &  left_zero = result[0].first;
+              index_type &  right_zero = result[0].second;
 
-
-             for( size_type dimension=1; dimension < std::min( left.size(), right.size() ); ++dimension )
-              {
-               result.resize( result.size() + 1 );
-               for( size_type left_index=0; left_index< left.size(dimension) ; ++left_index )
-                {
-                 auto const& left_simplex = left.simplex( dimension, left_index );
-
-                 auto const& left_subs = result[dimension-1].first;
-                 bool left_skip = false;
-                 for( auto const& face : left_simplex.face()  )
-                  {
-                   if(  false == ::std::binary_search( left_subs.begin(), left_subs.end(), face ) )
-                    {
-                     left_skip = true;
-                     break;
-                    }
-                  }
-
-                 if( true == left_skip )
-                  {
-                   continue;
-                  }
-
-                 for( size_type right_index=0; right_index< right.size(dimension) ; ++right_index )
-                  {
-                   auto const& right_simplex = right.simplex( dimension, right_index );
-                   if( left_simplex.cell().size() != right_simplex.cell().size() )
-                    {
-                     continue;
-                    }
-
-                   auto const& right_subs = result[dimension-1].second;
-                   bool right_skip = false;
-                   for( auto const& face : right_simplex.face()  )
-                    {
-                     if(  false == ::std::binary_search( right_subs.begin(), right_subs.end(), face ) )
-                      {
-                       right_skip = true;
-                       break;
-                      }
-                    }
-
-                   if( true == right_skip )
-                    {
-                     continue;
-                    }
-
-                   result[dimension].first.push_back( left_index );
-                   result[dimension].second.push_back( right_index );
-                  }
-                }
-
+              left_zero.reserve( left_sico.size(0) );
+              for( size_type left_index=0; left_index< left_sico.size(0) ; ++left_index )
                {
-                auto & first = result[dimension].first;
-                std::sort( first.begin(), first.end()  ); first.erase( std::unique( first.begin(), first.end() ), first.end() );
-                auto & second = result[dimension].second;
-                std::sort( second.begin(), second.end() ); second.erase( std::unique( second.begin(), second.end() ), second.end() );
+                left_zero.push_back( left_index );
                }
+
+              right_zero.reserve( right_sico.size(0) );
+              for( size_type right_index=0; right_index< right_sico.size(0) ; ++right_index )
+               {
+                right_zero.push_back( right_index );
+               }
+
+              remove
+               (
+                left_zero, right_zero
+                ,0
+                ,left_sico, right_sico
+               );
+              }
+
+             for( size_type dimension=1; dimension < std::min( left_sico.size(), right_sico.size() ); ++dimension )
+              {
+               result.resize(dimension+1);
+               index_type &  left_hi = result[dimension].first;
+               index_type &  right_hi = result[dimension].second;
+               index_type &  left_lo = result[dimension-1].first;
+               index_type &  right_lo = result[dimension-1].second;
+               fill
+                (
+                  left_hi, right_hi
+                 ,dimension
+                 ,left_lo, right_lo
+                 ,left_sico,  right_sico
+                );
+
+               wrong( left_lo,  left_hi,  dimension, left_sico  );
+               wrong( right_lo, right_hi, dimension, right_sico );
+
+               remove
+                (
+                  left_hi, right_hi
+                 ,dimension
+                 ,left_sico, right_sico
+                );
               }
 
              return 0;
             }
 
-           //static void convert( structure_type & result, index_type const& list )
-           // {
-           //  structure_type result;
-           // }
+           static void fill
+            (
+              index_type &left_hi, index_type &right_hi
+             ,size_type const& dimension
+             ,index_type      const&left_lo,    index_type     const&right_lo
+             ,structure_type  const&left_sico,  structure_type const&right_sico
+            )
+            {
+             for( size_type left_index=0; left_index< left_lo.size() ; ++left_index )
+              {
+               auto const& cell = left_sico.simplex( dimension-1, left_lo[left_index] ).cell();
+               left_hi.insert( left_hi.end(), cell.begin(), cell.end() );
+              }
+
+             for( size_type right_index=0; right_index< right_lo.size() ; ++right_index )
+              {
+               auto const& cell = right_sico.simplex( dimension-1, right_lo[right_index] ).cell();
+               right_hi.insert( right_hi.end(), cell.begin(), cell.end() );
+              }
+
+             {
+              std::sort( left_hi.begin(), left_hi.end()  ); left_hi.erase( std::unique( left_hi.begin(), left_hi.end() ), left_hi.end() );
+              std::sort( right_hi.begin(), right_hi.end() ); right_hi.erase( std::unique( right_hi.begin(), right_hi.end() ), right_hi.end() );
+             }
+
+           }
+
+           static void wrong
+            (
+              index_type const &index_lo, index_type           &index_hi
+             ,size_type const& dimension
+             ,structure_type const&sico
+            )
+            {
+             for( size_type index=0; index < index_hi.size(); ++index )
+              {
+               for( auto const& face : sico.simplex( dimension, index ).face() )
+                {
+                 if( index_lo.end() == std::find( index_lo.begin(), index_lo.end(), face ) )
+                   {
+                    index_hi.erase( index_hi.begin() + index );
+                    break;
+                   }
+                }
+              }
+            }
+
+           static void remove
+            (
+              index_type &left_index, index_type           &right_index
+             ,size_type const& dimension
+             ,structure_type const&left_sico,  structure_type const &right_sico
+            )
+            {
+             for( size_type i=0; i < left_index.size(); ++i )
+              {
+               bool flag = false;
+               for( size_type j=0; j < right_index.size(); ++j )
+                {
+                 auto const& left_cell = left_sico.simplex( dimension, left_index[i] ).cell();
+                 auto const& right_cell = right_sico.simplex( dimension, right_index[j] ).cell();
+                 if( left_cell.size() == right_cell.size() )
+                  {
+                   flag = true;
+                   break;
+                  }
+                }
+               if( false == flag )
+                {
+                 left_index.erase( left_index.begin() + i );
+                }
+              }
+
+             for( size_type j=0; j < right_index.size(); ++j )
+              {
+               bool flag = false;
+               for( size_type i=0; i < left_index.size(); ++i )
+                { 
+                 auto const& left_cell = left_sico.simplex( dimension, left_index[i] ).cell();
+                 auto const& right_cell = right_sico.simplex( dimension, right_index[j] ).cell();
+
+                 if( left_cell.size() == right_cell.size() )
+                  {
+                   flag = true;
+                   break;
+                  }
+                }
+               if( false == flag )
+                {
+                 right_index.erase( right_index.begin() + j );
+                }
+              }
+
+            }
 
        };
 

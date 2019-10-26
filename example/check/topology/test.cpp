@@ -94,7 +94,7 @@ void print( std::vector<std::vector<data_name>> const& v )
  }
 
  template< typename  scalar_name >
-  void SVG
+  void SVGx
    (
      std::string const& filename
     , typename ::math::topology::sico::intersect_struct<std::array<scalar_name,2> >::result_type  const  & result
@@ -102,7 +102,8 @@ void print( std::vector<std::vector<data_name>> const& v )
     ,::math::topology::sico::structure<std::array<scalar_name,2 > >       const& right
    )
  {
-  typedef  ::math::topology::sico::structure<std::array<scalar_name,2> > structure_type;
+  typedef std::array<scalar_name,2> data_t;
+  typedef  ::math::topology::sico::structure<data_t > structure_type;
 
   structure_type left_new;
   structure_type right_new;
@@ -116,7 +117,7 @@ void print( std::vector<std::vector<data_name>> const& v )
     for( std::size_t index=0; index < result[0].second.size(); ++index )
      {
       auto const & simplex = right.simplex( dimension, result[dimension].second[index] );
-      right_new.push( { simplex.data()[0]+1.0f, simplex.data()[1]+0.0f }, {} );
+      right_new.push( simplex.data(), {} );
      }
    }
 
@@ -150,10 +151,16 @@ void print( std::vector<std::vector<data_name>> const& v )
      }
    }
 
-  structure_type  result_new;
-  ::math::topology::sico::concatenate( result_new, left_new, right_new );
-  static int count=0;
-  SVG<float>( filename, result_new );
+  SVG<float,data_t> svg;
+  {
+                                                                       auto s1 = svg.save( left_new );
+    svg.m_move[0] = 1 * svg.m_scale;  svg.m_move[1] =0;                auto s2 = svg.save( right_new );
+    svg.m_move[0] = 0;                svg.m_move[1] = 1 * svg.m_scale; auto s3 = svg.save( left );
+    svg.m_move[0] = 1 * svg.m_scale;  svg.m_move[1] = 1 * svg.m_scale; auto s4 = svg.save( right );
+
+    svg.save( filename, s1 + s2 + s3 + s4 );
+  }
+
  }
 
 template< typename data_name >
@@ -193,7 +200,6 @@ template< typename scalar_name >
    }
   ::math::topology::sico::delaunay<scalar_name>( sico );
  }
-
 
 void hyper_point( ::math::topology::sico::structure<float> const& sico )
  {
@@ -318,7 +324,8 @@ void link( ::math::topology::sico::structure<float> & sico )
 
 void intersect( void )
 {
-  ::math::topology::sico::structure< std::array<float,2> > left, right;
+  typedef std::array<float,2> data_t;
+  ::math::topology::sico::structure< data_t > left, right;
 
   left.push( {0,0}, {} );
   left.push( {0,1}, {} );
@@ -342,16 +349,15 @@ void intersect( void )
   //make_tetraedar( right );
 
   ::math::topology::sico::intersect_struct<float>::result_type result;
- ::math::topology::sico::intersect( result, left, right );
-
- SVG( "intersect-simple.svg", result, left, right );
+//::math::topology::sico::intersect( result, left, right );  SVGx( "intersect-simple.svg", result, left, right );
                                  
- make_random_square( left, 17 );   SVG<float>( "intersect-rand-0-left.svg", left );
- make_random_square( right, 14 );  SVG<float>( "intersect-rand-1-right.svg", right );
+ make_random_square( left, 24 ); print_new( left ); 
+ make_random_square( right, 24 );  print_new( right );
 
- ::math::topology::sico::intersect( result, left, right );
+ ::math::topology::sico::intersect( result, left, right ); SVGx( "intersect-rand-2-result-A.svg",result, left, right );
+ ::math::topology::sico::intersect( result, right, left ); SVGx( "intersect-rand-2-result-B.svg",result, right, left );
 
- SVG( "intersect-rand-2-result.svg",result, left, right );
+// ::math::topology::sico::intersect( result, left, left ); SVGx( "intersect-rand-self.svg",result, left, left );
 }
 
 
@@ -385,7 +391,8 @@ void delaunay()
 
   ::math::topology::sico::delaunay<double>( sico );
   print( sico );
-  SVG<double>( "simple.svg", sico );
+  SVG<double,data_type> svg;
+  svg.save( "simple.svg", sico );
 
   sico.clear();
   for( int i=0; i < 10; ++i )
@@ -393,7 +400,7 @@ void delaunay()
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
    }
   ::math::topology::sico::delaunay<double>( sico );
-  SVG<double>( "rand-10.svg", sico );
+  SVG<double,data_type>{}.save( "rand-10.svg", sico );
 
 
   sico.clear();
@@ -402,7 +409,7 @@ void delaunay()
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
    }
   ::math::topology::sico::delaunay<double>( sico );
-  SVG<double>( "rand-100.svg", sico );
+  SVG<double,data_type>{}.save( "rand-100.svg", sico );
 
   sico.clear();
   for( int i=0; i < 1000; ++i )
@@ -410,7 +417,7 @@ void delaunay()
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
   }
   ::math::topology::sico::delaunay<double>( sico );
-  SVG<double>( "rand-1000.svg", sico );
+  SVG<double,data_type>{}.save( "rand-1000.svg", sico );
 
   sico.clear();
   for( int i=0; i < 10000; ++i )
@@ -418,7 +425,7 @@ void delaunay()
     sico.push( {rand()/(double)RAND_MAX,rand()/(double)RAND_MAX}, {} );
   }
   ::math::topology::sico::delaunay<double>( sico );
-  SVG<double>( "rand-10000.svg", sico );
+  SVG<double,data_type>{}.save( "rand-10000.svg", sico );
 }
 
 int main( int argc, char *argv[] )

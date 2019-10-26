@@ -7,16 +7,18 @@
 #include "../cubic/solve.hpp"
 #include "../evaluate.hpp"
 
- // ::math::polynomial::quartic::solve::bi<scalar_name>( zero, coefficient, epsilon = 1e-6 )
- // ::math::polynomial::quartic::solve::depressed<scalar_name>( zero, coefficient, epsilon = 1e-6 )
- // ::math::polynomial::quartic::solve::general<scalar_name>( zero, coefficient, epsilon = 1e-6 )
+ // ::math::polynomial::quartic::solve::bi<scalar_name>( root, coefficient, epsilon = 1e-12 )
+ // ::math::polynomial::quartic::solve::ferrari(         root, coefficient, epsilon = 1e-12 )
+ // ::math::polynomial::quartic::solve::descartes(       root, coefficient, epsilon = 1e-12 )
+ // ::math::polynomial::quartic::solve::shmakov(         root, coefficient, epsilon = 1e-12 )
+ // ::math::polynomial::quartic::solve::general(         root, coefficient, epsilon = 1e-12 )
 
 
  namespace math
   {
    namespace polynomial
     {
-     namespace quartic 
+     namespace quartic
       {
        namespace solve
         {
@@ -105,7 +107,7 @@
        template
         <
         typename scalar_name
-        >   // Monic adn depressed
+        >   // Monic and depressed
         unsigned descartes( scalar_name root[4], scalar_name const coefficient[5], scalar_name const& epsilon = 1e-12 )
          {    // [0] + [1] * x + [2] * x ^2 + 0 * x^3 + 1 * x^4. Monic and depressed !!!
           root[3]=root[2]=root[1]=root[0]=NAN;
@@ -257,8 +259,9 @@
            }
 
 
-          // scalar_name shift = ::math::polynomial::quartic::depressing( depressedC, coefficient, epsilon );
-          // scalar_name shift = ::math::polynomial::quartic::monic( depressedC, depressedC, epsilon );
+          // TODO scalar_name shift = ::math::polynomial::quartic::depressing( depressedC, coefficient, epsilon );
+          // TODO scalar_name shift = ::math::polynomial::quartic::monic( depressedC, depressedC, epsilon );
+
           scalar_name const& a4 = coefficient[4];
           scalar_name const& a3 = coefficient[3];
           scalar_name const& a2 = coefficient[2];
@@ -270,7 +273,7 @@
           scalar_name p = ( 8*a2*a4-3*a3*a3)/( 8*a4*a4  );
           scalar_name depressedC[3]={ r, q, p };
 
-          //std:: cout << "p:" << p << "; q: " << q << "; r: " << r << std::endl; 
+          //std:: cout << "p:" << p << "; q: " << q << "; r: " << r << std::endl;
 
           scalar_name substitution = -a3/(4*a4);
           unsigned count;
