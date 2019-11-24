@@ -18,7 +18,7 @@
         >
         inline unsigned interpolate
          (
-           scalar_name coefficient[5] 
+           scalar_name coefficient[5]
           ,scalar_name const& x0, scalar_name const& y0
           ,scalar_name const& x1, scalar_name const& y1
           ,scalar_name const& x2, scalar_name const& y2
@@ -69,7 +69,7 @@
           coefficient[ 1 ] = d0 + d1 + d2 + d3 + d4;
           coefficient[ 0 ] = e0 + e1 + e2 + e3 + e4;
           return true;
-       }
+         }
 
       }
     }

@@ -31,7 +31,7 @@ namespace math
       saw
        (
         scalar_name  const& value,
-        scalar_name  const& lower = scalar_name ( 0 ),
+        scalar_name  const& lower  = scalar_name ( 0 ),
         scalar_name  const& higher = scalar_name ( 1 )
        )
        {
@@ -46,7 +46,7 @@ namespace math
        (
          scalar_name  const& value
         ,scalar_name  const& lower     = scalar_name ( 0 )
-        ,scalar_name  const& higher     = scalar_name ( 1 )
+        ,scalar_name  const& higher    = scalar_name ( 1 )
        )
        {
         scalar_name  Ir_result;

@@ -126,7 +126,7 @@
             std::tuple< unsigned, scalar_name, unsigned, scalar_name >                 & result
           ,::math::geometry::interval::structure<scalar_name,dimension_number>    const& box
           ,::math::geometry::direction::parametric<scalar_name, dimension_number> const& parametric
-          ,scalar_name     const& epsilon = 1e-12
+          ,scalar_name                                                            const& epsilon    = 1e-12
           )
          {
           typedef ::math::linear::vector::point<scalar_name, dimension_number> coord_type;

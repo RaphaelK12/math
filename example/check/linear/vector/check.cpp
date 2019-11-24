@@ -207,5 +207,11 @@ int main( int argc, char *argv[] )
    ::math::linear::vector::combine<double>( p0_4,    p1_4, 2, p2_4 );
    ::math::linear::vector::combine<double>( p0_5,    p1_5, 2, p2_5 );
 
+   ::math::linear::vector::dominant( p0_1 );
+   ::math::linear::vector::dominant( p0_2 );
+   ::math::linear::vector::dominant( p0_3 );
+   ::math::linear::vector::dominant( p0_4 );
+   ::math::linear::vector::dominant( p0_5 );
+
   return EXIT_SUCCESS;
  }

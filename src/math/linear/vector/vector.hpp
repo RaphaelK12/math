@@ -35,4 +35,6 @@
 #include "./fill.hpp"
 #include "./load.hpp"
 
+#include "./dominant.hpp"
+
 #endif

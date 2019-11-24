@@ -154,23 +154,23 @@ namespace math
              void diagonalFV( scalar_type const& DFoV )
               {
                m_diagonalFV = DFoV;
-               std::tie( this->m_horisontalFV, this->m_verticalFV ) = ::math::geometry::projective::camera::d2hv<scalar_type>( DFoV, scalar_type( this->m_resolution[0] ), scalar_type( this->m_resolution[1] ) ) ;
-               m_maxFV = std::max( this->m_horisontalFV, this->m_verticalFV );
+               std::tie( this->m_horizontalFV, this->m_verticalFV ) = ::math::geometry::projective::camera::d2hv<scalar_type>( DFoV, scalar_type( this->m_resolution[0] ), scalar_type( this->m_resolution[1] ) ) ;
+               m_maxFV = std::max( this->m_horizontalFV, this->m_verticalFV );
               }
            private:
              scalar_type     m_diagonalFV;
 
            public:
-             scalar_type const& horisontalFV()const{ return this->m_horisontalFV; }
-             void horisontalFV( scalar_type const& fv )
+             scalar_type const& horizontalFV()const{ return this->m_horizontalFV; }
+             void horizontalFV( scalar_type const& fv )
               {
-               m_horisontalFV = fv;
-               m_diagonalFV = ::math::geometry::projective::camera::ha2d<scalar_type>( m_horisontalFV, m_resolution[0]/(scalar_type)m_resolution[1] );
-               m_verticalFV = ::math::geometry::projective::camera::ha2v<scalar_type>( m_horisontalFV, m_resolution[0]/(scalar_type)m_resolution[1] );
-               m_maxFV = std::max( m_horisontalFV, m_verticalFV );
+               m_horizontalFV = fv;
+               m_diagonalFV = ::math::geometry::projective::camera::ha2d<scalar_type>( m_horizontalFV, m_resolution[0]/(scalar_type)m_resolution[1] );
+               m_verticalFV = ::math::geometry::projective::camera::ha2v<scalar_type>( m_horizontalFV, m_resolution[0]/(scalar_type)m_resolution[1] );
+               m_maxFV = std::max( m_horizontalFV, m_verticalFV );
               }
            private:
-             scalar_type     m_horisontalFV;
+             scalar_type     m_horizontalFV;
 
            public:
              scalar_type const& verticalFV()const{ return m_verticalFV; }
@@ -179,7 +179,7 @@ namespace math
                m_verticalFV = fv;
                m_diagonalFV = ::math::geometry::projective::camera::va2d<scalar_type>( m_verticalFV, m_resolution[0]/(scalar_type)m_resolution[1] );
                m_verticalFV = ::math::geometry::projective::camera::va2h<scalar_type>( m_verticalFV, m_resolution[0]/(scalar_type)m_resolution[1] );
-               m_maxFV = std::max( m_horisontalFV, m_verticalFV );
+               m_maxFV = std::max( m_horizontalFV, m_verticalFV );
               }
            private:
              scalar_type     m_verticalFV;
