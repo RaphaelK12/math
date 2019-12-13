@@ -29,7 +29,7 @@ namespace math
         )
         {
          ::math::linear::vector::point< scalar_name, 2>  origin;
-         ::math::linear::vector::convex( origin, first, scalar_name(0.5), second );
+         ::math::linear::vector::convex( origin, scalar_name(0.5), first, second );
 
          ::math::linear::vector::point< scalar_name, 2>  direction;
          ::math::linear::vector::subtraction( direction, second, first );

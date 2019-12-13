@@ -18,5 +18,8 @@
     <ClCompile Include="..\..\..\check\polynomial\interpolate\test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\check\geometry\interval\check.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

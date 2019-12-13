@@ -61,9 +61,9 @@ template< typename scalar_name, typename data_name >
          auto third = ::math::topology::sico::property::point<scalar_name,2>(  sico.vertex( vertex[2] ) );
 
          decltype(first) center = { (first[0]+second[0]+third[0])/3, (first[1]+second[1]+third[1])/3  };
-         ::math::linear::vector::convex<scalar_name>( first,   first, 0.2f, center );
-         ::math::linear::vector::convex<scalar_name>( second, second, 0.2f, center );
-         ::math::linear::vector::convex<scalar_name>( third,   third, 0.2f, center );
+         ::math::linear::vector::convex<scalar_name>( first,  0.2f,  first, center );
+         ::math::linear::vector::convex<scalar_name>( second, 0.2f, second, center );
+         ::math::linear::vector::convex<scalar_name>( third,  0.2f,  third, center );
 
          ss << "<polygon "
                   << " id=\"" << idPrefix <<"polygon-index-"<< index  << "\""

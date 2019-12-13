@@ -42,6 +42,14 @@ int main( int argc, char *argv[] )
     ::math::geometry::interval::translate( i1, p1 );
 
     ::math::geometry::interval::inflate( i1, p1, p1, i2 );
+    ::math::geometry::interval::inflate( i1, p1, i2 );
+
+    ::math::geometry::interval::inflate( i1, p1, 1.1f, i2 );
+    ::math::geometry::interval::inflate( i1, 1.1f, i2 );
+
+    ::math::geometry::interval::confine( p1, p1, i2 );
+    ::math::geometry::interval::confine( p1, i2 );
+
 
   affine10_t  a10;
   ::math::geometry::interval::transform(i1, a10, i2 );
@@ -50,5 +58,7 @@ int main( int argc, char *argv[] )
 
   interval3_t  i3_1, i3_2;
   ::math::geometry::interval::transform( i3_1, a3, i3_2 );
+
+
   return EXIT_SUCCESS;
  }

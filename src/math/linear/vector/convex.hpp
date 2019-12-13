@@ -1,7 +1,7 @@
 #ifndef math_library_linear_algebra__vector_aritmetic_convex_HPP_
  #define math_library_linear_algebra__vector_aritmetic_convex_HPP_
 
- // ::math::linear::vector::convex( result, left, coefficient, right )
+ // ::math::linear::vector::convex( result, coefficient, left, right )
 
  
  
@@ -24,8 +24,8 @@
         convex
          (
            ::math::linear::vector::structure< scalar_name, dimension_number >      & result_param
-          ,::math::linear::vector::structure< scalar_name, dimension_number > const& left_param
           ,                                            scalar_name            const& coefficient_param
+          ,::math::linear::vector::structure< scalar_name, dimension_number > const& left_param
           ,::math::linear::vector::structure< scalar_name, dimension_number > const& right_param
          )
          {
@@ -46,8 +46,8 @@
         convex
          (
            ::math::linear::vector::structure< scalar_name, 2 >      & result_param
-          ,::math::linear::vector::structure< scalar_name, 2 > const& left_param
           ,            scalar_name                             const& coefficient_param
+          ,::math::linear::vector::structure< scalar_name, 2 > const& left_param
           ,::math::linear::vector::structure< scalar_name, 2 > const& right_param
          )
          {
@@ -61,8 +61,8 @@
         convex
          (
            ::math::linear::vector::structure< scalar_name, 3 >      & result_param
-          ,::math::linear::vector::structure< scalar_name, 3 > const& left_param
           ,            scalar_name                             const& coefficient_param
+          ,::math::linear::vector::structure< scalar_name, 3 > const& left_param
           ,::math::linear::vector::structure< scalar_name, 3 > const& right_param
          )
          {
@@ -77,8 +77,8 @@
         convex
          (
            ::math::linear::vector::structure< scalar_name, 4 >      & result_param
-          ,::math::linear::vector::structure< scalar_name, 4 > const& left_param
           ,            scalar_name                             const& coefficient_param
+          ,::math::linear::vector::structure< scalar_name, 4 > const& left_param
           ,::math::linear::vector::structure< scalar_name, 4 > const& right_param
          )
          {

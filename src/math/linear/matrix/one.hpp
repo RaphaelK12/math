@@ -31,12 +31,29 @@
          }
 
        template< typename scalar_name, unsigned width_number, unsigned height_number >
+        ::math::linear::matrix::structure<scalar_name,width_number,height_number> const&
+        one( ::math::linear::matrix::structure<scalar_name,width_number,height_number> const& dummmy )
+         {
+          static ::math::linear::matrix::structure<scalar_name,width_number,height_number> identity = ::math::linear::matrix::one( identity );
+          return identity;
+         }
+
+
+       template< typename scalar_name, unsigned width_number, unsigned height_number >
         ::math::linear::matrix::structure<scalar_name,width_number,height_number> &
         id( ::math::linear::matrix::structure<scalar_name,width_number,height_number> & m )
          {
-          ::math::linear::matrix::one( m );
-          return m;
+          return ::math::linear::matrix::one( m );
          }
+
+       template< typename scalar_name, unsigned width_number, unsigned height_number >
+        ::math::linear::matrix::structure<scalar_name,width_number,height_number> const&
+        id( ::math::linear::matrix::structure<scalar_name,width_number,height_number> const& dummmy )
+         {
+          static ::math::linear::matrix::structure<scalar_name,width_number,height_number> identity = ::math::linear::matrix::one( identity );
+          return identity;
+         }
+
 
       }
     }

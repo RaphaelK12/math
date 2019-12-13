@@ -15,8 +15,7 @@
 #include "./column.hpp"
 #include "./row.hpp"
 
-
-
+#include "./cofactor.hpp"
 
 #include "./eigen.hpp"
 

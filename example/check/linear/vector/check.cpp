@@ -159,11 +159,11 @@ int main( int argc, char *argv[] )
    ::math::linear::vector::cross( p0_3, p1_3, p2_3 );
    ::math::linear::vector::cross( p0_4, p1_4, p2_4, p2_4  );
 
-  ::math::linear::vector::convex( p0_1, p0_1, 322.0, p0_1 );
-  ::math::linear::vector::convex( p0_2, p0_2, 322.0, p0_2 );
-  ::math::linear::vector::convex( p0_3, p0_3, 322.0, p0_3 );
-  ::math::linear::vector::convex( p0_4, p0_4, 322.0, p0_4 );
-  ::math::linear::vector::convex( p0_5, p0_5, 322.0, p0_5 );
+  ::math::linear::vector::convex( p0_1, 322.0, p0_1, p0_1 );
+  ::math::linear::vector::convex( p0_2, 322.0, p0_2, p0_2 );
+  ::math::linear::vector::convex( p0_3, 322.0, p0_3, p0_3 );
+  ::math::linear::vector::convex( p0_4, 322.0, p0_4, p0_4 );
+  ::math::linear::vector::convex( p0_5, 322.0, p0_5, p0_5 );
 
   //::math::linear::vector::convex( p0_1, 322.0, p0_1 );
   //::math::linear::vector::convex( p0_2, 322.0, p0_2 );

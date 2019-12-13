@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\check\geometry\interval\check.cpp" />
     <ClCompile Include="..\..\..\check\polynomial\interpolate\test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
