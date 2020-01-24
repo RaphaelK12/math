@@ -24,7 +24,13 @@ void hg()
 
     ::math::linear::homography::construct<double>( h, {0,0}, {0,0}, {1,0}, {1,0}, {0,1}, {0,1}, {1,1}, {1,1} );
     print( h );
- }
+    ::math::linear::homography::construct<double>( h, {0,0}, {1,0}, {0,1}, {1,1} );
+    print( h );
+
+    ::math::linear::homography::construct<double>( h, {1,1} );
+    print( h );
+    
+}
  
 int main( int argc, char*argv[] )
  {

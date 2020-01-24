@@ -16,7 +16,7 @@ namespace math
      {
 
       template< typename scalar_name = double >
-       struct horizon
+       struct horizon // Given four point in plane. Those points present projection of 3d rectangle. Find horizon of plane that contain this rectangle.
         {
          public:
            typedef scalar_name scalar_type;
@@ -34,7 +34,7 @@ namespace math
              |         |
              a0--l01---a1 (down)
            */
-           void process
+           void process // Orientation is important
             (
               point_type   const & a0 //!< (0,0) point
              ,point_type   const & a1 //!< (1,0) point
@@ -65,7 +65,7 @@ namespace math
              |         |
              a0--l01---a1 (down)
            */
-           void process
+           void process // Orientation is important
             (
               line_type   const & left     //!< l30
              ,line_type   const & right    //!< l12
@@ -73,24 +73,29 @@ namespace math
              ,line_type   const & up       //!< l23
             )
             {
-             ::math::linear::vector::cross( m_p30_12, homogeneous_type{ left[0] , left[1], left[2] }, homogeneous_type{ right[0] , right[1], right[2] } );
-             ::math::linear::vector::cross( m_p01_23, homogeneous_type{ down[0] , down[1], down[2] }, homogeneous_type{    up[0] ,    up[1],    up[2] } );
+              m_l30 = homogeneous_type{   left[0] ,  left[1],  left[2] };
+              m_l12 = homogeneous_type{  right[0] , right[1], right[2] };
+              m_l01 = homogeneous_type{   down[0] ,  down[1],  down[2] };
+              m_l23 = homogeneous_type{     up[0] ,    up[1],    up[2] };
+
+             ::math::linear::vector::cross( m_p30_12, m_l30, m_l12 );
+             ::math::linear::vector::cross( m_p01_23, m_l01, m_l23 );
 
              this_type::process( m_p30_12, m_p01_23 );
             }
 
            void process
             (
-              homogeneous_type   const & first     //!< Firstc vanish point
+              homogeneous_type   const & first     //!< First  vanish point
              ,homogeneous_type   const & second    //!< Second vanish point
             )
             {
              ::math::linear::vector::cross( m_line, first, second );
             }
- 
+
            void process
             (
-              point_type   const & first     //!< Firstc vanish point
+              point_type   const & first     //!< First  vanish point
              ,point_type   const & second    //!< Second vanish point
             )
             {
