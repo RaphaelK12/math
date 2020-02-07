@@ -45,11 +45,11 @@ int main( int argc, char *argv[] )
   ::math::linear::vector::fill( p2_5, 123123 );
 
 
-  math::linear::vector::rotate(  p2_2, 123, p2_2 );
-  math::linear::vector::rotate(  p2_2, 123, p2_2, p2_2 );
-  math::linear::vector::rotateX( p2_3, 123, p2_3 );
-  math::linear::vector::rotateY( p2_3, 123, p2_3 );
-  math::linear::vector::rotateZ( p2_3, 123, p2_3 );
+  ::math::linear::vector::rotate(  p2_2, 123, p2_2 );
+  ::math::linear::vector::rotate(  p2_2, 123, p2_2, p2_2 );
+  ::math::linear::vector::rotateX( p2_3, 123, p2_3 ); ::math::linear::vector::rotateX( p2_3, 123, p2_3, p3_3 );
+  ::math::linear::vector::rotateY( p2_3, 123, p2_3 ); ::math::linear::vector::rotateY( p2_3, 123, p2_3, p3_3 );
+  ::math::linear::vector::rotateZ( p2_3, 123, p2_3 ); ::math::linear::vector::rotateZ( p2_3, 123, p2_3, p3_3 );
 
 
   ::math::linear::vector::reflect(  p0_1, p1_1, p2_1 );

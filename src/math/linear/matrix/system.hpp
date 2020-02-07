@@ -19,6 +19,16 @@
        template< typename scalar_name >
         void system
          (
+           ::math::linear::matrix::structure<scalar_name,1,1>          & result
+          ,::math::linear::vector::structure<scalar_name,1>      const & x
+         )
+         {
+          result[0][0] = x[0];
+         }
+
+       template< typename scalar_name >
+        void system
+         (
            ::math::linear::matrix::structure<scalar_name,2,2>          & result
           ,::math::linear::vector::structure<scalar_name,2>      const & x
           ,::math::linear::vector::structure<scalar_name,2>      const & y

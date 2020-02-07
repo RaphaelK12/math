@@ -24,8 +24,7 @@ namespace math
         return ( (value) < lower ? lower : ( higher < (value) ? higher : (value) ) ) ;
        }
 
-
-     template< typename scalar_name  >   // ////
+     template< typename scalar_name  >   // ////////
       inline
       scalar_name
       saw
@@ -35,9 +34,10 @@ namespace math
         scalar_name  const& higher = scalar_name ( 1 )
        )
        {
-        return ( lower < value? (         scalar_name(  ::fmod( value - lower,  higher - lower ) ) + lower ):
-                               (  higher - scalar_name( ::fmod( lower  - value, higher - lower ) )        )  );
+        return ( lower < value ? (          scalar_name( ::fmod( value - lower, higher - lower ) ) + lower )
+                               : (  higher - scalar_name( ::fmod( lower - value, higher - lower ) )        )  );
        }
+
 
      template< typename scalar_name  >   // /\/\/\/\/
       inline
@@ -54,11 +54,11 @@ namespace math
 
         if( lower < value )
          {
-          Ir_result = scalar_name( ::fmod( value - lower,  2 * I_size ) );
+          Ir_result = scalar_name( ::fmod( value - lower, 2 * I_size ) );
          }
         else
          {
-          Ir_result = scalar_name(  ::fmod( lower - value, 2 * I_size ) );
+          Ir_result = scalar_name( ::fmod( lower - value, 2 * I_size ) );
          }
 
         if( I_size < Ir_result )
@@ -79,6 +79,19 @@ namespace math
        )
        {
         return ( value - P_left ) / ( P_right - P_left );
+       }
+
+     template< typename scalar_name  >  // \\\\\//////
+      inline
+      scalar_name
+      sinkhole 
+       (
+        scalar_name  const& value,
+        scalar_name  const& lower  = scalar_name ( 0 ),
+        scalar_name  const& higher = scalar_name ( 1 )
+       )
+       {
+        return scalar_name( ::fmod( fabs( value ) - lower, higher - lower ) ) + lower;
        }
 
    }

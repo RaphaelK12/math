@@ -43,7 +43,7 @@ namespace math
        <
          typename  data_name
        >
-       inline size_t closure // All (sub-)faces
+       inline size_t closure // All (sub-...)faces
         (
            std::vector< std::vector< std::size_t > >         & result
          , std::size_t                                         dimension
@@ -82,7 +82,7 @@ namespace math
        <
          typename  data_name
        >
-       inline size_t closure // All (sub-)faces as new topology
+       inline size_t closure // All (sub-...)faces as new topology
         (
           ::math::topology::sico::structure<data_name>      & result
          ,std::size_t                                  const& dimension

@@ -59,10 +59,29 @@
           ,                  value_name                          const&  angle_param
          )
          {
-          ::math::linear::vector::structure< scalar_name, 2 > I_tmp;
-          ::math::linear::vector::rotate( I_tmp, angle_param, result_param );
-          result_param = I_tmp;
+          ::math::linear::vector::structure< scalar_name, 2 > temp;
+          ::math::linear::vector::rotate( temp, angle_param, result_param );
+          result_param = temp;
          }
+
+       template< typename scalar_name, typename value_name >
+        inline
+        void
+        rotateX
+         (
+           ::math::linear::vector::structure< scalar_name, 3 >         & result_param
+          ,       value_name                                      const&  angle_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  pivot_param
+         )
+        {
+         ::math::linear::vector::structure< scalar_name, 3 > local;
+         ::math::linear::vector::subtraction( local, point_param, pivot_param );
+
+         result_param[0] = 1 * local[0] +                 0 * local[1] +                  0 * local[2] + pivot_param[0];
+         result_param[1] = 0 * local[0] + cos( angle_param )* local[1] - sin( angle_param ) * local[2] + pivot_param[1];
+         result_param[2] = 0 * local[0] + sin( angle_param )* local[1] + cos( angle_param ) * local[2] + pivot_param[2];
+        }
 
        template< typename scalar_name, typename value_name >
         inline
@@ -88,9 +107,28 @@
           ,       value_name                                      const&  angle_param
          )
         {
-         ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         ::math::linear::vector::rotateX( I_tmp, angle_param, result_param );
-         result_param = I_tmp;
+         ::math::linear::vector::structure< scalar_name, 3 > temp;
+         ::math::linear::vector::rotateX( temp, angle_param, result_param );
+         result_param = temp;
+        }
+
+       template< typename scalar_name, typename value_name >
+        inline
+        void
+        rotateY
+         (
+           ::math::linear::vector::structure< scalar_name, 3 >         & result_param
+          ,       value_name                                      const&  angle_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  pivot_param
+         )
+        {
+         ::math::linear::vector::structure< scalar_name, 3 > local;
+         ::math::linear::vector::subtraction( local, point_param, pivot_param );
+
+         result_param[0] =  cos( angle_param ) * local[0] + 0 * local[1] + sin( angle_param )* local[2] + pivot_param[0];
+         result_param[1] = 0                   * local[0] + 1 * local[1] +                 0 * local[2] + pivot_param[1];
+         result_param[2] = -sin( angle_param ) * local[0] + 0 * local[1] + cos( angle_param )* local[2] + pivot_param[2];
         }
 
        template< typename scalar_name, typename value_name >
@@ -117,9 +155,27 @@
           ,       value_name                         const&  angle_param
          )
         {
-         ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         ::math::linear::vector::rotateY( I_tmp, angle_param, result_param );
-         result_param = I_tmp;
+         ::math::linear::vector::structure< scalar_name, 3 > temp;
+         ::math::linear::vector::rotateY( temp, angle_param, result_param );
+         result_param = temp;
+        }
+       template< typename scalar_name, typename value_name >
+        inline
+        void
+        rotateZ
+         (
+           ::math::linear::vector::structure< scalar_name, 3 >         & result_param
+          ,       value_name                                      const&  angle_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
+          ,::math::linear::vector::structure< scalar_name, 3 >    const&  pivot_param
+         )
+        {
+         ::math::linear::vector::structure< scalar_name, 3 > local;
+         ::math::linear::vector::subtraction( local, point_param, pivot_param );
+
+         result_param[0] = cos( angle_param ) * local[0] - sin( angle_param ) * local[1] - 0 * local[2] + pivot_param[0];
+         result_param[1] = sin( angle_param ) * local[0] + cos( angle_param ) * local[1] + 0 * local[2] + pivot_param[1];
+         result_param[2] =                  0 * local[0] +                  0 * local[1] + 1 * local[2] + pivot_param[2];
         }
 
        template< typename scalar_name, typename value_name >
@@ -128,7 +184,7 @@
         rotateZ
          (
            ::math::linear::vector::structure< scalar_name, 3 >         & result_param
-          ,       value_name                         const&  angle_param,
+          ,       value_name                                      const&  angle_param,
            ::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
          )
         {
@@ -143,12 +199,12 @@
         rotateZ
          (
            ::math::linear::vector::structure< scalar_name, 3 >         & result_param
-          ,       value_name                         const&  angle_param
+          ,       value_name                                      const&  angle_param
          )
         {
-         ::math::linear::vector::structure< scalar_name, 3 > I_tmp;
-         math::linear::vector::rotateZ( I_tmp, angle_param, result_param );
-         result_param = I_tmp;
+         ::math::linear::vector::structure< scalar_name, 3 > temp;
+         ::math::linear::vector::rotateZ( temp, angle_param, result_param );
+         result_param = temp;
         }
 
       }

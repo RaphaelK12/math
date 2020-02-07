@@ -22,6 +22,18 @@
        template< typename scalar_name >
         void system
          (
+           ::math::linear::affine::structure<scalar_name, 1>                & affine
+          ,::math::linear::vector::structure<scalar_name, 1>           const& vector
+          ,::math::linear::vector::structure<scalar_name, 1>           const& x
+         )
+         {
+          ::math::linear::matrix::system( affine.matrix(), x );
+          affine.vector() = vector;
+         }
+
+       template< typename scalar_name >
+        void system
+         (
            ::math::linear::affine::structure<scalar_name, 2>                & affine
           ,::math::linear::vector::structure<scalar_name, 2>           const& vector
           ,::math::linear::vector::structure<scalar_name, 2>           const& x
@@ -30,7 +42,6 @@
          {
           ::math::linear::matrix::system( affine.matrix(), x, y );
           affine.vector() = vector;
-
          }
 
        template< typename scalar_name >
@@ -59,7 +70,6 @@
          )
          {
           ::math::linear::matrix::system( affine.matrix(), x, y, z, t );
-
           affine.vector() = vector;
          }
 

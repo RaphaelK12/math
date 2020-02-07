@@ -9,7 +9,7 @@ void graf( float P_len)
   for(int i=0; i< P_len; i++ )
    std::cout<< " ";
   std::cout<< "*"<< std::endl;
- 
+
  }
 
 int main( int argc, char *argv[] )
@@ -23,9 +23,10 @@ int main( int argc, char *argv[] )
     std::cout << "saw( " << I_dval << " ) = " <<  ::math::function::saw<double>( I_dval, 0.3, 0.8 )  << std::endl;
     std::cout << "wave( " << I_dval << " ) = " << ::math::function::wave<double>( I_dval, 0.3, 0.8 ) << std::endl;
     std::cout << "to_one<double>( " << I_dval << ", -5, 5 ) = " << ::math::function::to_one<double>( I_dval, -5, 5 ) << std::endl;
+    std::cout << "sinkhole( " << I_dval << ", -5, 5 ) = " << ::math::function::sinkhole<double>( I_dval, -5, 5 ) << std::endl;
    }
-   
-   
+
+
   float I_fval;
   for( I_fval = float(-5);  I_fval< float(5); I_fval += float( 0.1 ))
    {
@@ -33,8 +34,9 @@ int main( int argc, char *argv[] )
     std::cout << "saw( " << I_fval << " ) = " << ::math::function::saw( I_fval )  <<std:: endl;
     std::cout << "wave( " << I_fval << " ) = " << ::math::function::wave( I_fval ) << std::endl;
     std::cout << "to_one<float>( " << I_fval << ", -5, 5 ) = " << ::math::function::to_one<float>( I_fval, -5, 5 ) << std::endl;
+    std::cout << "sinkhole<float>( " << I_fval << ", -5, 5 ) = " << ::math::function::sinkhole<float>( I_fval, -5, 5 ) << std::endl;
    }
-  
+
   //cin.get();
 
   return 0;

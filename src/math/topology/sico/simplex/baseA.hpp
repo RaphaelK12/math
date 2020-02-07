@@ -18,7 +18,7 @@ namespace math
          <
            unsigned  dimension_size
          >
-         struct baseA
+         struct base_fixed
           {
            public:
              typedef std::array<size_type, dimension_size + 1 > face_type;

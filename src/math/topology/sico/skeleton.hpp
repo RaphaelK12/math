@@ -20,7 +20,7 @@ namespace math
        >
        size_t skeleton
         (
-          ::math::topology::sico::structure<data_name>      & result
+          ::math::topology::sico::structure<data_name>       & result
          ,size_t                                        const& dimension
          ,::math::topology::sico::structure<data_name>  const& model
         )

@@ -20,7 +20,7 @@ namespace math
        <
          typename  data_name
        >
-       size_t vertex //!< All vertexes that are contained by simplex(dimension,index)
+       size_t vertex //!< All vertexes of given simplex(dimension,index)
         (
            std::vector< std::size_t >                       & result
          , std::size_t                                        dimension
@@ -61,8 +61,7 @@ namespace math
              break;
             }
            face = result;
-
-          } while( true );
+          }while( true );
 
          return result.size();
         }

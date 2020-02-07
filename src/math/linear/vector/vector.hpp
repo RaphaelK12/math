@@ -37,4 +37,6 @@
 
 #include "./dominant.hpp"
 
+#include "./bmp.hpp"
+
 #endif

@@ -19,9 +19,9 @@ namespace math
 
       template
        <
-         typename  data_name
+         typename  data_name  //!< Essentially whatever
        >
-       class structure //!< Essentially whatever
+       class structure
         {
          public:
            typedef std::size_t     size_type;
@@ -40,6 +40,7 @@ namespace math
             {
              this->clear();
             }
+
            size_t push( face_type const& face )
             {
              return push( data_name{}, face );
@@ -346,6 +347,7 @@ namespace math
             {
              return m_container[dimension][index];
             }
+
          public:
            container_type const& container()const{ return m_container; }
          protected:
