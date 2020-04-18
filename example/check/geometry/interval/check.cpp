@@ -26,6 +26,9 @@ int main( int argc, char *argv[] )
   ::math::geometry::interval::volume( i1 );
   ::math::geometry::interval::valid( i1 );
   ::math::geometry::interval::center( p1, i1 );
+  ::math::geometry::interval::size( p1, i1 );
+
+  ::math::geometry::interval::unit( i1 );
 
   ::math::geometry::interval::correct( i1 );
   ::math::geometry::interval::correct( i1, i1 );

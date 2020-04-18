@@ -188,7 +188,7 @@
            ::math::linear::vector::structure< scalar_name, 3 >    const&  point_param
          )
         {
-         result_param[0] = cos( angle_param ) * point_param[0] - sin( angle_param ) * point_param[1] - 0 * point_param[2];
+         result_param[0] = cos( angle_param ) * point_param[0] - sin( angle_param ) * point_param[1] + 0 * point_param[2];
          result_param[1] = sin( angle_param ) * point_param[0] + cos( angle_param ) * point_param[1] + 0 * point_param[2];
          result_param[2] =                  0 * point_param[0] +                  0 * point_param[1] + 1 * point_param[2];
         }

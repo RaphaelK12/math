@@ -1,7 +1,7 @@
 #ifndef math_geometry_interval_unit_hpp_
  #define math_geometry_interval_unit_hpp_
 
-// ::math::geometry::interval::unit( )
+// ::math::geometry::interval::unit( interval, number )
 
 #include "./structure.hpp"
 
@@ -24,8 +24,8 @@
            ::math::geometry::interval::structure< scalar_name, dimension_number >                  & instance
          )
          {
-          //instance[0];
-          //instance[1];
+          ::math::linear::vector::fill( instance[0], 0 );
+          ::math::linear::vector::fill( instance[1], 1 );
          }
 
       }

@@ -8,5 +8,8 @@
 #include "./bais.hpp"
 #include "./gain.hpp"
 #include "./binomial.hpp"
+#include "./hilbert.hpp"
+#include "./lebesgue.hpp"
+#include "./factorial.hpp"
 
 #include "./distribution/distribution.hpp"

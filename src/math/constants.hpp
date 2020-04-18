@@ -56,7 +56,7 @@
        const ::math::constants::scalar_t LOG6_inv   =  0.558110626551247254       ;
        const ::math::constants::scalar_t LOG10_inv  =  0.434294481903251828       ;
 
-       const ::math::constants::scalar_t PHI           =  3.14159265358979323846     ;
+       const ::math::constants::scalar_t PHI           =  3.14159265358979323846264338327950288419716939937510;
        const ::math::constants::scalar_t PHI_half      =  1.57079632679489661923     ;
        const ::math::constants::scalar_t PHI_div_2     =  1.57079632679489661923     ;
 

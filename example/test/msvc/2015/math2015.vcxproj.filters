@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\check\polynomial\interpolate\test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\check\geometry\interval\check.cpp">
+    <ClCompile Include="..\..\..\check\function\peano_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

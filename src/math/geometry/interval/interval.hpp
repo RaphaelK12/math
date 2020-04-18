@@ -13,3 +13,4 @@
 #include "./unit.hpp"
 #include "./transform.hpp"
 #include "./confine.hpp"
+#include "./size.hpp"

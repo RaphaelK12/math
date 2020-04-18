@@ -21,11 +21,54 @@
         rotate
          (
            ::math::linear::matrix::structure<scalar_name,2,2>      & result
-          ,scalar_name                                        const& angle
+          ,scalar_name                                        const& angle_param
          )
          {
-          result[0][0] = cos( angle ); result[ 0 ][ 1 ] = -sin( angle );
-          result[1][0] = sin( angle ); result[ 1 ][ 1 ] =  cos( angle );
+          result[0][0] = cos( angle_param ); result[ 0 ][ 1 ] = -sin( angle_param );
+          result[1][0] = sin( angle_param ); result[ 1 ][ 1 ] =  cos( angle_param );
+         }
+
+       template< typename scalar_name>
+        inline
+        void
+        rotateX
+         (
+           ::math::linear::matrix::structure<scalar_name, 3, 3 >          & result
+          ,                                   scalar_name            const& angle_param
+         )
+         {
+          result[0][0] = 1;  result[0][1] =                  0 ; result[0][2] =  +                  0 ;
+          result[1][1] = 0;  result[1][1] =  cos( angle_param ); result[1][2] =  - sin( angle_param ) ;
+          result[2][2] = 0;  result[2][1] =  sin( angle_param ); result[2][2] =  + cos( angle_param ) ;
+         }
+
+       template< typename scalar_name>
+        inline
+        void
+        rotateY
+         (
+           ::math::linear::matrix::structure<scalar_name, 3, 3 >          & result
+          ,                                   scalar_name            const& angle_param
+         )
+         {
+          result[0][0] =  cos( angle_param ); result[0][0] = 0; result[0][0] =sin( angle_param );
+          result[1][1] = 0                  ; result[1][1] = 1; result[1][1] =                0 ;
+          result[2][2] = -sin( angle_param ); result[2][2] = 0; result[2][2] =cos( angle_param );
+         }
+
+
+       template< typename scalar_name>
+        inline
+        void
+        rotateZ
+         (
+           ::math::linear::matrix::structure<scalar_name, 3, 3 >          & result
+          ,                                   scalar_name            const& angle_param
+         )
+         {
+          result[0][0] = cos( angle_param ); result[0][0] = - sin( angle_param ); result[0][0] = + 0;
+          result[1][1] = sin( angle_param ); result[1][1] = + cos( angle_param ); result[1][1] = + 0;
+          result[2][2] =                  0; result[2][2] = +                  0; result[2][2] = + 1;
          }
 
        template< typename scalar_name>
@@ -35,7 +78,7 @@
          (
            ::math::linear::matrix::structure<scalar_name, 3, 3 >          & result
           ,::math::linear::vector::structure< scalar_name, 3 >       const& direction
-          ,                                   scalar_name            const& angle
+          ,                                   scalar_name            const& angle_param
           ,                                   scalar_name            const& epsilon = 1e-12
          )
          {
@@ -54,8 +97,8 @@
           ::math::linear::vector::structure< scalar_name, 3 > I_dir( direction );
           ::math::linear::vector::scale( I_dir,  scalar_name(1)/I_len );
 
-          ca = cos ( angle );
-          sa = sin ( angle );
+          ca = cos ( angle_param );
+          sa = sin ( angle_param );
           jmca = 1 - ca;
 
           vxvy = I_dir[0] * I_dir[1];

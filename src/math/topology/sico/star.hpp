@@ -1,7 +1,7 @@
 #ifndef math_topology_sico_star
 #define math_topology_sico_star
 
-// ::math::topology::sico::star <data_name>( result, dimension, index, structure )
+// ::math::topology::sico::star <data_name>( result<>, dimension, index, structure )
 // ::math::topology::sico::star <data_name>( result<<>>, dimension, index, structure )
 
 

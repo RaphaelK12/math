@@ -116,7 +116,14 @@ int main( int argc, char*argv[] )
     ::math::linear::matrix::transform( v3, v3, m33 );
     ::math::linear::matrix::transform( v4, v4, m44 );
 
-    std::cin.get();
+  ::math::linear::matrix::rotate( m33, v3, 123.0 );
+  ::math::linear::matrix::rotateX( m33, 123.456 );
+  ::math::linear::matrix::rotateY( m33, 123.456 );
+  ::math::linear::matrix::rotateZ( m33, 123.456 );
 
- return 0;
+
+
+  std::cin.get();
+
+  return 0;
  }

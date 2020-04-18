@@ -38,7 +38,6 @@ namespace math
                                : (  higher - scalar_name( ::fmod( lower - value, higher - lower ) )        )  );
        }
 
-
      template< typename scalar_name  >   // /\/\/\/\/
       inline
       scalar_name
@@ -71,7 +70,7 @@ namespace math
      template< typename scalar_name >
       inline
       scalar_name
-      to_one
+      to_one      //!< [left,right] -> [0,1]
        (
          scalar_name  const& value                //!< what  goes to [0,1]
         ,scalar_name  const& P_left               //!< left  side of interval
@@ -92,6 +91,18 @@ namespace math
        )
        {
         return scalar_name( ::fmod( fabs( value ) - lower, higher - lower ) ) + lower;
+       }
+
+      template< typename scalar_name  >  // _____/~~~
+      inline
+      scalar_name
+      relu    //  rectified linear unit  = max(lower, value )
+       (
+        scalar_name  const& value,
+        scalar_name  const& lower  = scalar_name ( 0 )
+       )
+       {
+        return ( value < lower ? lower : value );
        }
 
    }

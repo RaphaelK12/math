@@ -24,6 +24,7 @@ int main( int argc, char *argv[] )
     std::cout << "wave( " << I_dval << " ) = " << ::math::function::wave<double>( I_dval, 0.3, 0.8 ) << std::endl;
     std::cout << "to_one<double>( " << I_dval << ", -5, 5 ) = " << ::math::function::to_one<double>( I_dval, -5, 5 ) << std::endl;
     std::cout << "sinkhole( " << I_dval << ", -5, 5 ) = " << ::math::function::sinkhole<double>( I_dval, -5, 5 ) << std::endl;
+    std::cout << "relu( " << I_dval << ", -5, 5 ) = " << ::math::function::relu<double>( I_dval ) << std::endl;
    }
 
 
@@ -35,6 +36,7 @@ int main( int argc, char *argv[] )
     std::cout << "wave( " << I_fval << " ) = " << ::math::function::wave( I_fval ) << std::endl;
     std::cout << "to_one<float>( " << I_fval << ", -5, 5 ) = " << ::math::function::to_one<float>( I_fval, -5, 5 ) << std::endl;
     std::cout << "sinkhole<float>( " << I_fval << ", -5, 5 ) = " << ::math::function::sinkhole<float>( I_fval, -5, 5 ) << std::endl;
+    std::cout << "relu<float>( " << I_fval << ", -5, 5 ) = " << ::math::function::relu<float>( I_fval ) << std::endl;
    }
 
   //cin.get();

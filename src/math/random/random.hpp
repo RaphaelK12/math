@@ -2,3 +2,4 @@
 #include "./sobol1D.hpp"
 #include "./sobol2D.hpp"
 #include "./VaP.hpp"
+#include "./VaL.hpp"
