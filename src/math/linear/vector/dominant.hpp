@@ -26,7 +26,7 @@
          )
          { // TODO not optimal
           std::pair<std::size_t, scalar_name > result;
-          auto & index=result.first;
+          auto & index = result.first = 0;
           auto & dominator = result.second = fabs( v[index] );
 
           for( std::size_t i=1; i < dimension_number; ++i)
@@ -50,7 +50,7 @@
          )
          {
           std::pair<std::size_t, scalar_name > result;
-          auto & index=result.first;
+          auto & index = result.first = 0;
           auto & dominator = result.second = fabs( v[index] );
 
           { scalar_name chalenger = fabs( v[1] ); if( dominator < chalenger ){ dominator = chalenger; index = 1; } }
@@ -67,7 +67,7 @@
          )
          {
           std::pair<std::size_t, scalar_name > result;
-          auto & index=result.first;
+          auto & index=result.first = 0;
           auto & dominator = result.second = fabs( v[index] );
 
           { scalar_name chalenger = fabs( v[1] ); if( dominator < chalenger ){ dominator = chalenger; index = 1; } }
@@ -85,7 +85,7 @@
          )
          {
           std::pair<std::size_t, scalar_name > result;
-          auto & index=result.first;
+          auto & index=result.first = 0;
           auto & dominator = result.second = fabs( v[index] );
 
           { scalar_name chalenger = fabs( v[1] ); if( dominator < chalenger ){ dominator = chalenger; index = 1; } }

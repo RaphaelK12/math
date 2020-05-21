@@ -34,8 +34,9 @@ namespace math
         scalar_name  const& higher = scalar_name ( 1 )
        )
        {
-        return ( lower < value ? (          scalar_name( ::fmod( value - lower, higher - lower ) ) + lower )
-                               : (  higher - scalar_name( ::fmod( lower - value, higher - lower ) )        )  );
+        if( lower < value ) return           scalar_name( ::fmod( value - lower, higher - lower ) ) + lower;
+        if( value < lower ) return  higher - scalar_name( ::fmod( lower - value, higher - lower ) );
+        return value;
        }
 
      template< typename scalar_name  >   // /\/\/\/\/
@@ -57,7 +58,14 @@ namespace math
          }
         else
          {
+          if( value < lower )
+           {
           Ir_result = scalar_name( ::fmod( lower - value, 2 * I_size ) );
+           }
+          else
+           {
+            return Ir_result = value;
+           }
          }
 
         if( I_size < Ir_result )
