@@ -58,6 +58,18 @@
           return true;
          }
 
+       template
+        <
+          typename scalar_name
+        >
+        inline unsigned interpolate( scalar_name coefficient[4], std::array< std::array< scalar_name, 2> , 4 > const& cloud, scalar_name const& epsilon = 1e-12 )
+         {
+          return ::math::polynomial::cubic::interpolate( coefficient, cloud[0][0], cloud[0][1]
+                                                                     , cloud[1][0], cloud[1][1]
+                                                                     , cloud[2][0], cloud[2][1]
+                                                                     , cloud[3][0], cloud[3][1], epsilon );
+         }
+
       }
     }
   }

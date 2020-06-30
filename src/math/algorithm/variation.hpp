@@ -65,10 +65,10 @@
          >
         bool variation_next
          (
-           N_Iterator const& P_begin
-          ,N_Iterator const& P_end
-          ,N_BoundType const& P_lower
-          ,N_BoundType const& P_upper
+           N_Iterator      const& P_begin
+          ,N_Iterator      const& P_end
+          ,N_BoundType     const& P_lower
+          ,N_BoundType     const& P_upper
         //,N_Incrementator const& P_incrementator_pre
         //,N_Less          const& P_less
          )
@@ -96,10 +96,10 @@
          >
         bool variation_prev
          (
-           N_Iterator  const& P_begin
-          ,N_Iterator  const& P_end
-          ,N_BoundType const& P_lower
-          ,N_BoundType const& P_upper
+           N_Iterator      const& P_begin
+          ,N_Iterator      const& P_end
+          ,N_BoundType     const& P_lower
+          ,N_BoundType     const& P_upper
         //,N_Incrementator const& P_decrementator_pre
         //,N_Less          const& P_less
          )

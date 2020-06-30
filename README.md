@@ -70,7 +70,7 @@ int main( int argc, char *argv[] )
     - quaternion
       * quaternion arithmetic
   - function
-      * N dimensional Peano's functions
+      * N dimensional Lebesgue/Z functions
   - geometry
     - circle
       * Different circle structures, intersections with direction

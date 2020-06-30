@@ -2,6 +2,7 @@
 #define math_function_factorial
 
  // ::math::function::factorial<N>
+ // ::math::function::factorial( value )
 
 namespace math
  {
@@ -27,6 +28,17 @@ namespace math
      constexpr unsigned factorial()
       {
        return ::math::function::_internal::Factorial<N>::value;
+      }
+
+    template < typename size_name >
+    size_name factorial( size_name const& value )
+      {
+       size_name result = 1;
+       for( size_name number = 1; number < value;  )
+        {
+         result *= ++number;
+        }
+       return result;
       }
 
    }

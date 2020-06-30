@@ -5,13 +5,16 @@
  // ::math::function::saw
  // ::math::function::wave
  // ::math::function::to_one
+ // ::math::function::to_any
+ // ::math::function::relu
+ // ::math::function::stairs
 
 namespace math
  {
   namespace function
    {
 
-     template< typename scalar_name >      //_____/-----
+     template< typename scalar_name >      //  _____/-----
       inline
       scalar_name
       ramp
@@ -24,7 +27,7 @@ namespace math
         return ( (value) < lower ? lower : ( higher < (value) ? higher : (value) ) ) ;
        }
 
-     template< typename scalar_name  >   // ////////
+     template< typename scalar_name  >   //  ////////
       inline
       scalar_name
       saw
@@ -39,7 +42,7 @@ namespace math
         return value;
        }
 
-     template< typename scalar_name  >   // /\/\/\/\/
+     template< typename scalar_name  >   //  /\/\/\/\/
       inline
       scalar_name
       wave
@@ -75,23 +78,10 @@ namespace math
         return Ir_result;
        }
 
-     template< typename scalar_name >
+     template< typename scalar_name  >  //  \\\\\//////
       inline
       scalar_name
-      to_one      //!< [left,right] -> [0,1]
-       (
-         scalar_name  const& value                //!< what  goes to [0,1]
-        ,scalar_name  const& P_left               //!< left  side of interval
-        ,scalar_name  const& P_right              //!< right side of interval
-       )
-       {
-        return ( value - P_left ) / ( P_right - P_left );
-       }
-
-     template< typename scalar_name  >  // \\\\\//////
-      inline
-      scalar_name
-      sinkhole 
+      sinkhole
        (
         scalar_name  const& value,
         scalar_name  const& lower  = scalar_name ( 0 ),
@@ -101,7 +91,7 @@ namespace math
         return scalar_name( ::fmod( fabs( value ) - lower, higher - lower ) ) + lower;
        }
 
-      template< typename scalar_name  >  // _____/~~~
+      template< typename scalar_name  >  //  _____/~~~
       inline
       scalar_name
       relu    //  rectified linear unit  = max(lower, value )
@@ -112,6 +102,72 @@ namespace math
        {
         return ( value < lower ? lower : value );
        }
+
+      template< typename scalar_name , typename integer_name = int >  //  _____------^^^
+      inline
+       scalar_name
+       stairs  //!< AKA floor
+       (
+         scalar_name  const& value
+       )
+       {
+        return floor( value );
+       }
+
+      template< typename scalar_name , typename integer_name = int >  //  _____------
+      inline
+       scalar_name
+       stairs
+       (
+         scalar_name  const& value,
+         scalar_name  const& step
+       )
+       {
+        return step * floor( value / step );
+       }
+
+
+     template< typename scalar_name >
+      inline
+      scalar_name
+      to_one      //!< [left,right] -> [0,1]
+       (
+         scalar_name  const& value                //!< what  goes to [0,1]
+        ,scalar_name  const& left               //!< left  side of interval
+        ,scalar_name  const& right              //!< right side of interval
+       )
+       {
+        return ( value - left ) / ( right - left );
+       }
+
+     template< typename scalar_name >
+      inline
+      scalar_name
+      to_any      //!< [0,1] -> [left,right] ->
+       (
+         scalar_name  const& value              //!< what  goes to [left,right]
+        ,scalar_name  const& left               //!< left  side of interval
+        ,scalar_name  const& right              //!< right side of interval
+       )
+       {
+        return value * ( right - left ) + left ;
+       }
+
+     template< typename scalar_name >
+      inline
+      scalar_name
+      any_to_any      //!< [leftA,rightA] -> [leftB,rightB]
+       (
+         scalar_name  const& value                //!< what  goes to [leftB,rightB]
+        ,scalar_name  const& leftA
+        ,scalar_name  const& rightA
+        ,scalar_name  const& leftB
+        ,scalar_name  const& rightB
+       )
+       {
+        return ::math::function::to_any( ::math::function::to_one<scalar_name>( value, leftA, rightA ), leftB, rightB );
+       }
+
 
    }
  }

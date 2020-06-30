@@ -18,7 +18,7 @@
         >
         inline unsigned interpolate
          (
-           scalar_name coefficient[3] 
+           scalar_name coefficient[3]
           ,scalar_name const& x0, scalar_name const& y0
           ,scalar_name const& x1, scalar_name const& y1
           ,scalar_name const& x2, scalar_name const& y2
@@ -45,6 +45,17 @@
           coefficient[ 1 ] = b0 + b1 + b2;
           coefficient[ 0 ] = c0 + c1 + c2;
           return true;
+         }
+
+       template
+        <
+          typename scalar_name
+        >
+        inline unsigned interpolate( scalar_name coefficient[3], std::array< std::array< scalar_name, 2> , 3 > const& cloud, scalar_name const& epsilon = 1e-12 )
+         {
+          return ::math::polynomial::quadric::interpolate( coefficient, cloud[0][0], cloud[0][1]
+                                                                     , cloud[1][0], cloud[1][1]
+                                                                     , cloud[2][0], cloud[2][1], epsilon );
          }
 
       }

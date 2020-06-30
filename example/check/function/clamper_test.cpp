@@ -25,6 +25,7 @@ int main( int argc, char *argv[] )
     std::cout << "to_one<double>( " << I_dval << ", -5, 5 ) = " << ::math::function::to_one<double>( I_dval, -5, 5 ) << std::endl;
     std::cout << "sinkhole( " << I_dval << ", -5, 5 ) = " << ::math::function::sinkhole<double>( I_dval, -5, 5 ) << std::endl;
     std::cout << "relu( " << I_dval << ", -5, 5 ) = " << ::math::function::relu<double>( I_dval ) << std::endl;
+    std::cout << "stairs( " << I_dval << ", -5, 5 ) = " << ::math::function::stairs<double>( I_dval ) << std::endl;
    }
 
 
@@ -38,6 +39,10 @@ int main( int argc, char *argv[] )
     std::cout << "sinkhole<float>( " << I_fval << ", -5, 5 ) = " << ::math::function::sinkhole<float>( I_fval, -5, 5 ) << std::endl;
     std::cout << "relu<float>( " << I_fval << ", -5, 5 ) = " << ::math::function::relu<float>( I_fval ) << std::endl;
    }
+
+   ::math::function::to_one<float>( 5, 1, 10 ); 
+   ::math::function::to_any<float>( 0.5, 1, 10 ); 
+   ::math::function::any_to_any<float>( 0.5, 1, 10, 2 , 6 ); 
 
   //cin.get();
 
