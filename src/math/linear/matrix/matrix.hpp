@@ -2,6 +2,7 @@
 #include "./invert.hpp"
 #include "./multiply.hpp"
 #include "./one.hpp"
+#include "./id.hpp"
 #include "./structure.hpp"
 #include "./transform.hpp"
 #include "./transpose.hpp"

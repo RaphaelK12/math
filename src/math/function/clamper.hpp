@@ -4,6 +4,7 @@
  // ::math::function::ramp
  // ::math::function::saw
  // ::math::function::wave
+ // ::math::function::sinkhole
  // ::math::function::to_one
  // ::math::function::to_any
  // ::math::function::relu

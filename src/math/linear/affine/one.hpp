@@ -8,6 +8,7 @@
 #include "../vector/fill.hpp"
 
 
+
  namespace math
   {
    namespace linear
@@ -33,10 +34,10 @@
          }
 
        template< typename scalar_name, unsigned dimension_number>
-        ::math::linear::affine::structure<scalar_name,dimension_number> &
+        ::math::linear::affine::structure<scalar_name,dimension_number> const &
         one( ::math::linear::affine::structure<scalar_name,dimension_number> const& dummy )
          {
-          return ::math::linear::affine::one<scalar_name, dimension_number>();
+          return ::math::linear::affine::one<scalar_name, dimension_number>( );
          }
 
       }

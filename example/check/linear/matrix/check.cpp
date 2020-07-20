@@ -50,6 +50,11 @@ int main( int argc, char*argv[] )
   ::math::linear::matrix::multiply( m33, m33, m33 );
   ::math::linear::matrix::multiply( m44, m44, m44 );
 
+  ::math::linear::matrix::id<double,3,3>();
+  ::math::linear::matrix::id( mAB );
+  ::math::linear::matrix::id( ::math::linear::matrix::structure<double,4,4>{} );
+
+  ::math::linear::matrix::one<double,3,3>(  );
   ::math::linear::matrix::one( mAB );
   ::math::linear::matrix::one( m22 );
   ::math::linear::matrix::one( m33 );

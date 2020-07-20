@@ -28,9 +28,9 @@
 
        template< typename scalar_name, unsigned dimension_number>
         ::math::linear::affine::structure<scalar_name,dimension_number> const&
-        id( ::math::linear::affine::structure<scalar_name,dimension_number> const&  dummy )
+        id( ::math::linear::affine::structure<scalar_name,dimension_number> const& dummy )
          {
-          return ::math::linear::affine::one<scalar_name,dimension_number>();
+          return ::math::linear::affine::one<scalar_name,dimension_number>( dummy );
          }
 
       }
