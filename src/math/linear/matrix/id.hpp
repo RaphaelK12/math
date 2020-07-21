@@ -16,7 +16,7 @@
         ::math::linear::matrix::structure<scalar_name,width_number,height_number> &
         id( ::math::linear::matrix::structure<scalar_name,width_number,height_number> & m )
          {
-          return ::math::linear::matrix::id( m );
+          return ::math::linear::matrix::one( m );
          }
 
        template< typename scalar_name, unsigned width_number, unsigned height_number >
@@ -30,7 +30,7 @@
         ::math::linear::matrix::structure<scalar_name,width_number,height_number> const&
         id( ::math::linear::matrix::structure<scalar_name,width_number,height_number> const& dummmy )
          {
-          return ::math::linear::matrix::id( dummmy );
+          return ::math::linear::matrix::one( dummmy );
          }
 
       }
