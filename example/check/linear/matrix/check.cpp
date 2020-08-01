@@ -126,6 +126,8 @@ int main( int argc, char*argv[] )
   ::math::linear::matrix::rotateY( m33, 123.456 );
   ::math::linear::matrix::rotateZ( m33, 123.456 );
 
+  ::math::linear::matrix::fill<double>( m33, 0 );
+  ::math::linear::matrix::fill( m33, 0.0 );
 
 
   std::cin.get();

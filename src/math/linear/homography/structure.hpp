@@ -17,9 +17,9 @@
        template
         <
           typename scalar_name
-         ,unsigned dimension_number
+         ,unsigned dimension_number //! For plane it is 2, for #d space it is 3
         > // Currently limited to square matrix
-         using structure = ::math::linear::matrix::structure< scalar_name, dimension_number, dimension_number >;
+         using structure = ::math::linear::matrix::structure< scalar_name, dimension_number + 1, dimension_number + 1 >;
 
       }
     }

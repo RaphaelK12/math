@@ -120,7 +120,7 @@ namespace math
          , std::vector< ::math::linear::vector::point<scalar_name,3> > const& cloud
         )
         {
-          return ::math::geometry::plane::fit3D<scalar_name>::process( abcd, cloud );
+         return ::math::geometry::plane::fit3D<scalar_name>::process( abcd, cloud );
         }
 
      }

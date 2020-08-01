@@ -25,6 +25,9 @@ namespace math
       template < typename scalar_name >
        class parametric3d;
 
+      template < typename scalar_name >
+       class three;
+
       template
        <
          typename scalar_name = double
@@ -36,12 +39,13 @@ namespace math
            typedef unsigned      size_type;
            typedef scalar_name scalar_type;
 
-           typedef ::math::linear::vector::point<scalar_type,3> vector3_type;
+           typedef ::math::linear::vector::structure<scalar_name,3>  point3d_type, point_type, vector3d_type;
            typedef std::array<scalar_type,4> array_type;
 
            typedef ::math::geometry::plane::ABCD3D<scalar_name>              ABCD3D_type, this_type;
            typedef ::math::geometry::plane::no3d<scalar_name>                  no3d_type;
            typedef ::math::geometry::plane::parametric3d<scalar_name>  parametric3d_type;
+           typedef ::math::geometry::plane::three<scalar_name>                three_type;
 
          public:
            explicit ABCD3D( scalar_type const& A=0, scalar_type const& B=0, scalar_type const& C=0, scalar_type const& D=0 )
@@ -71,6 +75,11 @@ namespace math
              *this = parametric;
             }
 
+           explicit ABCD3D( three_type const& three )
+            {
+             *this = three;
+            }
+
          public:
            this_type & operator=( no3d_type const& no3d )
             {
@@ -83,13 +92,28 @@ namespace math
 
            this_type & operator=( parametric3d_type const& parametric )
             {
-             vector3_type normal;
+             vector3d_type normal;
             ::math::linear::vector::cross( normal, parametric.x(), parametric.y() );
 
              this->A() = normal[0];
              this->B() = normal[1];
              this->C() = normal[2];
              this->D() = - ::math::linear::vector::dot( normal, parametric.origin() );
+
+             return *this;
+            }
+
+           this_type & operator=( three_type const& three )
+            {
+             vector3d_type x; ::math::linear::vector::subtraction( x, three.q(), three.p() );
+             vector3d_type y; ::math::linear::vector::subtraction( y, three.r(), three.p() );
+
+             vector3d_type normal; ::math::linear::vector::cross( normal, x, y );
+
+             this->A() = normal[0];
+             this->B() = normal[1];
+             this->C() = normal[2];
+             this->D() = - ::math::linear::vector::dot( normal, three.p() );
 
              return *this;
             }

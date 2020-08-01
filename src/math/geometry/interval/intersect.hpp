@@ -1,7 +1,12 @@
 #ifndef math_geometry_interval_intersect_hpp_
  #define math_geometry_interval_intersect_hpp_
 
-// ::math::geometry::interval::intersect( )
+// ::math::geometry::interval::intersect( result, left, right )
+// ::math::geometry::interval::intersect( result, right )
+// ::math::geometry::interval::intersect_check( left, right )
+// ::math::geometry::interval::intersect_weak( result, left, right )
+// ::math::geometry::interval::intersect_weak( left, right )
+// ::math::geometry::interval::intersect( result, box, parametric, epsilon    = 1e-12 )
 
 #include <limits>
 #include <tuple>
@@ -134,7 +139,7 @@
           //typedef std::tuple< unsigned, scalar_name, unsigned, scalar_name > result_type;
 
           auto & Ir_lo_side   = std::get<0>( result );  Ir_lo_side = 1;
-          auto & Ir_lo_lambda = std::get<1>( result );  Ir_lo_lambda =  std::numeric_limits<scalar_name>::min();
+          auto & Ir_lo_lambda = std::get<1>( result );  Ir_lo_lambda =  -std::numeric_limits<scalar_name>::max();
           auto & Ir_hi_side   = std::get<2>( result );  Ir_lo_side = 2;
           auto & Ir_hi_lambda = std::get<3>( result );  Ir_hi_lambda =  std::numeric_limits<scalar_name>::max();
 

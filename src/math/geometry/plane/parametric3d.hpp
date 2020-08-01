@@ -25,6 +25,9 @@ namespace math
       template < typename scalar_name >
        class parametric3d;
 
+      template < typename scalar_name >
+       class three;
+
       template
        <
          typename scalar_name = double
@@ -39,10 +42,12 @@ namespace math
            typedef ::math::geometry::plane::ABCD3D<scalar_name>              ABCD3D_type;
            typedef ::math::geometry::plane::no3d<scalar_name>                  no3d_type;
            typedef ::math::geometry::plane::parametric3d<scalar_name>  parametric3d_type, this_type;
+           typedef ::math::geometry::plane::three<scalar_name>                three_type;
 
          public:
            parametric3d( )
             {
+             // do nothing;
             }
 
            parametric3d( point_type const& origin, point_type const& X, point_type const& Y )
@@ -53,41 +58,45 @@ namespace math
             }
 
          public:
-           explicit parametric3d( ABCD3D_type const& no )
+           explicit parametric3d( ABCD3D_type const& abcd )
             {
-              *this = no;
+              *this = abcd;
             }
 
            explicit parametric3d( no3d_type const& no )
             {
               *this = no;
             }
+
+           explicit parametric3d( three_type const& three )
+            {
+              *this = three;
+            }
+
          public:
-           parametric3d &operator=( ABCD3D_type const& abcd )
+           this_type &operator=( ABCD3D_type const& abcd )
             {
              no3d_type no3d;
              no3d = abcd;
              *this = no3d;
 
-            point_type normal;
-            point_type origin;
-            if(false){
+             point_type normal;
+             point_type origin;
+             if(false){
              ::math::linear::vector::load( normal, abcd.A(), abcd.B(), abcd.C() );
              scalar_type dot= ::math::linear::vector::dot( normal, normal ) ;
              scalar_type lambda = -abcd.D()/ dot;
              ::math::linear::vector::scale( this->m_origin, lambda, normal );
-            }
-
-
+             }
              return *this;
             }
 
-           parametric3d &operator=( no3d_type const& no )
+           this_type &operator=( no3d_type const& no )
             {
              this->m_origin = no.origin();
 
              point_type x{0,0,0};
-             {
+             { // ::math::linear::vector::TODO most smallest( no.normal() ).first
               int index = 0;
               if( fabs( no.normal()[1] ) < fabs( no.normal()[index] ) )
                {
@@ -109,10 +118,18 @@ namespace math
              return *this;
             }
 
+           this_type & operator=( three_type const& three )
+            {
+             this->origin() = three.p();
+             ::math::linear::vector::subtraction( this->x(), three.q(), three.p() );
+             ::math::linear::vector::subtraction( this->y(), three.r(), three.p() );
+             return *this;
+            }
+
            void normalize()
             {
              point_type normal;
-             ::math::linear::vector::cross( normal, this->m_X, this->m_Y );
+             ::math::linear::vector::cross( normal, this->x(), this->y() );
              *this = parametric3d( no3d_type( this->m_origin, normal ) );
             }
 
@@ -120,7 +137,7 @@ namespace math
             {
              using namespace ::math::linear::vector;
              point_type result( this->m_origin );
-             this->m_origin += u * this->m_X + v * this->m_Y;
+             this->m_origin += u * this->x() + v * this->y();
              return result;
             }
 

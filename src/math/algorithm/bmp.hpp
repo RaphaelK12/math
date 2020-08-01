@@ -1,37 +1,37 @@
-#ifndef math_linear_vector_BMP
-#define math_linear_vector_BMP
+#ifndef math_algorithm_BMP
+#define math_algorithm_BMP
 
-// ::math::linear::vector::BMP<scalar_name,dimension_number>
+// ::math::algorithm::BMP<scalar_name,dimension_number>
 
-#include <array>
-#include <vector>
-#include <limits>
+#include<vector>
 
-#include "./structure.hpp"
-#include "./distance.hpp"
+
 
  namespace math
   {
-   namespace linear
+   namespace algorithm
     {
-     namespace vector
-      {
 
      template
        <
-         typename    scalar_name
-        ,unsigned  dimension_number
+         typename container_name
+        ,typename        at_function_name
+        ,typename  distance_function_name
+        ,typename      size_function_name
        >
        void BMP //!< Best matching pairs
        (
-         ::std::vector< std::size_t >                                      & to_left  //!< index toward left  side.
-        ,::std::vector< std::size_t >                                      & to_right //!< index toward right side.
-        ,::std::vector< ::math::linear::vector::vector<scalar_name,dimension_number>  > const& left
-        ,::std::vector< ::math::linear::vector::vector<scalar_name,dimension_number>  > const& right
+         ::std::vector< std::size_t >       & to_left  //!< index toward left  side.
+        ,::std::vector< std::size_t >       & to_right //!< index toward right side.
+        ,container_name                const& left
+        ,container_name                const& right
+        , distance_function_name       const& distance
+        ,       at_function_name       const& at
+        ,     size_function_name       const& size
        )
        {
-        auto const& left_size = left.size();
-        auto const& right_size = right.size();
+        auto const& left_size  = size(  left );
+        auto const& right_size = size( right );
 
         to_left.resize(  right_size ); std::fill( to_left.begin(),   to_left.end(),  std::size_t( -1 ) );
         to_right.resize(  left_size ); std::fill( to_right.begin(),  to_right.end(), std::size_t( -1 ) );
@@ -53,30 +53,34 @@
             return;
            }
 
-          scalar_name best_span = std::numeric_limits<scalar_name>::max();
+          decltype(  distance( at( left, std::size_t( 0 ) ), at( right, std::size_t( 0 ) ) ) ) best_span;
+          bool single = true; 
           std::size_t neighbor_right = std::size_t( -1 );
 
           for( std::size_t candidate_right=0; candidate_right < right_size; ++candidate_right )
            {
-            scalar_name current_span = ::math::linear::vector::distance( left[alone_left], right[ candidate_right ] );
-            if( best_span <= current_span )
+            auto current_span = distance( at( left, alone_left ), at( right, candidate_right ) );
+
+            if( ( false == single ) && ( best_span <= current_span ) )
              {
               continue;
              }
 
             if( std::size_t( -1 ) != to_left[ candidate_right ] )
              {
-              auto challenge_span = ::math::linear::vector::distance( left[ to_left[ candidate_right ] ], right[ candidate_right ] );
+              auto challenge_span = distance( at( left, to_left[ candidate_right ] ), at( right, candidate_right ) );
               if( current_span < challenge_span )
                {
                 best_span = current_span;
                 neighbor_right = candidate_right;
+                single = false;
                }
              }
             else
              {
               best_span = current_span;
               neighbor_right = candidate_right;
+              single = false;
              }
            }
 
@@ -87,7 +91,7 @@
 
           if( std::size_t( -1 ) != to_left[ neighbor_right ] )
            {
-            to_right[ to_left[ neighbor_right ] ]= std::size_t( -1 );
+            to_right[ to_left[ neighbor_right ] ] = std::size_t( -1 );
            }
 
           to_left[  neighbor_right ] = alone_left;
@@ -95,7 +99,6 @@
          }
        }
 
-     }
    }
  }
 

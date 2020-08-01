@@ -140,10 +140,14 @@ int main( int argc, char *argv[] )
 
   ::math::geometry::plane::no3d<double>              a, no3d;
   ::math::geometry::plane::parametric3d<double>      b, param3d;
-  ::math::geometry::plane::noNd<double, 5>           c;
+  ::math::geometry::plane::noNd<double, 3>           c;
+  ::math::geometry::plane::noNd<double, 5>           c5;
+  ::math::geometry::plane::three<double>             d;
 
-  a=b;
-  b=a;
+  a=b;   a = d;
+  b=a;   b = d;
+
+  d=a; d=b;
 
   double l;
   ::math::linear::vector::point<double,3>             point3;
@@ -151,10 +155,12 @@ int main( int argc, char *argv[] )
 
   ::math::geometry::direction::ABC2D<double>           abc;
   ::math::geometry::plane::ABCD3D<double>             abcd;
+  ::math::geometry::plane::three<double>             tttt;
 
-  abcd    =  no3d; abcd    = param3d;
-  no3d    =  abcd; no3d    = param3d;
-  param3d =  abcd; param3d = abcd;
+  abcd    =  no3d; abcd    = param3d; abcd    = tttt;
+  no3d    =  abcd; no3d    = param3d; no3d    = tttt;
+  param3d =  abcd; param3d = abcd;    param3d = tttt;
+  tttt = abcd;     tttt    = no3d;    tttt    = param3d;
 
   ::math::geometry::direction::parametric<double, 3 > parametric;
 

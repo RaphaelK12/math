@@ -21,7 +21,7 @@ namespace math
       ramp
        (
          scalar_name const& value
-        ,scalar_name const& lower = scalar_name( 0 )
+        ,scalar_name const& lower  = scalar_name( 0 )
         ,scalar_name const& higher = scalar_name( 1 )
        )
        {
@@ -33,13 +33,26 @@ namespace math
       scalar_name
       saw
        (
-        scalar_name  const& value,
-        scalar_name  const& lower  = scalar_name ( 0 ),
-        scalar_name  const& higher = scalar_name ( 1 )
+         scalar_name  const& value 
+        ,scalar_name  const& lower  
+        ,scalar_name  const& higher
        )
        {
         if( lower < value ) return           scalar_name( ::fmod( value - lower, higher - lower ) ) + lower;
         if( value < lower ) return  higher - scalar_name( ::fmod( lower - value, higher - lower ) );
+        return value;
+       }
+
+     template< typename scalar_name  >   //  ////////
+      inline
+      scalar_name
+      saw
+       (
+        scalar_name  const& value
+       )
+       {
+        if( scalar_name(0) < value ) return                   scalar_name( ::fmod(  + value, scalar_name(1) ) ) ;
+        if( value < scalar_name(0) ) return  scalar_name(1) - scalar_name( ::fmod(  - value, scalar_name(1) ) );
         return value;
        }
 
@@ -49,8 +62,8 @@ namespace math
       wave
        (
          scalar_name  const& value
-        ,scalar_name  const& lower     = scalar_name ( 0 )
-        ,scalar_name  const& higher    = scalar_name ( 1 )
+        ,scalar_name  const& lower 
+        ,scalar_name  const& higher
        )
        {
         scalar_name  Ir_result;
@@ -73,10 +86,59 @@ namespace math
          }
 
         if( I_size < Ir_result )
-         Ir_result =  - Ir_result + 2 * I_size;
+         {
+          Ir_result =  - Ir_result + 2 * I_size;
+         }
 
         Ir_result += lower;
         return Ir_result;
+       }
+
+     template< typename scalar_name  >   //  /\/\/\/\/
+      inline
+      scalar_name
+      wave
+       (
+         scalar_name  const& value
+       )
+       {
+        scalar_name  Ir_result;
+
+        if( scalar_name(0) < value )
+         {
+          Ir_result = scalar_name( ::fmod(    + value, scalar_name(2) ) );
+         }
+        else
+         {
+          if( value < scalar_name(0) )
+           {
+            Ir_result = scalar_name( ::fmod(  - value, scalar_name(2) ) );
+           }
+          else
+           {
+            return Ir_result = value;
+           }
+         }
+
+        if( scalar_name(1) < Ir_result )
+         {
+          Ir_result = scalar_name(2) - Ir_result;
+         }
+        return Ir_result;
+       }
+
+
+     template< typename scalar_name  >  //  \\\\\//////
+      inline
+      scalar_name
+      sinkhole
+       (
+        scalar_name   const& value
+        ,scalar_name  const& lower  
+        ,scalar_name  const& higher 
+       )
+       {
+        return scalar_name( ::fmod( fabs( value ) - lower, higher - lower ) ) + lower;
        }
 
      template< typename scalar_name  >  //  \\\\\//////
@@ -84,12 +146,10 @@ namespace math
       scalar_name
       sinkhole
        (
-        scalar_name  const& value,
-        scalar_name  const& lower  = scalar_name ( 0 ),
-        scalar_name  const& higher = scalar_name ( 1 )
+        scalar_name  const& value
        )
        {
-        return scalar_name( ::fmod( fabs( value ) - lower, higher - lower ) ) + lower;
+        return scalar_name( ::fmod( fabs( value ), scalar_name(1) ) );
        }
 
       template< typename scalar_name  >  //  _____/~~~
@@ -133,7 +193,7 @@ namespace math
       scalar_name
       to_one      //!< [left,right] -> [0,1]
        (
-         scalar_name  const& value                //!< what  goes to [0,1]
+         scalar_name  const& value              //!< what  goes to [0,1]
         ,scalar_name  const& left               //!< left  side of interval
         ,scalar_name  const& right              //!< right side of interval
        )

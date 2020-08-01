@@ -19,7 +19,7 @@ namespace math
       template<  typename scalar_name >
        void construct
         (
-           ::math::linear::homography::structure<scalar_name,3> & result
+           ::math::linear::homography::structure<scalar_name,2> & result
           ,::math::linear::vector::structure< scalar_name, 2 >    const& a0, ::math::linear::vector::structure< scalar_name, 2 >    const& b0
           ,::math::linear::vector::structure< scalar_name, 2 >    const& a1, ::math::linear::vector::structure< scalar_name, 2 >    const& b1
           ,::math::linear::vector::structure< scalar_name, 2 >    const& a2, ::math::linear::vector::structure< scalar_name, 2 >    const& b2
@@ -72,7 +72,7 @@ namespace math
       template<  typename scalar_name >
        void construct
         (
-           ::math::linear::homography::structure<scalar_name,3> & result
+           ::math::linear::homography::structure<scalar_name,2> & result
           ,::math::linear::vector::structure< scalar_name, 2 >    const& b0 //!< ( 0,0 ) -> b0
           ,::math::linear::vector::structure< scalar_name, 2 >    const& b1 //!< ( 1,0 ) -> b1
           ,::math::linear::vector::structure< scalar_name, 2 >    const& b2 //!< ( 0,1 ) -> b2
@@ -121,10 +121,11 @@ namespace math
 
          return ;
         }
+
       template<  typename scalar_name >
        void construct
         (
-           ::math::linear::homography::structure<scalar_name,3> & result
+           ::math::linear::homography::structure<scalar_name,2> & result
           ,::math::linear::vector::structure< scalar_name, 2 >    const& b3 //!< ( 1,1 ) -> b3
         )
         {
@@ -169,6 +170,44 @@ namespace math
          result[2][2] = 1;
 
          return ;
+        }
+
+       template<  typename scalar_name >
+       void construct
+        (
+           ::math::linear::homography::structure<scalar_name,3>        & result
+          ,::math::linear::vector::structure< scalar_name, 3 >    const& b3 //!< ( 1,1,1 ) -> b3
+        )
+        {
+         scalar_name X = b3[0];
+         scalar_name Y = b3[1];
+         scalar_name Z = b3[2];
+
+         scalar_name delta = 8 * X * Y * Z;
+
+         scalar_name A = 4 * Y * Z * ( Z + Y - X - 1 );
+         scalar_name B = 4 * X * Z * ( Z - Y + X - 1 ) ;
+         scalar_name C = 4 * X * Y * ( X + Y - Z - 1 );
+
+         result[0][0] = A + delta;
+         result[0][1] = 0;
+         result[0][2] = 0;
+         result[0][3] = 0;
+
+         result[1][0] = 0;
+         result[1][1] = B + delta;
+         result[1][2] = 0;
+         result[1][3] = 0;
+
+         result[2][0] = 0;
+         result[2][1] = 0;
+         result[2][2] = C + delta;
+         result[2][3] = 0;
+
+         result[3][0] = A;
+         result[3][1] = B;
+         result[3][2] = C;
+         result[3][3] = delta;
         }
 
      }

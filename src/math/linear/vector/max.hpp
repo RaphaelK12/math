@@ -100,7 +100,7 @@
           while( I_result != result_param.data() )
            {
             --I_result;  --I_right;
-            if( *I_right > *I_result ) result_param[0] = *I_right;
+            if( *I_right > *I_result ) *I_result = *I_right;
            }
          }
 

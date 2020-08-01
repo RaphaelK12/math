@@ -5,6 +5,7 @@
 // ::math::linear::homography::transform( result, matrix )
 
 
+#include "./structure.hpp"
 #include "../vector/vector.hpp"
 #include "../matrix/matrix.hpp"
 
@@ -15,16 +16,46 @@ namespace math
     namespace homography
      {
 
+      template<  typename scalar_name, unsigned dimension_number >
+       void transform
+        (
+          ::math::linear::vector::structure<      scalar_name, dimension_number >         & result
+         ,::math::linear::homography::structure<  scalar_name, dimension_number >    const& matrix
+         ,::math::linear::vector::structure<      scalar_name, dimension_number >    const& point
+         )
+        {
+         scalar_name divisor  =  matrix[dimension_number][dimension_number];
+
+         for( std::size_t i=0; i < dimension_number; ++i )
+          {
+           divisor += matrix[dimension_number][ i ] * point[ i ];
+          }
+
+         for( std::size_t i=0; i< dimension_number; ++i )
+          {
+           result[i] = matrix[i][dimension_number];
+           for( std::size_t j=0; j < dimension_number; ++j )
+            {
+             result[i] += matrix[i][j] * point[j];
+            }
+           result[i] /= divisor;
+          }
+
+         return ;
+        }
+
+
+
       template<  typename scalar_name >
        void transform
         (
           ::math::linear::vector::structure<      scalar_name, 2 >           & result
-         ,::math::linear::homography::structure<  scalar_name, 3 >      const& matrix
+         ,::math::linear::homography::structure<  scalar_name, 2 >      const& matrix
          ,::math::linear::vector::structure<      scalar_name, 2 >      const& point
          )
         {
-         scalar_name divisor  =  matrix[2][0] * point[0] 
-                               + matrix[2][1] * point[1] 
+         scalar_name divisor  =  matrix[2][0] * point[0]
+                               + matrix[2][1] * point[1]
                                + matrix[2][2];
 
          result[0] = ( matrix[0][0] * point[0] +  matrix[0][1] * point[1] + matrix[0][2])/divisor;
@@ -37,7 +68,7 @@ namespace math
        void transform
         (
           ::math::linear::vector::structure<      scalar_name, 2 >           & result
-         ,::math::linear::homography::structure<  scalar_name, 3 >      const& matrix
+         ,::math::linear::homography::structure<  scalar_name, 2>      const& matrix
          )
         {
          ::math::linear::vector::structure<      scalar_name, 2 >           tmp;
@@ -53,7 +84,7 @@ namespace math
        void transform
         (
           ::math::linear::vector::structure<      scalar_name, 3 >           & result
-         ,::math::linear::homography::structure<  scalar_name, 4 >      const& matrix
+         ,::math::linear::homography::structure<  scalar_name, 3 >      const& matrix
          ,::math::linear::vector::structure<      scalar_name, 3 >      const& point
          )
         {
@@ -73,12 +104,12 @@ namespace math
        void transform
         (
           ::math::linear::vector::structure<      scalar_name, 3 >           & result
-         ,::math::linear::homography::structure<  scalar_name, 4 >      const& matrix
+         ,::math::linear::homography::structure<  scalar_name, 3 >      const& homography
          )
         {
          ::math::linear::vector::structure<      scalar_name, 3 >           tmp;
 
-         ::math::linear::homography::transform( tmp, matrix, result );
+         ::math::linear::homography::transform( tmp, homography, result );
 
          result = tmp;
          return /*result*/;

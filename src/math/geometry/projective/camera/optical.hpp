@@ -7,6 +7,7 @@
 #include <tuple>
 
 #include "../../../linear/vector/vector.hpp"
+#include "../../../geometry/interval/interval.hpp"
 
 #include "./d2hv.hpp"
 #include "./ha2d.hpp"
@@ -36,6 +37,8 @@ namespace math
 
              typedef ::math::linear::vector::structure< scalar_type , 2 >          uv_type;
              typedef ::math::linear::vector::structure< size_type   , 2 >  resolution_type;
+
+             typedef ::math::geometry::interval::structure<scalar_name,2>      window_type;
 
              template< typename number_name >
               using vector_type = ::math::linear::vector::structure< number_name, 2 >;
@@ -187,6 +190,14 @@ namespace math
            private:
              scalar_type     m_maxFV;
 
+           public:
+             window_type window()const
+              {
+               window_type result;
+               result[1][0] = tan( this->horizontalFV() / scalar_type(2) );  result[0][0] = -result[1][0];
+               result[1][1] = tan( this->verticalFV() / scalar_type(2) );    result[0][1] = -result[1][1];
+               return result;
+              }
            public:
              resolution_type const& resolution()const{ return m_resolution; }
              void resolution( size_type const& width, size_type const& height )

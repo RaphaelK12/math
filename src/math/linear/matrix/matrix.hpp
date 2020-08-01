@@ -11,6 +11,7 @@
 #include "./scale.hpp"
 #include "./subtraction.hpp"
 #include "./NaN.hpp"
+#include "./fill.hpp"
 #include "./system.hpp"
 
 #include "./column.hpp"

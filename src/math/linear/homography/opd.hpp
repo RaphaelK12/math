@@ -20,8 +20,8 @@ namespace math
       template<  typename scalar_name >
        void opd
         (
-          ::math::linear::affine::structure< scalar_name, 3 >       & affine
-         ,::math::linear::homography::structure<scalar_name,3>   const& homography
+          ::math::linear::affine::structure< scalar_name, 3 >         & affine
+         ,::math::linear::homography::structure<scalar_name,2>   const& homography
         )
         {
          ::math::linear::vector::structure<scalar_name, 3> x,y,z,t;

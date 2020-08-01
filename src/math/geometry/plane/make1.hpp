@@ -23,18 +23,18 @@ namespace math
         public:
           typedef scalar_name scalar_type;
 
-          typedef ::math::type::plane::parametric3d<scalar_name> parametric3d_type;
-          typedef ::math::type::plane::no3d <scalar_name>        no3d_type;
+          typedef ::math::geometry::plane::parametric3d<scalar_name> parametric3d_type;
+          typedef ::math::geometry::plane::no3d <scalar_name>        no3d_type;
 
           typedef std::pair< no3d_type, parametric3d_type > return_type;
 
           typedef ::math::geometry::vanish<scalar_name> vanish_type;
 
-          typedef ::math::type::vektor<scalar_name, 2>        point2D_type;
-          typedef ::math::type::vektor<scalar_name, 3>        point3D_type;
+          typedef ::math::linear::vector::structure<scalar_name, 2>        point2D_type;
+          typedef ::math::linear::vector::structure<scalar_name, 3>        point3D_type;
           
-          typedef ::math::type::direction::ABC2D<scalar_name> line2D_type;
-          typedef ::math::type::direction::parametric<scalar_name, 3 > line3D_type;
+          typedef ::math::geometry::direction::ABC2D<scalar_name> line2D_type;
+          typedef ::math::geometry::direction::parametric<scalar_name, 3 > line3D_type;
 
 
           typedef ::math::geometry::intersect::LL2D< scalar_name > intersectLL2D_type;

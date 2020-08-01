@@ -38,8 +38,8 @@
          )
          {
           result[0][0] = 1;  result[0][1] =                  0 ; result[0][2] =  +                  0 ;
-          result[1][1] = 0;  result[1][1] =  cos( angle_param ); result[1][2] =  - sin( angle_param ) ;
-          result[2][2] = 0;  result[2][1] =  sin( angle_param ); result[2][2] =  + cos( angle_param ) ;
+          result[1][0] = 0;  result[1][1] =  cos( angle_param ); result[1][2] =  - sin( angle_param ) ;
+          result[2][0] = 0;  result[2][1] =  sin( angle_param ); result[2][2] =  + cos( angle_param ) ;
          }
 
        template< typename scalar_name>
@@ -51,9 +51,9 @@
           ,                                   scalar_name            const& angle_param
          )
          {
-          result[0][0] =  cos( angle_param ); result[0][0] = 0; result[0][0] =sin( angle_param );
-          result[1][1] = 0                  ; result[1][1] = 1; result[1][1] =                0 ;
-          result[2][2] = -sin( angle_param ); result[2][2] = 0; result[2][2] =cos( angle_param );
+          result[0][0] = + cos( angle_param ); result[0][1] = 0; result[0][2] = + sin( angle_param );
+          result[1][0] =                    0; result[1][1] = 1; result[1][2] =                   0 ;
+          result[2][0] = - sin( angle_param ); result[2][1] = 0; result[2][2] = + cos( angle_param );
          }
 
 
@@ -66,9 +66,9 @@
           ,                                   scalar_name            const& angle_param
          )
          {
-          result[0][0] = cos( angle_param ); result[0][0] = - sin( angle_param ); result[0][0] = + 0;
-          result[1][1] = sin( angle_param ); result[1][1] = + cos( angle_param ); result[1][1] = + 0;
-          result[2][2] =                  0; result[2][2] = +                  0; result[2][2] = + 1;
+          result[0][0] = + cos( angle_param ); result[0][1] = - sin( angle_param ); result[0][2] = + 0;
+          result[1][0] = + sin( angle_param ); result[1][1] = + cos( angle_param ); result[1][2] = + 0;
+          result[2][0] =                    0; result[2][1] = +                  0; result[2][2] = + 1;
          }
 
        template< typename scalar_name>
