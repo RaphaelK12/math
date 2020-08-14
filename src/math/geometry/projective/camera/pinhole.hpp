@@ -6,14 +6,18 @@
 #include "../../../linear/vector/structure.hpp"
 
 /*
-          ^
-          |   -.
-          Z   /|
-          |  Y
-          | /
-----------------X------>
-          |
-          |
+          ^       -/
+          |       /|
+      +---|------+
+      |   |     /|
+      |   |    / |
+      |   Z   /  |
+      |   |  Y   |
+      |   | /    |
+---------------X-|----->
+      |   |      |
+      |   |      |
+      +---|----- +
 */
 
 namespace math
@@ -26,7 +30,7 @@ namespace math
        {
 
         template< typename scalar_name >
-         class pinhole
+         class pinhole // Project in to y=1 plane;
           {
            public:
              typedef scalar_name  scalar_type;

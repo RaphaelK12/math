@@ -1,7 +1,7 @@
 #ifndef math_geometry_projective_camera_optical
 #define math_geometry_projective_camera_optical
 
-// ::math::geometry::projective::camera::optical<scalar_name, size_name, integer_name>
+// ::math::geometry::projective::camera::optical<scalar_name, size_name = std::size_t >
 
 #include <cmath>
 #include <tuple>
@@ -29,7 +29,7 @@ namespace math
            typename  scalar_name
           ,typename    size_name = std::size_t
          >
-         class optical
+         class optical //!< TODO rename to digital
           {
            public:
              typedef scalar_name     scalar_type;

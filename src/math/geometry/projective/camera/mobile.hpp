@@ -37,6 +37,7 @@ namespace math
 
             mobile()
              {
+              // purposly empty
              }
 
             explicit mobile( optical_type const& optical )

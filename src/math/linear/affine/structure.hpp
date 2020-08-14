@@ -45,11 +45,8 @@
              {
               switch( index )
                {
-                default:
-                case( 0 ): return this->matrix()[0];
-                case( 1 ): return this->matrix()[1];
-                case( 2 ): return this->matrix()[2];
-                case( 3 ): return this->vector();
+                default: { return this->matrix()[index]; }
+                case( dimension_number ): { return this->vector(); }
                }
              }
 
@@ -57,11 +54,8 @@
              {
               switch( index )
                {
-                default:
-                case( 0 ): return this->matrix()[0];
-                case( 1 ): return this->matrix()[1];
-                case( 2 ): return this->matrix()[2];
-                case( 3 ): return this->vector();
+                default:{ return this->matrix()[index]; }
+                case( dimension_number ): { return this->vector(); }
                }
              }
 
